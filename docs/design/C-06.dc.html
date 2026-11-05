@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-06 층·구역 빠른 선택</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+.hatch{background-color:#242423}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div aria-hidden="true" style="height: 44px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; border-bottom: 1px solid #3a3936; background: #161616; font-size: 14px; color: #b5b3ad">Pleos Connect 시스템 영역</div>
+
+  <header style="height: 88px; box-sizing: border-box; padding: 0 32px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #3a3936; background: #2a2a28">
+    <a href="C-05.dc.html" aria-label="뒤로" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; text-decoration: none">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <h1 style="margin: 0; font-size: 30px; font-weight: 700; flex-grow: 1">주차 위치 기억하기</h1>
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="font-size: 16px; color: #b5b3ad">저장될 위치</span>
+      <span style="height: 52px; display: flex; align-items: center; padding: 0 20px; border-radius: 14px; border: 2px solid #f4f3ef; font-size: 28px; font-weight: 700">{{summary}}</span>
+    </div>
+  </header>
+
+  <div style="height: 587px; box-sizing: border-box; padding: 24px 32px; display: flex; gap: 32px">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 18px; font-weight: 700; color: #b5b3ad">층</span>
+        <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{floors}}" as="f" hint-placeholder-count="7">
+            <button type="button" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}" style="height: 80px; border-radius: 16px; border: 2px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font-family: inherit; font-size: 28px; font-weight: 700; cursor: pointer">{{f.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 18px; font-weight: 700; color: #b5b3ad">구역</span>
+        <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{zones}}" as="z" hint-placeholder-count="8">
+            <button type="button" aria-pressed="{{z.pressed}}" onClick="{{z.pick}}" style="height: 80px; border-radius: 16px; border: 2px solid {{z.bd}}; background: {{z.bg}}; color: {{z.fg}}; font-family: inherit; font-size: 28px; font-weight: 700; cursor: pointer">{{z.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1.5px dashed #8a8780; border-radius: 16px">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>
+        <span style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 18px; font-weight: 700">아브뉴프랑 판교 주차장 구역 체계</span>
+          <span style="font-size: 16px; color: #b5b3ad">기둥 색 + 알파벳 A–H · 기둥 번호 01–12</span>
+        </span>
+      </div>
+    </div>
+
+    <div style="width: 420px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 18px; font-weight: 700; color: #b5b3ad">기둥 번호</span>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{nums}}" as="n" hint-placeholder-count="12">
+          <button type="button" aria-pressed="{{n.pressed}}" onClick="{{n.pick}}" style="height: 72px; border-radius: 16px; border: 2px solid {{n.bd}}; background: {{n.bg}}; color: {{n.fg}}; font-family: inherit; font-size: 26px; font-weight: 700; cursor: pointer">{{n.label}}</button>
+        </sc-for>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <a href="C-07.dc.html" style="height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: #f4f3ef; color: #1e1e1e; font-size: 26px; font-weight: 700; text-decoration: none">저장</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const floor = s.floor ?? 'B2';
+    const zone = s.zone ?? 'D';
+    const num = s.num ?? '07';
+    const on = { bg: '#f4f3ef', fg: '#1e1e1e', bd: '#f4f3ef' };
+    const off = { bg: '#2a2a28', fg: '#f4f3ef', bd: '#3a3936' };
+    const mk = (list, cur, key) => list.map((label) => {
+      const picked = label === cur;
+      const look = picked ? on : off;
+      return {
+        label: label,
+        pressed: picked ? 'true' : 'false',
+        bg: look.bg,
+        fg: look.fg,
+        bd: look.bd,
+        pick: () => this.setState({ [key]: label })
+      };
+    });
+    const nums = [];
+    for (let i = 1; i <= 12; i++) nums.push(String(i).padStart(2, '0'));
+    return {
+      floors: mk(['B5', 'B4', 'B3', 'B2', 'B1', '1F', '2F'], floor, 'floor'),
+      zones: mk(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], zone, 'zone'),
+      nums: mk(nums, num, 'num'),
+      summary: floor + ' · ' + zone + '-' + num
+    };
+  }
+}
+</script>
+</body>
+</html>

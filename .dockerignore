@@ -1,0 +1,9 @@
+# docker build 컨텍스트 = 저장소 루트 (apps/server/Dockerfile). 서버에 필요한 것만 보낸다
+**
+!packages/api-types/**
+!packages/insights-demo/**
+!apps/server/package.json
+!apps/server/package-lock.json
+!apps/server/tsconfig.json
+!apps/server/tsconfig.build.json
+!apps/server/src/**

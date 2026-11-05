@@ -1,0 +1,27 @@
+# 주차각 API 서버 (apps/server) — SQLite 는 이름 붙은 볼륨에 남는다.
+#   ADMIN_TOKEN=$(openssl rand -hex 24) docker compose up --build     → http://localhost:8787/health
+# 개발 중에는 Docker 없이 `cd apps/server && npm run dev` 가 더 빠르다 (README 참고).
+services:
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    image: parkinggack-server
+    ports:
+      - "8787:8787"
+    environment:
+      NODE_ENV: production
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?ADMIN_TOKEN 을 정해 주세요 — 예 ADMIN_TOKEN=$(openssl rand -hex 24) docker compose up}
+      ADMIN_ORIGINS: ${ADMIN_ORIGINS:-http://localhost:5174,http://localhost:5173}
+      PUBLIC_WEB_BASE: ${PUBLIC_WEB_BASE:-https://parkinggack.netlify.app}
+      DB_PATH: /data/parkinggack.db
+      # 웹 푸시(선택): npx web-push generate-vapid-keys
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
+    volumes:
+      - parkinggack-data:/data
+    restart: unless-stopped
+
+volumes:
+  parkinggack-data:

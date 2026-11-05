@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>D-10 주차 난이도 한눈에</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1e1e1e}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #f4f3ef; color: #1e1e1e; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+
+<header style="background: #ffffff; border-bottom: 1px solid #d6d3cb">
+  <div style="max-width: 1376px; margin: 0 auto; padding: 12px 32px; box-sizing: border-box; min-height: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+    <a href="D-10.dc.html" aria-label="주차각 데이터 처음 화면" style="display: flex; align-items: center; gap: 10px; color: #1e1e1e; text-decoration: none">
+      <svg aria-hidden="true" width="34" height="34" viewBox="0 0 48 48" style="flex-shrink: 0"><rect width="48" height="48" rx="13" fill="#1e1e1e"></rect><path d="M15 36V12h9a7 7 0 0 1 0 14h-9" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M27 38h8a3 3 0 0 0 3-3v-8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px">주차각</span>
+      <span style="font-size: 18px; font-weight: 500; color: #5f5d57">데이터</span>
+    </a>
+    <nav aria-label="대시보드 메뉴" style="display: flex; flex-wrap: wrap; gap: 4px">
+      <a href="D-10.dc.html" aria-current="page" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; background: #1e1e1e; color: #ffffff; font-size: 15px; font-weight: 700; text-decoration: none">난이도 한눈에</a>
+      <a href="D-11.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">주차장 상세</a>
+      <a href="D-12.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">데이터 내보내기</a>
+      <a href="D-03.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">비교표</a>
+    </nav>
+    <div style="flex-grow: 1"></div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+      <span style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px dashed #8a8780; box-sizing: border-box; font-size: 13px; color: #5f5d57">시연용 예시 데이터</span>
+      <button type="button" style="height: 40px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">판교 일대 · 9곳<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+      <button type="button" style="height: 40px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">최근 30일<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+      <span style="width: 40px; height: 40px; border-radius: 20px; background: #e6e3dc; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">기관</span>
+    </div>
+  </div>
+</header>
+
+<main style="max-width: 1376px; margin: 0 auto; padding: 40px 32px 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 700; color: #5f5d57">판교 일대 · 2026년 10월 5일 ~ 11월 3일</span>
+      <h1 style="margin: 0; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: -1.2px">주차 난이도 한눈에</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #5f5d57">9곳에서 6,388번의 주차를 차가 직접 기록했어요. 후진·핸들·걸린 시간으로 매긴 점수예요.</p>
+    </div>
+    <a href="D-12.dc.html" style="height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 20px; border-radius: 12px; border: 1.5px solid #1e1e1e; box-sizing: border-box; background: #ffffff; color: #1e1e1e; font-size: 15px; font-weight: 700; text-decoration: none"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>이 화면 데이터 받기</a>
+  </div>
+
+  <section aria-label="요약" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1px; background: #d6d3cb; border: 1px solid #d6d3cb; border-radius: 16px; overflow: hidden">
+    <div style="background: #ffffff; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 500; color: #5f5d57">평균 난이도</span>
+      <span style="display: flex; align-items: baseline; gap: 8px"><span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">3.2</span><span style="font-size: 17px; font-weight: 700">보통</span></span>
+      <span style="font-size: 14px; color: #5f5d57">지난달 3.4에서 0.2 쉬워졌어요</span>
+    </div>
+    <div style="background: #ffffff; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 500; color: #5f5d57">주차 기록</span>
+      <span style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">6,388</span><span style="font-size: 17px; font-weight: 700">건</span></span>
+      <span style="font-size: 14px; color: #5f5d57">지난달보다 12% 늘었어요</span>
+    </div>
+    <div style="background: #ffffff; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 500; color: #5f5d57">한 번에 들어간 비율</span>
+      <span style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">61</span><span style="font-size: 17px; font-weight: 700">%</span></span>
+      <span style="font-size: 14px; color: #5f5d57">후진 1회 이하로 끝난 주차</span>
+    </div>
+    <div style="background: #ffffff; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 500; color: #5f5d57">후진 다발 지점</span>
+      <span style="display: flex; align-items: baseline; gap: 6px"><span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">14</span><span style="font-size: 17px; font-weight: 700">곳</span></span>
+      <span style="font-size: 14px; color: #5f5d57">어려운 4곳에 11곳이 몰려 있어요</span>
+    </div>
+  </section>
+
+  <section style="background: #1e1e1e; color: #f4f3ef; border-radius: 20px; padding: 28px 32px 22px; display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <h2 style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.4px">9곳이 어디쯤 있나요</h2>
+        <p style="margin: 0; font-size: 15px; color: #b5b3ad">오른쪽으로 갈수록 주차가 어려워요. 점이 클수록 기록이 많아요.</p>
+      </div>
+      <div aria-hidden="true" style="display: flex; align-items: center; gap: 18px; font-size: 13px; color: #b5b3ad">
+        <span style="display: flex; align-items: center; gap: 8px"><span style="display: block; width: 12px; height: 12px; border-radius: 50%; background: #f4f3ef"></span>200건</span>
+        <span style="display: flex; align-items: center; gap: 8px"><span style="display: block; width: 20px; height: 20px; border-radius: 50%; background: #f4f3ef"></span>600건</span>
+        <span style="display: flex; align-items: center; gap: 8px"><span style="display: block; width: 32px; height: 32px; border-radius: 50%; background: #f4f3ef"></span>1,200건</span>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto">
+      <div style="min-width: 860px; display: flex; flex-direction: column">
+        <div style="display: grid; grid-template-columns: 240px minmax(0, 1fr) 88px; column-gap: 24px; padding-bottom: 10px">
+          <span style="font-size: 13px; color: #b5b3ad">어려운 순</span>
+          <div style="display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 1fr; font-size: 13px; font-weight: 700; color: #b5b3ad; text-align: center"><span>아주 쉬움</span><span>쉬움</span><span>보통</span><span>어려움</span><span>아주 어려움</span></div>
+          <span style="font-size: 13px; color: #b5b3ad; text-align: right">기록</span>
+        </div>
+        <sc-for list="{{scale}}" as="r" hint-placeholder-count="9">
+          <div style="display: grid; grid-template-columns: 240px minmax(0, 1fr) 88px; column-gap: 24px; border-top: 1px solid #3a3936">
+            <a href="D-11.dc.html" style="height: 50px; display: flex; align-items: center; gap: 12px; color: #f4f3ef; font-size: 15px; font-weight: 700; text-decoration: none; white-space: nowrap; overflow: hidden"><span style="width: 16px; flex-shrink: 0; font-size: 13px; font-weight: 500; color: #b5b3ad">{{r.rank}}</span>{{r.name}}</a>
+            <div style="position: relative; height: 50px">
+              <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: grid; grid-template-columns: 1fr 2fr 2fr 2fr 1fr"><span style="background: #252523"></span><span></span><span style="background: #252523"></span><span></span><span style="background: #252523"></span></div>
+              <div aria-hidden="true" style="position: absolute; left: 0; top: 24px; width: {{r.left}}; height: 2px; background: #6b6964"></div>
+              <div aria-hidden="true" style="position: absolute; left: {{r.left}}; top: 25px; width: {{r.size}}; height: {{r.size}}; transform: translate(-50%, -50%); border-radius: 50%; background: #f4f3ef"></div>
+              <span style="position: absolute; left: {{r.left}}; top: 25px; transform: translate({{r.vx}}, -50%); font-size: 16px; font-weight: 700">{{r.score}}</span>
+            </div>
+            <span style="height: 50px; display: flex; align-items: center; justify-content: flex-end; font-size: 14px; color: #b5b3ad">{{r.countText}}</span>
+          </div>
+        </sc-for>
+        <div style="display: grid; grid-template-columns: 240px minmax(0, 1fr) 88px; column-gap: 24px; border-top: 1px solid #3a3936">
+          <span></span>
+          <div aria-hidden="true" style="position: relative; height: 28px; font-size: 12px; color: #b5b3ad">
+            <span style="position: absolute; left: 0; top: 8px; transform: translateX(-50%)">1</span>
+            <span style="position: absolute; left: 25%; top: 8px; transform: translateX(-50%)">2</span>
+            <span style="position: absolute; left: 50%; top: 8px; transform: translateX(-50%)">3</span>
+            <span style="position: absolute; left: 75%; top: 8px; transform: translateX(-50%)">4</span>
+            <span style="position: absolute; left: 100%; top: 8px; transform: translateX(-50%)">5</span>
+          </div>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.4px">주차장별로 보기</h2>
+        <p style="margin: 0; font-size: 15px; color: #5f5d57">그림의 원은 후진이 몰리는 자리예요. 카드를 누르면 자세히 볼 수 있어요.</p>
+      </div>
+      <div role="group" aria-label="정렬" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 12px; background: #e6e3dc">
+        <sc-for list="{{sorts}}" as="s" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{s.pressed}}" onClick="{{s.pick}}" style="height: 36px; padding: 0 14px; border-radius: 9px; border: 0; background: {{s.bg}}; color: {{s.fg}}; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{s.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr)); gap: 16px">
+      <sc-for list="{{lots}}" as="l" hint-placeholder-count="9">
+        <a href="D-11.dc.html" style="box-sizing: border-box; padding: 20px; display: flex; flex-direction: column; gap: 16px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; color: #1e1e1e; text-decoration: none">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+              <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px">{{l.name}}</span>
+              <span style="font-size: 14px; color: #5f5d57">{{l.type}} · {{l.floors}}</span>
+            </div>
+            <span style="flex-shrink: 0; height: 28px; display: flex; align-items: center; padding: 0 10px; border-radius: 14px; background: #f4f3ef; font-size: 13px; font-weight: 700; white-space: nowrap">{{l.trend}}</span>
+          </div>
+          <div style="position: relative; height: 132px; border-radius: 12px; background: #1e1e1e; overflow: hidden">
+            <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 44px; border-bottom: 2px solid rgba(244,243,239,0.45); background-image: repeating-linear-gradient(90deg, rgba(244,243,239,0.45) 0 2px, transparent 2px 30px)"></div>
+            <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 44px; border-top: 2px solid rgba(244,243,239,0.45); background-image: repeating-linear-gradient(90deg, rgba(244,243,239,0.45) 0 2px, transparent 2px 30px)"></div>
+            <div aria-hidden="true" style="position: absolute; left: 14px; right: 14px; top: 65px; border-top: 2px dashed rgba(244,243,239,0.22)"></div>
+            <sc-for list="{{l.spots}}" as="p" hint-placeholder-count="2">
+              <span aria-hidden="true" style="position: absolute; left: {{p.x}}; top: {{p.y}}; width: {{p.s}}; height: {{p.s}}; transform: translate(-50%, -50%); box-sizing: border-box; border-radius: 50%; border: 2px solid #f4f3ef; background: rgba(244,243,239,0.2); outline: 6px solid rgba(244,243,239,0.1)"></span>
+            </sc-for>
+            <span style="position: absolute; right: 10px; bottom: 8px; padding: 3px 8px; border-radius: 6px; background: #1e1e1e; font-size: 12px; font-weight: 500; color: #d6d3cb">{{l.spotText}}</span>
+          </div>
+          <div style="display: flex; align-items: flex-end; gap: 14px">
+            <span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">{{l.score}}</span>
+            <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 3px">
+              <span aria-hidden="true" style="display: flex; align-items: flex-end; gap: 3px; height: 26px">
+                <sc-for list="{{l.bars}}" as="b" hint-placeholder-count="5">
+                  <span style="display: block; width: 8px; height: {{b.h}}; box-sizing: border-box; border-radius: 2px; background: {{b.bg}}; border: {{b.bd}}"></span>
+                </sc-for>
+              </span>
+              <span style="font-size: 15px; font-weight: 700">{{l.label}}</span>
+            </div>
+            <div style="flex-grow: 1"></div>
+            <dl style="margin: 0; display: grid; grid-template-columns: auto auto; gap: 4px 14px; font-size: 14px">
+              <dt style="color: #5f5d57">평균 후진</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{l.rev}}</dd>
+              <dt style="color: #5f5d57">평균 시간</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{l.time}}</dd>
+              <dt style="color: #5f5d57">기록</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{l.countText}}건</dd>
+            </dl>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 16px">
+    <section style="box-sizing: border-box; padding: 24px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 6px">
+      <h2 style="margin: 0 0 6px; font-size: 20px; font-weight: 700">이번 달 눈에 띄는 변화</h2>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+        <li style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #d6d3cb">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #f4f3ef; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8M21 11v6h-6"></path></svg></span>
+          <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">현대백화점 판교점 · B3 램프 출구</span><span style="font-size: 14px; color: #5f5d57">9월 22일 반사경을 단 뒤 이 지점 후진이 평균 0.7회 줄었어요</span></span>
+          <a href="D-11.dc.html" style="flex-shrink: 0; font-size: 14px; font-weight: 700">보기</a>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #d6d3cb">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #f4f3ef; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 13V7h-6"></path></svg></span>
+          <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">유스페이스 · 지하 2층</span><span style="font-size: 14px; color: #5f5d57">평일 저녁 7시 이후 후진이 18% 늘었어요</span></span>
+          <a href="D-11.dc.html" style="flex-shrink: 0; font-size: 14px; font-weight: 700">보기</a>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #d6d3cb">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #f4f3ef; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg></span>
+          <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">화랑공원 공영</span><span style="font-size: 14px; color: #5f5d57">주말 오전 들어와서 대기까지 25초 짧아졌어요</span></span>
+          <a href="D-11.dc.html" style="flex-shrink: 0; font-size: 14px; font-weight: 700">보기</a>
+        </li>
+        <li style="display: flex; align-items: center; gap: 14px; padding: 14px 0 0">
+          <span aria-hidden="true" style="flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #f4f3ef; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></span>
+          <span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">기록이 5건보다 적은 칸 212개</span><span style="font-size: 14px; color: #5f5d57">누가 댔는지 짐작할 수 없게 화면과 내보내기에서 빼 두었어요</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <section style="box-sizing: border-box; padding: 28px; background: #1e1e1e; color: #f4f3ef; border-radius: 16px; display: flex; flex-direction: column; gap: 16px">
+      <span style="font-size: 14px; font-weight: 700; color: #b5b3ad">데이터 내보내기</span>
+      <h2 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4; letter-spacing: -0.5px">보고 있는 숫자를<br>그대로 받아 갈 수 있어요</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #b5b3ad">주차 세션, 동선 좌표, 후진·급정지 지점, 칸별 집계, 시간대 집계. 개인을 알아볼 수 있는 값은 처음부터 모으지 않아요.</p>
+      <ul aria-label="받을 수 있는 형식" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px">
+        <li style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px solid #8a8780; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px">CSV</li>
+        <li style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px solid #8a8780; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px">Excel</li>
+        <li style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px solid #8a8780; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px">Parquet</li>
+        <li style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px solid #8a8780; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px">GeoJSON</li>
+        <li style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px solid #8a8780; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px">API</li>
+      </ul>
+      <div style="flex-grow: 1"></div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+        <a href="D-12.dc.html" style="height: 52px; display: flex; align-items: center; gap: 8px; padding: 0 22px; border-radius: 12px; background: #f4f3ef; color: #1e1e1e; font-size: 16px; font-weight: 700; text-decoration: none"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>내보내기 시작</a>
+        <span style="font-size: 14px; color: #b5b3ad">최근: 11월 3일 · 주차 세션 1,284행 · CSV</span>
+      </div>
+    </section>
+  </div>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const sort = st.sort ?? 'score';
+    const comma = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const names = ['', '아주 쉬움', '쉬움', '보통', '어려움', '아주 어려움'];
+    const heights = ['10px', '14px', '18px', '22px', '26px'];
+    const data = [
+      { name: '현대백화점 판교점 지하', type: '백화점', floors: '지하 1~6층', score: 4.3, count: 1284, rev: '3.2회', time: '2분 10초', delta: -0.3, spots: [['18%', '66px', '24px'], ['46%', '22px', '18px'], ['72%', '110px', '20px'], ['90%', '66px', '16px']] },
+      { name: '유스페이스', type: '오피스', floors: '지하 1~5층', score: 4.1, count: 642, rev: '2.9회', time: '1분 55초', delta: 0.1, spots: [['24%', '110px', '20px'], ['55%', '66px', '18px'], ['80%', '22px', '16px']] },
+      { name: 'H스퀘어', type: '오피스', floors: '지하 1~4층', score: 3.9, count: 871, rev: '2.6회', time: '1분 50초', delta: -0.2, spots: [['35%', '66px', '20px'], ['70%', '110px', '16px']] },
+      { name: '판교세븐벤처밸리', type: '오피스', floors: '지하 1~4층', score: 3.6, count: 515, rev: '2.4회', time: '1분 40초', delta: -0.1, spots: [['28%', '22px', '18px'], ['64%', '66px', '16px']] },
+      { name: '봇들마을 상가', type: '상가', floors: '지하 1~2층', score: 3.4, count: 233, rev: '2.3회', time: '1분 30초', delta: 0, spots: [['50%', '110px', '16px']] },
+      { name: '화랑공원 공영', type: '공영', floors: '지상 평면', score: 2.9, count: 402, rev: '1.8회', time: '1분 10초', delta: -0.2, spots: [['40%', '66px', '14px']] },
+      { name: '알파돔타워', type: '오피스', floors: '지하 1~6층', score: 2.4, count: 958, rev: '1.5회', time: '1분 05초', delta: -0.1, spots: [['76%', '22px', '14px']] },
+      { name: '아브뉴프랑 판교', type: '상가', floors: '지하 1~3층', score: 1.8, count: 1106, rev: '1.1회', time: '50초', delta: 0, spots: [] },
+      { name: '백현마을 5단지', type: '아파트', floors: '지하 1~2층', score: 1.6, count: 377, rev: '0.9회', time: '40초', delta: -0.1, spots: [] }
+    ];
+    const lots = data.map((d) => {
+      const lv = Math.round(d.score);
+      return {
+        name: d.name,
+        type: d.type,
+        floors: d.floors,
+        score: d.score.toFixed(1),
+        label: names[lv],
+        rev: d.rev,
+        time: d.time,
+        countText: comma(d.count),
+        trend: d.delta < 0 ? Math.abs(d.delta).toFixed(1) + ' 쉬워짐' : (d.delta > 0 ? d.delta.toFixed(1) + ' 어려워짐' : '변화 없음'),
+        spotText: d.spots.length ? '후진 다발 ' + d.spots.length + '곳' : '후진 다발 지점 없음',
+        spots: d.spots.map((p) => ({ x: p[0], y: p[1], s: p[2] })),
+        bars: heights.map((h, i) => ({ h: h, bg: i < lv ? '#1e1e1e' : 'transparent', bd: i < lv ? '0' : '1.5px solid #8a8780' })),
+        sScore: d.score,
+        sCount: d.count,
+        sDelta: d.delta
+      };
+    });
+    const sorted = lots.slice().sort((a, b) => {
+      if (sort === 'count') return b.sCount - a.sCount;
+      if (sort === 'delta') return a.sDelta - b.sDelta;
+      return b.sScore - a.sScore;
+    });
+    const scale = lots.slice().sort((a, b) => b.sScore - a.sScore).map((l, i) => {
+      const size = Math.round(12 + (l.sCount - 233) / (1284 - 233) * 22);
+      return {
+        rank: String(i + 1),
+        name: l.name,
+        score: l.score,
+        countText: l.countText,
+        left: ((l.sScore - 1) / 4 * 100).toFixed(1) + '%',
+        size: size + 'px',
+        vx: Math.round(size / 2 + 10) + 'px'
+      };
+    });
+    const sorts = [
+      { key: 'score', label: '어려운 순' },
+      { key: 'count', label: '기록 많은 순' },
+      { key: 'delta', label: '많이 좋아진 순' }
+    ].map((o) => ({
+      label: o.label,
+      pressed: o.key === sort ? 'true' : 'false',
+      bg: o.key === sort ? '#1e1e1e' : 'transparent',
+      fg: o.key === sort ? '#ffffff' : '#1e1e1e',
+      pick: () => this.setState({ sort: o.key })
+    }));
+    return { lots: sorted, scale: scale, sorts: sorts };
+  }
+}
+</script>
+</body>
+</html>

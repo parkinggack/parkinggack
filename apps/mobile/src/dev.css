@@ -1,0 +1,118 @@
+.dev {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px));
+}
+
+.dev h1 {
+  margin: 8px 0 8px;
+  font-size: 24px;
+}
+
+.dev-lead {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.dev-lead code {
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--chip);
+  color: var(--ink);
+}
+
+.dev-warn {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 2px dashed var(--line-strong);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.dev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.dev-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  min-width: 0;
+}
+
+.dev-card h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.dev-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.qr {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin: 4px auto;
+  border-radius: 8px;
+}
+
+.dev-link {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.dev-custom {
+  grid-column: 1 / -1;
+}
+
+.dev-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.dev-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+.dev-field:has(textarea) {
+  grid-column: 1 / -1;
+}
+
+.dev-field input,
+.dev-field textarea {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--page);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.dev-out {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-12 주차 형태별 그림</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; box-sizing: border-box; padding: 40px; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column; gap: 24px">
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <h1 style="margin: 0; font-size: 28px; font-weight: 700">C-12 주차 형태별 그림</h1>
+    <p style="margin: 0; font-size: 18px; color: #b5b3ad">통로 방향과 마지막 차 방향의 각도로 형태를 판별해서, 옆 칸을 그 모양대로 이어 그림</p>
+  </div>
+
+  <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">직각주차 · 약 90°</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; display: flex; flex-direction: column; gap: 12px">
+        <svg role="img" aria-label="직각주차 동선 예시" width="248" height="300" viewBox="0 0 248 300" style="display: block">
+          <rect x="0" y="120" width="248" height="110" fill="#1e1e1e"></rect>
+          <path d="M4 20 H244" stroke="#8a8780" stroke-width="2"></path>
+          <path d="M4 20 V120 M54 20 V120 M104 20 V120 M154 20 V120 M204 20 V120" stroke="#6b6964" stroke-width="2"></path>
+          <path d="M0 185 H200" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+          <path d="M200 185 C 168 185, 134 172, 129 104" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 9"></path>
+          <rect x="111" y="26" width="36" height="88" rx="8" fill="#f4f3ef"></rect>
+          <rect x="116" y="92" width="26" height="14" rx="3" fill="#2a2a28" fill-opacity="0.85"></rect>
+          <circle cx="200" cy="185" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+          <text x="200" y="190" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">1</text>
+          <path d="M154 140 A 18 18 0 0 0 172 122" fill="none" stroke="#8a8780" stroke-width="1.5"></path>
+          <text x="160" y="160" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">90°</text>
+        </svg>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #b5b3ad">옆 칸을 세로로 이어 그림. 가장 흔한 형태</p>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">평행주차 · 약 0°</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; display: flex; flex-direction: column; gap: 12px">
+        <svg role="img" aria-label="평행주차 동선 예시" width="248" height="300" viewBox="0 0 248 300" style="display: block">
+          <rect x="0" y="0" width="248" height="58" fill="#3a3936"></rect>
+          <text x="8" y="36" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">보도</text>
+          <path d="M0 60 H248" stroke="#8a8780" stroke-width="3"></path>
+          <rect x="0" y="112" width="248" height="118" fill="#1e1e1e"></rect>
+          <path d="M14 62 V112 M124 62 V112 M234 62 V112" stroke="#6b6964" stroke-width="2"></path>
+          <path d="M14 112 H234" stroke="#6b6964" stroke-width="2" stroke-dasharray="6 6"></path>
+          <path d="M0 160 H236" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+          <path d="M236 160 C 206 160, 196 128, 176 104 S 150 88, 140 88" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 9"></path>
+          <path d="M140 88 H164" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+          <rect x="132" y="70" width="88" height="34" rx="8" fill="#f4f3ef"></rect>
+          <rect x="138" y="76" width="16" height="22" rx="3" fill="#2a2a28" fill-opacity="0.5"></rect>
+          <circle cx="236" cy="160" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+          <text x="236" y="165" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">1</text>
+          <circle cx="140" cy="88" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+          <text x="140" y="93" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">2</text>
+          <text x="120" y="262" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">0°</text>
+        </svg>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #b5b3ad">길쭉한 칸을 가로로 이어 그림. 후진 S자 + 앞으로 맞춤</p>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">사선주차 · 45~70°</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; display: flex; flex-direction: column; gap: 12px">
+        <svg role="img" aria-label="사선주차 동선 예시" width="248" height="300" viewBox="0 0 248 300" style="display: block">
+          <rect x="0" y="120" width="248" height="110" fill="#1e1e1e"></rect>
+          <path d="M40 20 H248" stroke="#8a8780" stroke-width="2"></path>
+          <path d="M-18 120 L40 20 M32 120 L90 20 M82 120 L140 20 M132 120 L190 20 M182 120 L240 20" stroke="#6b6964" stroke-width="2"></path>
+          <path d="M0 185 H80 C 120 185, 140 160, 150 110" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+          <rect x="143" y="34" width="34" height="80" rx="8" fill="#f4f3ef" transform="rotate(30 160 74)"></rect>
+          <text x="196" y="160" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">약 60°</text>
+        </svg>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #b5b3ad">비스듬한 칸. 보통 앞으로 들어가서 후진 없음</p>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">오차가 클 때</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #2a2a28; border: 1.5px dashed #8a8780; border-radius: 16px; display: flex; flex-direction: column; gap: 12px">
+        <svg role="img" aria-label="전환점만 이은 단순화한 동선 예시" width="248" height="300" viewBox="0 0 248 300" style="display: block">
+          <rect x="0" y="120" width="248" height="110" fill="#1e1e1e"></rect>
+          <path d="M4 20 H244" stroke="#6b6964" stroke-width="2" stroke-dasharray="6 6"></path>
+          <path d="M104 20 V120 M154 20 V120" stroke="#6b6964" stroke-width="2" stroke-dasharray="6 6"></path>
+          <path d="M0 185 L200 185" fill="none" stroke="#8a8780" stroke-width="5" stroke-linecap="round"></path>
+          <path d="M200 185 L129 130 L129 100" fill="none" stroke="#8a8780" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 9"></path>
+          <rect x="111" y="26" width="36" height="88" rx="8" fill="#b5b3ad"></rect>
+          <circle cx="200" cy="185" r="13" fill="#2a2a28" stroke="#8a8780" stroke-width="2.5"></circle>
+          <text x="200" y="190" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#b5b3ad">1</text>
+        </svg>
+        <span style="align-self: flex-start; height: 32px; display: flex; align-items: center; padding: 0 12px; border: 1.5px dashed #8a8780; border-radius: 8px; font-size: 14px; font-weight: 700">대략적인 동선이에요</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #b5b3ad">저속 구간이 길거나 신호가 끊기면 전환점만 직선으로 이어 단순하게 보여 줌</p>
+      </section>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

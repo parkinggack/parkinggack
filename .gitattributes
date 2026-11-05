@@ -1,0 +1,4 @@
+# Shell scripts must keep LF line endings to run on macOS/Linux, even if they are edited or committed on Windows
+# (core.autocrlf=true would otherwise check them out with CRLF: "bad interpreter: /usr/bin/env bash^M").
+*.sh text eol=lf
+apps/vehicle/gradlew text eol=lf

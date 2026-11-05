@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주차각 화면 미리보기</title>
+<!--
+  에뮬레이터 없이 보는 차 화면 갤러리. 이 파일을 브라우저로 바로 열면 된다 (서버 불필요).
+  이미지: vehicle/*.png (Paparazzi, apps/vehicle `./gradlew exportScreenshots`), 설명은 README.md 표와 같다.
+  폰 화면: mobile/*.png 가 있으면 보이고, 없으면 그 칸·섹션이 숨는다. 움직임 낱장 모음(mobile/motion_*.png)은 따로 한 섹션. 파일 이름이 아래 목록과 다르면
+  mobile/shots.js 에  window.PG_MOBILE_SHOTS = [{ file: "x.png", id: "M-01", title: "...", state: "..." }];  를 두면 된다.
+  PC 대시보드: dashboard/*.png, 어드민 화면: admin/*.png (apps/admin `npm run screenshots`) 가 있으면 맨 아래에 보이고,
+  없으면 칸·섹션이 숨는다.
+-->
+<style>
+  :root {
+    --surface: #f4f3ef;
+    --surface-raised: #ffffff;
+    --line: #d6d3cb;
+    --line-strong: #8a8780;
+    --ink: #1e1e1e;
+    --ink-muted: #5f5d57;
+    --shot-bg: #1e1e1e;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --surface: #1e1e1e;
+      --surface-raised: #2a2a28;
+      --line: #3a3936;
+      --line-strong: #8a8780;
+      --ink: #f4f3ef;
+      --ink-muted: #b5b3ad;
+      --shot-bg: #121212;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --surface: #1e1e1e;
+    --surface-raised: #2a2a28;
+    --line: #3a3936;
+    --line-strong: #8a8780;
+    --ink: #f4f3ef;
+    --ink-muted: #b5b3ad;
+    --shot-bg: #121212;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--ink);
+    font: 15px/1.55 "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  }
+  .wrap { max-width: 1360px; margin: 0 auto; padding: 32px 16px 64px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; justify-content: space-between;
+           border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+  h1 { font-size: 28px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { margin: 0; color: var(--ink-muted); max-width: 70ch; }
+  .lede code, .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86em; }
+  button.theme { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--line-strong);
+                 border-radius: 8px; padding: 8px 14px; cursor: pointer; min-height: 40px; }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; }
+  nav a { color: var(--ink); text-decoration: none; border: 1px solid var(--line-strong); border-radius: 999px;
+          padding: 6px 14px; font-size: 14px; }
+  nav a:hover, nav a:focus-visible { background: var(--surface-raised); }
+  section { margin-top: 40px; }
+  section > h2 { font-size: 21px; margin: 0 0 4px; }
+  section > p { margin: 0 0 16px; color: var(--ink-muted); max-width: 80ch; }
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  .grid.phone { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 260px)); }
+  figure { margin: 0; background: var(--surface-raised); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+           display: flex; flex-direction: column; }
+  figure a.shot { display: block; background: var(--shot-bg); line-height: 0; }
+  figure img { width: 100%; height: auto; display: block; }
+  figcaption { padding: 12px 14px 14px; display: grid; gap: 4px; }
+  .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+  .id { font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 700;
+        border: 1.5px solid var(--ink); border-radius: 6px; padding: 0 6px; }
+  .title { font-weight: 700; }
+  .state { color: var(--ink-muted); }
+  .meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: 13px; color: var(--ink-muted); }
+  .meta a { color: var(--ink); }
+  .file { overflow-wrap: anywhere; }
+  /* 페이지 전체를 찍은 긴 어드민 이미지는 위쪽만 보여 주고, 누르면 원본 */
+  figure.tall a.shot { max-height: 560px; overflow: hidden; background: #f4f3ef; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 14px; }
+  footer a, .lede a { color: var(--ink); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>주차각 화면 미리보기</h1>
+      <p class="lede">에뮬레이터 없이 JVM에서 그린 차 화면 30장 (1280×720, 160dpi — 맨 위 44px는 OS 띠 자리).
+        흐름 순서대로 묶었다. 이미지를 누르면 원본 크기, <b>시안</b>을 누르면 디자인 캔버스(<code>docs/design</code>)가 열린다.
+        다시 만들기: <code>cd apps/vehicle &amp;&amp; ./gradlew --max-workers=1 exportScreenshots</code></p>
+    </div>
+    <button class="theme" type="button" id="theme">밝게 / 어둡게</button>
+  </header>
+  <nav id="nav" aria-label="흐름"></nav>
+  <main id="main"></main>
+  <noscript><p>이 페이지는 JavaScript로 목록을 그린다. 이미지는 <code>vehicle/</code> 폴더에서 바로 볼 수 있다.</p></noscript>
+  <footer>
+    파일 설명: <a href="README.md">README.md</a> · 실행 방법: <a href="../run-locally.md">docs/run-locally.md</a> ·
+    기획 화면 목록: <a href="../product/plan.md">docs/product/plan.md</a> 6장 · 시연 순서: 같은 문서 12장
+  </footer>
+</div>
+
+<script>
+  // [file, id, title, state, design file]
+  var GROUPS = [
+    { key: "g1", name: "① 출발 전", note: "목적지를 정하면 도착지 주차장 난이도를 먼저 보여 주고, 더 쉬운 곳을 경유지로 넣을 수 있다 (시연 1–2).",
+      shots: [
+        ["c02_destination_hard_dark.png", "C-02", "도착지 난이도 카드", "어려움 ★4.3", "Main"],
+        ["c02_destination_hard_light.png", "C-02", "도착지 난이도 카드", "어려움 ★4.3 · 라이트", "Main"],
+        ["c02_destination_easy_dark.png", "C-02", "도착지 난이도 카드", "쉬움 ★1.8 ('좋아요'만)", "C-02-states"],
+        ["c02_destination_sparse_dark.png", "C-02", "도착지 난이도 카드", "데이터 부족 (점선)", "C-02-states"],
+        ["c03_easier_lots_dark.png", "C-03", "더 쉬운 주차장 비교", "후보 2–3곳 · 경유지로 안내", "C-03"]
+      ] },
+    { key: "g2", name: "② 주행", note: "주행 중에는 터치 입력 없이 배너·아이콘만. 주차장에 들어서면 '주차 기록 중'으로 바뀐다 (시연 3–4).",
+      shots: [
+        ["c04a_driving_banner_dark.png", "C-04", "주행 중 미니 상태", "도착지 배너", "C-04a"],
+        ["c04b_driving_recording_dark.png", "C-04", "주행 중 미니 상태", "주차 기록 중", "C-04b"]
+      ] },
+    { key: "g3", name: "③ 주차 완료", note: "P에 넣으면 추정 층을 묻고, 구역·기둥을 고른 뒤 폰으로 보낸다 (시연 5, 7).",
+      shots: [
+        ["c05_parked_high_dark.png", "C-05", "주차 완료 카드", "층 신뢰도 높음", "C-05"],
+        ["c05_parked_high_light.png", "C-05", "주차 완료 카드", "층 신뢰도 높음 · 라이트", "C-05"],
+        ["c05_parked_medium_dark.png", "C-05", "주차 완료 카드", "신뢰도 보통 ('추정' 칩)", "C-05"],
+        ["c05_parked_low_dark.png", "C-05", "주차 완료 카드", "신뢰도 낮음 (층 고르기)", "C-05"],
+        ["c06_zone_picker_dark.png", "C-06", "층·구역 빠른 선택", "층 · 구역 · 기둥 번호", "C-06"],
+        ["c07_send_to_phone_dark.png", "C-07", "폰으로 보내기", "QR · 짧은 링크", "C-07"]
+      ] },
+    { key: "g4", name: "④ 홈 · 주차장 · 기록", note: "앱을 열면 최근 주차 위치와 자주 가는 곳 난이도. 주차장 상세와 내 기록.",
+      shots: [
+        ["c01_home_dark.png", "C-01", "홈", "기록 있음", "C-01"],
+        ["c01_home_light.png", "C-01", "홈", "기록 있음 · 라이트", "C-01"],
+        ["c01_home_empty_dark.png", "C-01", "홈", "기록 없음", null],
+        ["c08_lot_detail_dark.png", "C-08", "주차장 상세", "★점수와 근거 · 층별 혼잡", "C-08"],
+        ["c08_lot_detail_sparse_dark.png", "C-08", "주차장 상세", "데이터 부족", null],
+        ["c09_history_dark.png", "C-09", "내 주차 기록", "기록 있음 · 월별 변화", "C-09"],
+        ["c09_history_empty_dark.png", "C-09", "내 주차 기록", "기록 없음", "C-09"]
+      ] },
+    { key: "g5", name: "⑤ 동선 리플레이", note: "차속·조향각·기어로 계산한 내 주차 동선을 위에서 본 그림으로 (시연 6).",
+      shots: [
+        ["c12_replay_dark.png", "C-12", "주차 궤적 리플레이", "다 그린 상태 · 후진 점선 · 전환점 번호", "C-12"],
+        ["c12_replay_approximate_dark.png", "C-12", "주차 궤적 리플레이", "대략적 동선", "C-12-states"],
+        ["c12_replay_parallel_dark.png", "C-12", "주차 궤적 리플레이", "평행주차", "C-12-states"],
+        ["c12_replay_angled_dark.png", "C-12", "주차 궤적 리플레이", "사선주차", "C-12-states"],
+        ["c12_shapes_dark.png", "C-12", "형태별 동선 모음", "OS 띠 없음", "C-12-states"]
+      ] },
+    { key: "g6", name: "⑥ 설정 · 첫 실행", note: "데이터 기여 동의, 운전 경력, 카드 시점. 첫 실행 온보딩 3장.",
+      shots: [
+        ["c10_settings_dark.png", "C-10", "설정", "토글 아래 '켜짐/꺼짐'", "C-10"],
+        ["c11_onboarding_step1_dark.png", "C-11", "온보딩", "1 / 3", "C-11"],
+        ["c11_onboarding_step2_dark.png", "C-11", "온보딩", "2 / 3", "C-11"],
+        ["c11_onboarding_step3_dark.png", "C-11", "온보딩", "3 / 3", "C-11"],
+        ["c10_phone_link_dark.png", "C-10", "폰 연결", "QR + 숫자 6자리 (시안 없음)", null],
+        ["c10_phone_linked_dark.png", "C-10", "폰 연결", "연결됨", null]
+      ] },
+    { key: "g6k", name: "⑦ 주차왕 — 커뮤니티 순위", note: "왼쪽 아이콘 메뉴로 들어옴, 정차 중에만. 상위 5 + 내 앞뒤, 점수 = 후진·핸들 70 + 가 본 주차장 15 + 지난달보다 나아진 만큼 15.",
+      shots: [
+        ["c13_king_dark.png", "C-13", "주차왕", "이번 주 12등 · 판교 초보 148명", "C-13"],
+        ["c13_king_join_dark.png", "C-13", "주차왕 참여", "참여 전 (시안 없음 — M-52 차 화면판)", null]
+      ] },
+    { key: "g8", name: "⑦ Pleos 에뮬레이터 창 크기", note: "실제 앱 창 1682×1210px(런처 오른쪽 칸)에서 보이는 모습. 시안 폭 1280dp에 맞춰 ×1.31로 키워 그리고, 넉넉한 세로는 동선 그림·숫자 칸·최근 기록으로 채운다. 지도 자리는 스냅숏에서만 그림(앱에서는 실제 지도).",
+      shots: [
+        ["pleos_c01_home.png", "C-01", "홈", "Pleos 창 · 기록 있음", "C-01"],
+        ["pleos_c01_home_empty.png", "C-01", "홈", "Pleos 창 · 기록 없음 (이렇게 기록돼요)", null],
+        ["pleos_c02_destination_hard.png", "C-02", "도착지 난이도 카드", "Pleos 창", "Main"],
+        ["pleos_c03_easier_lots.png", "C-03", "더 쉬운 주차장 비교", "Pleos 창", "C-03"],
+        ["pleos_c04a_driving_banner.png", "C-04", "주행 중 미니 상태", "Pleos 창 · 지도 + 배너", "C-04a"],
+        ["pleos_c04b_driving_recording.png", "C-04", "주행 중 미니 상태", "Pleos 창 · 주차 기록 중", "C-04b"],
+        ["pleos_c05_parked_high.png", "C-05", "주차 완료 카드", "Pleos 창 · 신뢰도 높음", "C-05"],
+        ["pleos_c05_parked_low.png", "C-05", "주차 완료 카드", "Pleos 창 · 신뢰도 낮음", "C-05"],
+        ["pleos_c06_zone_picker.png", "C-06", "층·구역 빠른 선택", "Pleos 창 · 저장될 위치 크게", "C-06"],
+        ["pleos_c07_send_to_phone.png", "C-07", "폰으로 보내기", "Pleos 창", "C-07"],
+        ["pleos_c08_lot_detail.png", "C-08", "주차장 상세", "Pleos 창", "C-08"],
+        ["pleos_c09_history.png", "C-09", "내 주차 기록", "Pleos 창 · 숫자 칸 + 그래프", "C-09"],
+        ["pleos_c10_settings.png", "C-10", "설정", "Pleos 창", "C-10"],
+        ["pleos_c11_onboarding.png", "C-11", "온보딩", "Pleos 창 · 1 / 3", "C-11"],
+        ["pleos_c12_replay.png", "C-12", "주차 궤적 리플레이", "Pleos 창", "C-12"]
+      ] },
+    { key: "g7", name: "부록 · 공통 컴포넌트", note: "버튼·칩·난이도 표시·배너 (1280×1080, OS 띠 없음).",
+      shots: [
+        ["components_dark.png", "UI", "공통 컴포넌트", "버튼 · 칩 · 난이도 · 배너", "Components"]
+      ] }
+  ];
+
+  // 폰 화면 (390×844). 파일이 없으면 칸이 숨고, 하나도 없으면 섹션째 숨는다.
+  var MOBILE_DEFAULT = [
+    ["m10_start.png", "M-10", "시작", "처음 켰을 때", "M-10"],
+    ["m11_spot.png", "M-11", "주차 위치", "온보딩", "M-11"],
+    ["m12_share.png", "M-12", "익명 기록 동의", "보낼게요 / 나만 볼게요", "M-12"],
+    ["m13_connect.png", "M-13", "차와 연결", "QR 그림 = 카메라 버튼", "M-13"],
+    ["m13_code.png", "M-13", "코드로 연결", "숫자 6자리 입력 중", "M-13"],
+    ["m13_code_error.png", "M-13", "코드로 연결", "없는 코드 안내", "M-13"],
+    ["pair_expired.png", "M-13", "차 QR 링크 /pair", "시간이 지난 코드", "M-13"],
+    ["m14_connected.png", "M-14", "연결 완료", "알림 받을게요 / 나중에", "M-14"],
+    ["m20_home.png", "M-20", "홈", "지금 주차 중 · 자주 가는 곳", "M-20"],
+    ["m20_home_dark.png", "M-20", "홈", "다크", "M-20"],
+    ["m20_home_unpaired.png", "M-20", "홈", "연결 전", "M-20"],
+    ["m01_parking.png", "M-01", "내 주차 위치", "연결된 차", "M-01"],
+    ["m01_parking_dark.png", "M-01", "내 주차 위치", "다크", "M-01"],
+    ["m02_way.png", "M-02", "돌아가는 길", "3단계 힌트 + 그림", "M-02"],
+    ["m01_link.png", "M-01", "내 주차 위치", "C-07 링크 · 연결 안 한 폰", "M-01"],
+    ["m02_link_demo.png", "M-02", "돌아가는 길", "시연 주행 데이터 (링크)", "M-02"],
+    ["m01_link_invalid.png", "M-01", "링크 오류", "잘린 링크", "M-01"],
+    ["m30_lots.png", "M-30", "주차장", "판교역 · 쉬운 순", "M-30"],
+    ["m31_lot.png", "M-31", "주차장 상세", "4.3 어려워요 · 층별 혼잡", "M-31"],
+    ["m31_easier.png", "M-31", "더 쉬운 곳", "걸어서 N분", "M-31"],
+    ["m32_records.png", "M-32", "기록", "좋아진 것만", "M-32"],
+    ["m33_record.png", "M-33", "주차 동선", "실선 앞으로 · 점선 후진 · ①②③", "M-33"],
+    ["m33_record_replay.png", "M-33", "주차 동선", "다시 보기 중간", "M-33"],
+    ["m40_settings.png", "M-40", "설정", "토글 · 운전 경력", "M-40"],
+    ["m40_settings_unpair.png", "M-40", "설정", "연결 끊기 확인 (화면 안)", "M-40"],
+    ["m40_experience.png", "M-40", "운전 경력", "1년 미만", "M-40"],
+    ["m40_settings_king_leave.png", "M-40", "설정", "주차왕 그만두기 확인 (화면 안)", "M-40"],
+    ["m50_king.png", "M-50", "주차왕", "12등 · 82점 · 상위 5 + 내 앞뒤", "M-50"],
+    ["m50_king_dark.png", "M-50", "주차왕", "다크", "M-50"],
+    ["m50_king_sheet.png", "M-50", "주차왕", "리그 시트 (스프링으로 올라옴)", "M-50"],
+    ["m50_king_unpaired.png", "M-50", "주차왕", "연결 전 — 한 문장 + 연결", "M-50"],
+    ["m51_king_me.png", "M-51", "내 점수 자세히", "58/70 · 11/15 · 13/15 · 깔끔/보통/빠짐", "M-51"],
+    ["m52_king_join.png", "M-52", "주차왕 참여하기", "닉네임 다시 뽑기 · 내 리그", "M-52"],
+    ["m53_king_result.png", "M-53", "주간 결과", "9등 · 상위 6% · 배지", "M-53"],
+    ["m53_share_image.png", "M-53", "공유 이미지", "캔버스로 그린 1080×1350 PNG", "M-53"]
+  ];
+
+  // 움직임 낱장 모음 (가로로 긴 그림 — 한 줄에 하나)
+  var MOTION_DEFAULT = [
+    ["motion_home_parking.png", "M-20", "홈 카드 주차", "통로 → 꺾어 들어감 → 살짝 후진 → 들어가 멈춤 (2.5초)"],
+    ["motion_push.png", "전환", "앞으로", "오른쪽에서 스프링으로 (260/26)"],
+    ["motion_pop.png", "전환", "뒤로", "그 반대"],
+    ["motion_tab.png", "전환", "탭", "옅게 + 내용만 위로, 탭바 제자리"],
+    ["motion_rise.png", "전환", "모달", "M-53 이 아래에서 올라옴"]
+  ];
+
+  function el(tag, attrs, text) {
+    var e = document.createElement(tag);
+    for (var k in attrs || {}) { if (attrs[k] != null) e.setAttribute(k, attrs[k]); }
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function card(dir, s, w, h, onFail, onLoad) {
+    var src = dir + "/" + s[0];
+    var fig = el("figure");
+    var a = el("a", { "class": "shot", href: src, target: "_blank", rel: "noopener" });
+    var img = el("img", { src: src, alt: s[1] + " " + s[2] + (s[3] ? " — " + s[3] : ""), width: w, height: h, loading: onLoad ? "eager" : "lazy", decoding: "async" });
+    // 숨긴 섹션 안의 lazy 이미지는 영영 로드되지 않으므로, 로드돼야 섹션을 보이는 폰 카드는 eager
+    img.onerror = function () { fig.hidden = true; if (onFail) onFail(); };
+    if (onLoad) img.onload = onLoad;
+    a.appendChild(img);
+    fig.appendChild(a);
+    var cap = el("figcaption");
+    var row = el("div", { "class": "row" });
+    row.appendChild(el("span", { "class": "id" }, s[1]));
+    row.appendChild(el("span", { "class": "title" }, s[2]));
+    if (s[3]) row.appendChild(el("span", { "class": "state" }, s[3]));
+    cap.appendChild(row);
+    var meta = el("div", { "class": "meta" });
+    meta.appendChild(el("span", { "class": "file mono" }, src));
+    if (s[4]) meta.appendChild(el("a", { href: "../design/" + s[4] + ".dc.html", target: "_blank", rel: "noopener" }, "시안 " + s[4]));
+    cap.appendChild(meta);
+    fig.appendChild(cap);
+    return fig;
+  }
+
+  function section(key, name, note, phone) {
+    var sec = el("section", { id: key });
+    sec.appendChild(el("h2", null, name));
+    if (note) sec.appendChild(el("p", null, note));
+    var grid = el("div", { "class": phone ? "grid phone" : "grid" });
+    sec.appendChild(grid);
+    var link = el("a", { href: "#" + key }, name);
+    document.getElementById("nav").appendChild(link);
+    document.getElementById("main").appendChild(sec);
+    return { sec: sec, grid: grid, link: link };
+  }
+
+  GROUPS.forEach(function (g) {
+    var s = section(g.key, g.name, g.note, false);
+    g.shots.forEach(function (shot) {
+      var tall = shot[0] === "components_dark.png";
+      s.grid.appendChild(card("vehicle", shot, 1280, tall ? 1080 : 720));
+    });
+  });
+
+  function renderMobile() {
+    var list = (window.PG_MOBILE_SHOTS || []).map(function (m) {
+      return [m.file, m.id || "M", m.title || "", m.state || "", m.design || null];
+    });
+    if (!list.length) list = MOBILE_DEFAULT;
+    var s = section("phone", "⑦ 폰 짝꿍 앱 (M-10 ~ M-53)", "차와 연결해서 쓰는 폰 앱(PWA). 아래 탭 5개(홈 · 주차장 · 주차왕 · 기록 · 설정), 주차왕 M-50~M-53 포함. 시연 데이터로 그린 390×844 — 다시 만들기: cd apps/mobile && npm run screenshots", true);
+    s.sec.hidden = true; s.link.hidden = true;
+    list.forEach(function (shot) {
+      s.grid.appendChild(card("mobile", shot, 390, 844, null, function () { s.sec.hidden = false; s.link.hidden = false; }));
+    });
+    // 움직임: 홈 카드 주차 · 화면 전환 (스프링) — 6장씩 한 줄
+    var m = section("phone-motion", "⑦-2 폰 움직임 (스프링)", "카드 속 차가 실제로 주차하는 2.5초, 앞으로 · 뒤로 · 탭 · 모달 전환을 시각별로 멈춰 찍은 낱장 모음. '동작 줄이기'면 모두 꺼짐 — 다시 만들기: cd apps/mobile && npm run screenshots -- motion", false);
+    m.grid.style.gridTemplateColumns = "1fr";
+    m.sec.hidden = true; m.link.hidden = true;
+    MOTION_DEFAULT.forEach(function (shot) {
+      m.grid.appendChild(card("mobile", shot, 2452, 924, null, function () { m.sec.hidden = false; m.link.hidden = false; }));
+    });
+  }
+  // 어드민 웹 (apps/admin, 시연 데이터). [file, id, title, state, design, width, height(보이는 비율용)]
+  // 파일이 없으면 칸이 숨고, 하나도 없으면 섹션째 숨는다.
+  var ADMIN_SHOTS = [
+    ["w01_dashboard.png", "W-01", "난이도 지도 대시보드", "시안과 같은 1440×1100", "W-01", 1440, 1100],
+    ["w01_dashboard_full.png", "W-01", "난이도 지도 대시보드", "전체 — 분포 · 방금 들어온 기록까지", "W-01", 1440, 2116, true],
+    ["w01_dashboard_tablet.png", "W-01", "난이도 지도 대시보드", "태블릿 폭 820", "W-01", 820, 3492, true],
+    ["lots.png", "관리", "주차장 관리", "검색 · 정렬 표", null, 1440, 900],
+    ["lot_detail.png", "관리", "주차장 상세", "근거 통계(C-08과 같은 값) · 기록", "C-08", 1440, 2140, true],
+    ["lot_edit.png", "관리", "주차장 정보 수정", "층 · 구역 체계 · 태그 · 공공정보 · 요금", null, 1440, 900],
+    ["records.png", "기록", "익명 주차 기록", "주차장별 · 시연/실제", null, 1440, 900],
+    ["login.png", "로그인", "관리자 토큰", "시연 모드 안내", null, 1440, 900]
+  ];
+
+  // PC 대시보드 '주차각 데이터' (apps/admin 공개 화면, 시연 데이터). 형식은 ADMIN_SHOTS 와 같음
+  var DASHBOARD_SHOTS = [
+    ["d01_overview.png", "D-01", "개요", "시안과 같은 1440×1380", "D-01", 1440, 1380],
+    ["d02_lot_detail.png", "D-02", "주차장 상세 · 겹친 동선", "현대백화점 B2 · 시안과 같은 1440×1410", "D-02", 1440, 1410],
+    ["d03_compare.png", "D-03", "주차장 비교", "시안과 같은 1440×940", "D-03", 1440, 940],
+    ["d02_lot_detail_b4.png", "D-02", "주차장 상세", "층 버튼 B4", "D-02", 1440, 900],
+    ["d02_lot_detail_flat.png", "D-02", "주차장 상세", "지상 공영주차장 (램프 없음)", "D-02", 1440, 900],
+    ["d03_compare_office.png", "D-03", "주차장 비교", "유형 칩 '오피스'", "D-03", 1440, 700],
+    ["d01_overview_1024.png", "D-01", "개요", "1024 폭", "D-01", 1024, 1787, true],
+    ["d02_lot_detail_1024.png", "D-02", "주차장 상세", "1024 폭", "D-02", 1024, 1805, true],
+    ["d02_report_p1.png", "D-02", "리포트 PDF", "A4 1쪽 — 동선 · 후진 잦은 곳", "D-02", 661, 935],
+    ["d02_report_p2.png", "D-02", "리포트 PDF", "A4 2쪽 — 층별 · 요일×시간대", "D-02", 661, 935]
+  ];
+
+  function renderDashboard() {
+    var s = section("dashboard", "⑧ PC 대시보드 (D-01 ~ D-03)",
+      "주차장 운영사 · 지자체 · 보험사가 보는 공개 화면(로그인 없음). 서버 없이 시연 데이터로 그린 결과 — 다시 만들기: cd apps/admin && npm run screenshots -- dashboard", false);
+    s.sec.hidden = true; s.link.hidden = true;
+    DASHBOARD_SHOTS.forEach(function (shot) {
+      var fig = card("dashboard", shot, shot[5], shot[6], null, function () { s.sec.hidden = false; s.link.hidden = false; });
+      if (shot[7]) fig.className = "tall";
+      s.grid.appendChild(fig);
+    });
+  }
+
+  function renderAdmin() {
+    var s = section("admin", "⑨ 어드민 웹 (주차장 관리 · W-01 PT 비전)",
+      "운영자 화면(#/admin). 서버 없이 시연 데이터로 그린 결과 — 다시 만들기: cd apps/admin && npm run screenshots -- admin", false);
+    s.sec.hidden = true; s.link.hidden = true;
+    ADMIN_SHOTS.forEach(function (shot) {
+      var fig = card("admin", shot, shot[5], shot[6], null, function () { s.sec.hidden = false; s.link.hidden = false; });
+      if (shot[7]) fig.className = "tall";
+      s.grid.appendChild(fig);
+    });
+  }
+
+  // 선택: mobile/shots.js 가 있으면 그 목록을 쓴다 (file:// 에서도 script 태그는 읽힌다)
+  var extra = document.createElement("script");
+  extra.src = "mobile/shots.js";
+  extra.onload = function () { renderMobile(); renderDashboard(); renderAdmin(); };
+  extra.onerror = function () { renderMobile(); renderDashboard(); renderAdmin(); };
+  document.body.appendChild(extra);
+
+  // 밝게/어둡게 (이 브라우저에만 기억)
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem("pg-gallery-theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+  document.getElementById("theme").onclick = function () {
+    var cur = root.getAttribute("data-theme") ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("pg-gallery-theme", next); } catch (e) {}
+  };
+</script>
+</body>
+</html>

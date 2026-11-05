@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>D-12 데이터 내보내기</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1e1e1e}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #f4f3ef; color: #1e1e1e; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+
+<header style="background: #ffffff; border-bottom: 1px solid #d6d3cb">
+  <div style="max-width: 1376px; margin: 0 auto; padding: 12px 32px; box-sizing: border-box; min-height: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+    <a href="D-10.dc.html" aria-label="주차각 데이터 처음 화면" style="display: flex; align-items: center; gap: 10px; color: #1e1e1e; text-decoration: none">
+      <svg aria-hidden="true" width="34" height="34" viewBox="0 0 48 48" style="flex-shrink: 0"><rect width="48" height="48" rx="13" fill="#1e1e1e"></rect><path d="M15 36V12h9a7 7 0 0 1 0 14h-9" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M27 38h8a3 3 0 0 0 3-3v-8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px">주차각</span>
+      <span style="font-size: 18px; font-weight: 500; color: #5f5d57">데이터</span>
+    </a>
+    <nav aria-label="대시보드 메뉴" style="display: flex; flex-wrap: wrap; gap: 4px">
+      <a href="D-10.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">난이도 한눈에</a>
+      <a href="D-11.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">주차장 상세</a>
+      <a href="D-12.dc.html" aria-current="page" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; background: #1e1e1e; color: #ffffff; font-size: 15px; font-weight: 700; text-decoration: none">데이터 내보내기</a>
+      <a href="D-03.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">비교표</a>
+    </nav>
+    <div style="flex-grow: 1"></div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+      <span style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px dashed #8a8780; box-sizing: border-box; font-size: 13px; color: #5f5d57">시연용 예시 데이터</span>
+      <span style="width: 40px; height: 40px; border-radius: 20px; background: #e6e3dc; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">기관</span>
+    </div>
+  </div>
+</header>
+
+<main style="max-width: 1376px; margin: 0 auto; padding: 40px 32px 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 14px; font-weight: 700; color: #5f5d57">현대백화점 판교점 지하 · 운영사 계정</span>
+      <h1 style="margin: 0; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: -1.2px">데이터 내보내기</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #5f5d57">필요한 기록만 골라 파일이나 API로 받아요. 개인을 알아볼 수 있는 값은 처음부터 모으지 않아요.</p>
+    </div>
+    <a href="D-11.dc.html" style="height: 44px; display: flex; align-items: center; gap: 6px; padding: 0 16px; border-radius: 12px; border: 1.5px solid #d6d3cb; box-sizing: border-box; background: #ffffff; color: #1e1e1e; font-size: 15px; font-weight: 700; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>주차장 상세로</a>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+    <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+
+      <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 14px; background: #1e1e1e; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">1</span><h2 style="margin: 0; font-size: 18px; font-weight: 700">무엇을 받을까요</h2></div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{sets}}" as="s" hint-placeholder-count="5">
+            <label style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; box-sizing: border-box; border-radius: 12px; border: {{s.bd}}; background: #ffffff; cursor: pointer">
+              <input type="checkbox" checked="{{s.checked}}" onChange="{{s.toggle}}" style="width: 20px; height: 20px; margin: 2px 0 0; accent-color: #1e1e1e; flex-shrink: 0">
+              <span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 700">{{s.name}}</span><span style="font-size: 13px; line-height: 1.5; color: #5f5d57">{{s.desc}}</span></span>
+              <span style="flex-shrink: 0; font-size: 14px; font-weight: 700; white-space: nowrap">{{s.countText}}</span>
+            </label>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 14px; background: #1e1e1e; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">2</span><h2 style="margin: 0; font-size: 18px; font-weight: 700">범위</h2></div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="width: 64px; font-size: 14px; font-weight: 700; color: #5f5d57">주차장</span>
+          <span style="height: 36px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 18px; background: #1e1e1e; color: #ffffff; font-size: 14px; font-weight: 700"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>현대백화점 판교점 지하</span>
+          <button type="button" style="height: 36px; padding: 0 14px; border-radius: 18px; border: 1.5px dashed #8a8780; background: transparent; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">주차장 더하기</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="width: 64px; font-size: 14px; font-weight: 700; color: #5f5d57">기간</span>
+          <div role="group" aria-label="기간" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: #e6e3dc">
+            <sc-for list="{{periods}}" as="p" hint-placeholder-count="3">
+              <button type="button" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="height: 34px; padding: 0 16px; border-radius: 9px; border: 0; background: {{p.bg}}; color: {{p.fg}}; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{p.label}}</button>
+            </sc-for>
+          </div>
+          <button type="button" style="height: 42px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">날짜 직접 고르기</button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="width: 64px; font-size: 14px; font-weight: 700; color: #5f5d57">층</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 14px; border-radius: 17px; background: #1e1e1e; color: #ffffff; font-size: 14px; font-weight: 700">전체</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B1</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B2</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B3</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B4</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B5</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">B6</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="width: 64px; font-size: 14px; font-weight: 700; color: #5f5d57">차 크기</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 14px; border-radius: 17px; background: #1e1e1e; color: #ffffff; font-size: 14px; font-weight: 700">전체</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">경차</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">소형</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">중형</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">대형</span>
+          <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border-radius: 17px; border: 1.5px solid #d6d3cb; box-sizing: border-box; font-size: 14px; font-weight: 500">SUV</span>
+        </div>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 14px; background: #1e1e1e; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">3</span><h2 style="margin: 0; font-size: 18px; font-weight: 700">형식</h2></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px">
+          <sc-for list="{{fmts}}" as="x" hint-placeholder-count="5">
+            <label style="display: flex; flex-direction: column; gap: 6px; padding: 14px; box-sizing: border-box; border-radius: 12px; border: {{x.bd}}; background: #ffffff; cursor: pointer">
+              <span style="display: flex; align-items: center; gap: 8px"><input type="radio" name="d12fmt" checked="{{x.checked}}" onChange="{{x.pick}}" style="width: 18px; height: 18px; margin: 0; accent-color: #1e1e1e"><span style="font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 500">{{x.label}}</span></span>
+              <span style="font-size: 13px; line-height: 1.45; color: #5f5d57">{{x.desc}}</span>
+            </label>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 14px; background: #1e1e1e; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">4</span><h2 style="margin: 0; font-size: 18px; font-weight: 700">받는 방법</h2></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px">
+          <sc-for list="{{delivers}}" as="d" hint-placeholder-count="2">
+            <label style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; box-sizing: border-box; border-radius: 12px; border: {{d.bd}}; background: #ffffff; cursor: pointer">
+              <input type="radio" name="d12deliver" checked="{{d.checked}}" onChange="{{d.pick}}" style="width: 18px; height: 18px; margin: 2px 0 0; accent-color: #1e1e1e; flex-shrink: 0">
+              <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 700">{{d.title}}</span><span style="font-size: 13px; line-height: 1.5; color: #5f5d57">{{d.desc}}</span></span>
+            </label>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+
+    <section style="flex: 999 1 600px; min-width: 0; box-sizing: border-box; padding: 26px; background: #1e1e1e; color: #f4f3ef; border-radius: 20px; display: flex; flex-direction: column; gap: 20px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 20px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 14px; font-weight: 700; color: #b5b3ad">미리보기 · 앞 몇 줄</span>
+          <h2 style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px">{{prevName}}</h2>
+        </div>
+        <div role="group" aria-label="미리볼 데이터" style="display: flex; flex-wrap: wrap; gap: 6px">
+          <sc-for list="{{previewTabs}}" as="t" hint-placeholder-count="2">
+            <button type="button" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}" style="height: 34px; padding: 0 14px; box-sizing: border-box; border-radius: 17px; border: 1.5px solid {{t.bd}}; background: {{t.bg}}; color: {{t.fg}}; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer">{{t.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{hasPrev}}" hint-placeholder-val="{{ true }}">
+        <div style="overflow-x: auto; border: 1px solid #3a3936; border-radius: 12px">
+          <div style="display: grid; grid-template-columns: repeat({{ncols}}, minmax(max-content, 1fr)); font-family: 'JetBrains Mono', 'Noto Sans KR', monospace; font-size: 13px">
+            <sc-for list="{{cells}}" as="c" hint-placeholder-count="20">
+              <span style="padding: 11px 14px; white-space: nowrap; border-bottom: 1px solid #3a3936; background: {{c.bg}}; color: {{c.fg}}">{{c.v}}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 14px; font-weight: 700; color: #b5b3ad">열 설명</span>
+          <dl style="margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; font-size: 14px">
+            <sc-for list="{{schema}}" as="s" hint-placeholder-count="5">
+              <dt style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f4f3ef">{{s.k}}</dt>
+              <dd style="margin: 0; line-height: 1.5; color: #b5b3ad">{{s.d}}</dd>
+            </sc-for>
+          </dl>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{noPrev}}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 40px 20px; border: 1.5px dashed #6b6964; border-radius: 12px; text-align: center; font-size: 15px; color: #b5b3ad">왼쪽에서 받을 데이터를 하나 이상 골라 주세요</div>
+      </sc-if>
+
+      <sc-if value="{{geoNote}}" hint-placeholder-val="{{ false }}">
+        <p style="margin: 0; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #8a8780; font-size: 14px; line-height: 1.5">GeoJSON에는 동선 좌표와 후진·급정지 이벤트만 담겨요. 나머지는 CSV로 함께 묶어 드려요.</p>
+      </sc-if>
+
+      <div style="padding: 16px 18px; border-radius: 12px; background: #2a2a28; display: flex; flex-direction: column; gap: 10px">
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>파일에 들어 있지 않은 것</span>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px">
+          <li style="height: 30px; display: flex; align-items: center; padding: 0 12px; border-radius: 15px; border: 1.5px solid #6b6964; box-sizing: border-box; font-size: 13px">GPS 원본</li>
+          <li style="height: 30px; display: flex; align-items: center; padding: 0 12px; border-radius: 15px; border: 1.5px solid #6b6964; box-sizing: border-box; font-size: 13px">차량번호 · VIN</li>
+          <li style="height: 30px; display: flex; align-items: center; padding: 0 12px; border-radius: 15px; border: 1.5px solid #6b6964; box-sizing: border-box; font-size: 13px">주차장 밖 경로</li>
+          <li style="height: 30px; display: flex; align-items: center; padding: 0 12px; border-radius: 15px; border: 1.5px solid #6b6964; box-sizing: border-box; font-size: 13px">5대 미만 칸·시간대</li>
+        </ul>
+        <span style="font-size: 13px; line-height: 1.55; color: #b5b3ad">시각은 30분 단위로 묶고, 좌표는 입구를 (0, 0)으로 둔 상대 좌표(m)로만 나가요. session_id는 주차할 때마다 새로 만드는 번호라 같은 차를 이어 볼 수 없어요.</span>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 20px; padding-top: 20px; border-top: 1px solid #3a3936">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 14px; color: #b5b3ad">받을 내용</span>
+          <span style="font-size: 28px; font-weight: 700; letter-spacing: -0.5px">{{summary}}</span>
+          <span style="font-size: 14px; color: #b5b3ad">{{summarySub}}</span>
+        </div>
+        <button type="button" disabled="{{ctaDisabled}}" style="height: 56px; display: flex; align-items: center; gap: 8px; padding: 0 26px; border-radius: 14px; border: 0; background: {{ctaBg}}; color: {{ctaFg}}; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>{{ctaLabel}}</button>
+      </div>
+    </section>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+    <section style="flex: 999 1 640px; min-width: 0; box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">내보낸 기록</h2>
+        <span style="font-size: 14px; color: #5f5d57">파일은 7일 동안 보관돼요</span>
+      </div>
+      <div style="overflow-x: auto">
+        <table style="width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px">
+          <thead>
+            <tr>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: left; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb">만든 때</th>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: left; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb">누가</th>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: left; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb">데이터</th>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: right; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb">양</th>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: left; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb">형식</th>
+              <th scope="col" style="height: 40px; padding: 0 12px; text-align: right; font-size: 13px; font-weight: 500; color: #5f5d57; border-bottom: 1.5px solid #d6d3cb"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">받기</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; white-space: nowrap">11월 3일 15:12</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; color: #5f5d57">운영팀</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-weight: 700">주차 세션 요약</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right">1,284행</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-family: 'JetBrains Mono', monospace; font-size: 13px">CSV</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right"><button type="button" style="height: 36px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #1e1e1e; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">받기</button></td>
+            </tr>
+            <tr>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; white-space: nowrap">11월 2일 06:00</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; color: #5f5d57">매주 자동</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-weight: 700">칸별 집계</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right">612칸</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-family: 'JetBrains Mono', monospace; font-size: 13px">Excel</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right"><button type="button" style="height: 36px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #1e1e1e; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">받기</button></td>
+            </tr>
+            <tr>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; white-space: nowrap">10월 26일 06:00</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; color: #5f5d57">매주 자동</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-weight: 700">칸별 집계</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right">598칸</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-family: 'JetBrains Mono', monospace; font-size: 13px">Excel</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right"><button type="button" style="height: 36px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #1e1e1e; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">받기</button></td>
+            </tr>
+            <tr>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; white-space: nowrap">10월 21일 10:40</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; color: #5f5d57">시설팀</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-weight: 700">후진·급정지 이벤트</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right">4,880건</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; font-family: 'JetBrains Mono', monospace; font-size: 13px">GeoJSON</td>
+              <td style="height: 56px; padding: 0 12px; border-bottom: 1px solid #d6d3cb; text-align: right"><button type="button" style="height: 36px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #1e1e1e; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">받기</button></td>
+            </tr>
+            <tr>
+              <td style="height: 56px; padding: 0 12px; white-space: nowrap; color: #5f5d57">10월 14일 09:05</td>
+              <td style="height: 56px; padding: 0 12px; color: #5f5d57">운영팀</td>
+              <td style="height: 56px; padding: 0 12px; font-weight: 700; color: #5f5d57">동선 좌표</td>
+              <td style="height: 56px; padding: 0 12px; text-align: right; color: #5f5d57">17.2만 점</td>
+              <td style="height: 56px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5f5d57">Parquet</td>
+              <td style="height: 56px; padding: 0 12px; text-align: right; font-size: 14px; color: #5f5d57">보관 끝남</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section style="flex: 1 1 400px; min-width: 0; box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">시스템에서 바로 가져가기</h2>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5f5d57">주차장 관제·주차 유도 시스템이 매일 새 기록을 받아 갈 수 있어요. 규칙은 파일과 같아요.</p>
+      </div>
+      <pre style="margin: 0; padding: 16px; border-radius: 12px; background: #1e1e1e; color: #f4f3ef; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; white-space: pre-wrap; word-break: break-all">GET /v1/lots/hyundai-pangyo-b/{{apiPath}}
+    ?from=2026-10-05&amp;to=2026-11-03
+Authorization: Bearer pk_live_••••••••3f9a</pre>
+      <dl style="margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; font-size: 14px">
+        <dt style="color: #5f5d57">한도</dt><dd style="margin: 0; font-weight: 700">하루 1만 번</dd>
+        <dt style="color: #5f5d57">응답</dt><dd style="margin: 0; font-weight: 700">JSON · 1,000줄씩 나눠서</dd>
+        <dt style="color: #5f5d57">키</dt><dd style="margin: 0; font-weight: 700">2026년 10월 2일 만듦 · 운영팀</dd>
+      </dl>
+      <div style="flex-grow: 1"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <button type="button" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid #1e1e1e; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">키 새로 만들기</button>
+        <button type="button" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">API 문서 보기</button>
+      </div>
+    </section>
+  </div>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const chosen = st.sets ?? { sessions: true, traces: false, events: true, bays: false, hours: false };
+    const fmt = st.fmt ?? 'csv';
+    const period = st.period ?? '30';
+    const deliver = st.deliver ?? 'once';
+    const comma = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const short = (n) => (n >= 10000 ? (n / 10000).toFixed(1).replace('.0', '') + '만' : comma(n));
+    const mult = period === '7' ? 0.23 : (period === '90' ? 2.9 : 1);
+    const defs = [
+      {
+        id: 'sessions', api: 'sessions', name: '주차 세션 요약', unit: '행', rows: 1284, kb: 0.12,
+        desc: '주차 한 번에 한 줄. 층·칸·후진·핸들·걸린 시간·차 크기',
+        cols: ['session_id', 'floor', 'bay_id', 'entered_at', 'reverse_n', 'steer_turns', 'duration_s', 'car_class', 'one_shot'],
+        rows: [
+          ['s_7f3a91', 'B3', 'C15', '11-03 14:30', '4', '3.5', '168', '중형', 'N'],
+          ['s_c2e04b', 'B3', 'A02', '11-03 14:30', '1', '1.5', '74', '소형', 'Y'],
+          ['s_19bd57', 'B2', 'D07', '11-03 15:00', '2', '2.0', '102', 'SUV', 'N'],
+          ['s_a840fe', 'B4', 'C03', '11-03 15:00', '0', '1.0', '51', '경차', 'Y'],
+          ['s_5d2c13', 'B3', 'D04', '11-03 15:30', '3', '2.5', '139', '대형', 'N']
+        ],
+        schema: [
+          ['session_id', '주차할 때마다 새로 만드는 번호. 차·사람과 이어지지 않아요'],
+          ['bay_id', '운전자가 차 화면에서 확인한 구역·칸'],
+          ['entered_at', '들어온 시각, 30분 단위'],
+          ['reverse_n', '후진 기어로 바꾼 횟수'],
+          ['steer_turns', '핸들을 돌린 바퀴 수'],
+          ['duration_s', '들어와서 P를 넣기까지 초'],
+          ['one_shot', '후진 1회 이하로 끝났는지']
+        ]
+      },
+      {
+        id: 'traces', api: 'traces', name: '동선 좌표', unit: '점', rows: 183400, kb: 0.045,
+        desc: '1초마다 한 점. 입구 기준 상대 좌표(m), 주차장 밖 경로는 없어요',
+        cols: ['session_id', 't_s', 'x_m', 'y_m', 'floor', 'gear', 'speed_kmh'],
+        rows: [
+          ['s_7f3a91', '0', '0.0', '0.0', 'B3', 'D', '8.2'],
+          ['s_7f3a91', '1', '2.2', '0.1', 'B3', 'D', '7.9'],
+          ['s_7f3a91', '2', '4.3', '0.4', 'B3', 'D', '7.4'],
+          ['s_7f3a91', '3', '6.1', '1.2', 'B3', 'D', '5.8'],
+          ['s_7f3a91', '4', '6.9', '2.6', 'B3', 'R', '2.1']
+        ],
+        schema: [
+          ['t_s', '들어온 뒤 지난 초'],
+          ['x_m, y_m', '입구를 (0, 0)으로 둔 거리, 미터'],
+          ['gear', 'D · R · P'],
+          ['speed_kmh', '차속']
+        ]
+      },
+      {
+        id: 'events', api: 'events', name: '후진·급정지 이벤트', unit: '건', rows: 5210, kb: 0.08,
+        desc: '일어난 자리(1m 격자)와 30분 단위 시각',
+        cols: ['event_id', 'session_id', 'type', 'floor', 'cell_1m', 'x_m', 'y_m', 'at'],
+        rows: [
+          ['e_0f21', 's_7f3a91', 'reverse', 'B3', 'B3-06-03', '6.4', '3.1', '11-03 14:30'],
+          ['e_0f22', 's_7f3a91', 'hard_brake', 'B3', 'B3-06-03', '6.9', '2.8', '11-03 14:30'],
+          ['e_0f30', 's_5d2c13', 'reverse', 'B3', 'B3-41-22', '41.2', '22.7', '11-03 15:30'],
+          ['e_0f31', 's_19bd57', 'reverse', 'B2', 'B2-18-09', '18.5', '9.0', '11-03 15:00'],
+          ['e_0f36', 's_a840fe', 'hard_brake', 'B4', 'B4-02-11', '2.3', '11.4', '11-03 15:00']
+        ],
+        schema: [
+          ['type', 'reverse(후진) · hard_brake(급정지)'],
+          ['cell_1m', '1m 격자 칸 번호. 층-가로-세로'],
+          ['at', '30분 단위 시각']
+        ]
+      },
+      {
+        id: 'bays', api: 'bays', name: '칸별 집계', unit: '칸', rows: 612, kb: 0.07,
+        desc: '칸마다 시도 횟수·평균 후진·머문 시간. 5대 미만 칸은 빠져요',
+        cols: ['bay_id', 'floor', 'sessions', 'avg_attempts', 'avg_reverse', 'avg_stay_min'],
+        rows: [
+          ['B3-C14', 'B3', '41', '2.8', '2.9', '96'],
+          ['B3-C15', 'B3', '38', '2.6', '2.7', '104'],
+          ['B3-D04', 'B3', '29', '2.3', '2.1', '88'],
+          ['B2-D07', 'B2', '33', '1.9', '1.6', '121'],
+          ['B1-B11', 'B1', '52', '1.2', '0.8', '74']
+        ],
+        schema: [
+          ['sessions', '이 칸에 댄 횟수 (5회 미만 칸은 빠짐)'],
+          ['avg_attempts', '칸에 들어가기까지 평균 시도'],
+          ['avg_stay_min', '평균 머문 시간, 분']
+        ]
+      },
+      {
+        id: 'hours', api: 'hours', name: '시간대 집계', unit: '행', rows: 168, kb: 0.05,
+        desc: '요일 × 시간마다 난이도와 기록 수',
+        cols: ['weekday', 'hour', 'sessions', 'score', 'avg_reverse'],
+        rows: [
+          ['토', '14', '63', '4.7', '3.9'],
+          ['토', '15', '58', '4.6', '3.8'],
+          ['금', '19', '41', '4.5', '3.6'],
+          ['수', '12', '27', '3.9', '2.8'],
+          ['화', '9', '9', '3.1', '2.0']
+        ],
+        schema: [
+          ['hour', '시작 시각 (0~23)'],
+          ['score', '그 시간대 난이도 0.0~5.0'],
+          ['sessions', '기록 수 (5회 미만 시간대는 빠짐)']
+        ]
+      }
+    ];
+    const fmtDefs = [
+      { id: 'csv', label: 'CSV', desc: '엑셀·구글 시트에서 바로', f: 1 },
+      { id: 'xlsx', label: 'Excel', desc: '데이터마다 시트를 나눠서', f: 0.8 },
+      { id: 'parquet', label: 'Parquet', desc: '분석용 · 가장 작아요', f: 0.25 },
+      { id: 'geojson', label: 'GeoJSON', desc: '지도 도구용 · 동선·이벤트만', f: 1.7 },
+      { id: 'api', label: 'API', desc: '시스템이 직접 가져가요', f: 1 }
+    ];
+    const fd = fmtDefs.find((x) => x.id === fmt) || fmtDefs[0];
+    const sel = defs.filter((d) => chosen[d.id]);
+    const prev = sel.find((d) => d.id === st.preview) || sel[0] || null;
+    const totalRows = sel.reduce((a, d) => a + Math.round(d.rows * mult), 0);
+    const kb = sel.reduce((a, d) => a + d.rows * mult * d.kb, 0) * fd.f;
+    const sizeText = kb >= 1024 ? (kb / 1024).toFixed(1) + 'MB' : Math.max(1, Math.round(kb)) + 'KB';
+    const cells = [];
+    if (prev) {
+      prev.cols.forEach((c) => cells.push({ v: c, bg: '#2a2a28', fg: '#b5b3ad' }));
+      prev.rows.forEach((r) => r.forEach((c) => cells.push({ v: c, bg: 'transparent', fg: '#f4f3ef' })));
+    }
+    const ready = sel.length > 0;
+    let cta = fd.label + ' 파일 만들기';
+    if (fmt === 'api') cta = 'API 주소 만들기';
+    if (deliver === 'weekly') cta = '매주 자동 내보내기 켜기';
+    if (!ready) cta = '데이터를 골라 주세요';
+    return {
+      sets: defs.map((d) => {
+        const on = !!chosen[d.id];
+        return {
+          name: d.name,
+          desc: d.desc,
+          countText: short(Math.round(d.rows * mult)) + d.unit,
+          checked: on,
+          bd: on ? '2px solid #1e1e1e' : '1.5px solid #d6d3cb',
+          toggle: () => {
+            const next = Object.assign({}, chosen);
+            next[d.id] = !on;
+            this.setState({ sets: next });
+          }
+        };
+      }),
+      periods: [['7', '7일'], ['30', '30일'], ['90', '90일']].map((p) => ({
+        label: p[1],
+        pressed: p[0] === period ? 'true' : 'false',
+        bg: p[0] === period ? '#1e1e1e' : 'transparent',
+        fg: p[0] === period ? '#ffffff' : '#1e1e1e',
+        pick: () => this.setState({ period: p[0] })
+      })),
+      fmts: fmtDefs.map((x) => ({
+        label: x.label,
+        desc: x.desc,
+        checked: x.id === fmt,
+        bd: x.id === fmt ? '2px solid #1e1e1e' : '1.5px solid #d6d3cb',
+        pick: () => this.setState({ fmt: x.id })
+      })),
+      delivers: [
+        { id: 'once', title: '지금 한 번', desc: '다 만들어지면 이 화면과 메일로 알려 드려요' },
+        { id: 'weekly', title: '매주 자동', desc: '월요일 아침 6시, 지난 7일치를 메일로 보내요' }
+      ].map((d) => ({
+        title: d.title,
+        desc: d.desc,
+        checked: d.id === deliver,
+        bd: d.id === deliver ? '2px solid #1e1e1e' : '1.5px solid #d6d3cb',
+        pick: () => this.setState({ deliver: d.id })
+      })),
+      previewTabs: sel.map((d) => {
+        const on = prev && d.id === prev.id;
+        return {
+          label: d.name,
+          pressed: on ? 'true' : 'false',
+          bg: on ? '#f4f3ef' : 'transparent',
+          fg: on ? '#1e1e1e' : '#f4f3ef',
+          bd: on ? '#f4f3ef' : '#6b6964',
+          pick: () => this.setState({ preview: d.id })
+        };
+      }),
+      prevName: prev ? prev.name : '미리볼 데이터가 없어요',
+      hasPrev: !!prev,
+      noPrev: !prev,
+      ncols: prev ? String(prev.cols.length) : '1',
+      cells: cells,
+      schema: prev ? prev.schema.map((s) => ({ k: s[0], d: s[1] })) : [],
+      geoNote: fmt === 'geojson' && sel.some((d) => d.id !== 'traces' && d.id !== 'events'),
+      summary: ready ? sel.length + '종 · ' + short(totalRows) + '줄 · 약 ' + sizeText : '고른 데이터가 없어요',
+      summarySub: fd.label + ' · 최근 ' + period + '일 · 현대백화점 판교점 지하 · 전체 층',
+      ctaLabel: cta,
+      ctaDisabled: !ready,
+      ctaBg: ready ? '#f4f3ef' : '#4a4944',
+      ctaFg: ready ? '#1e1e1e' : '#b5b3ad',
+      apiPath: prev ? prev.api : 'sessions'
+    };
+  }
+}
+</script>
+</body>
+</html>

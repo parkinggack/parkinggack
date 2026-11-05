@@ -1,0 +1,89 @@
+{
+  "name": "제때",
+  "version": 1,
+  "color": {
+    "themes": [
+      {"id": "dark", "name": "차 화면 (다크)"},
+      {"id": "light", "name": "가게 화면 (라이트)"}
+    ],
+    "tokens": [
+      {"name": "surface", "value": {"dark": "#1e1e1e", "light": "#f4f3ef"}, "usage": "화면 바탕. 차 화면은 dark, 가게 화면과 문서는 light."},
+      {"name": "surface-raised", "value": {"dark": "#2a2a28", "light": "#ffffff"}, "usage": "카드·목록·선택지 바탕. 차 화면에서는 정차 중 화면에만 씀."},
+      {"name": "line", "value": {"dark": "#3a3936", "light": "#d6d3cb"}, "usage": "장식용 구분선 1px. 상단 바 아래, 목록 행 사이."},
+      {"name": "line-strong", "value": {"dark": "#8a8780", "light": "#8a8780"}, "usage": "보조 버튼과 칩의 테두리, 점선 원(바뀌기 전 시점). 두 바탕 모두 3:1 이상."},
+      {"name": "track", "value": {"dark": "#4a4944", "light": "#d6d3cb"}, "usage": "타이밍 막대와 진행 막대의 빈 트랙."},
+      {"name": "ink", "value": {"dark": "#f4f3ef", "light": "#1e1e1e"}, "usage": "본문과 큰 숫자, 차가 정한 시점 원의 채움, 목표 막대. surface·surface-raised 위."},
+      {"name": "ink-muted", "value": {"dark": "#b5b3ad", "light": "#5f5d57"}, "usage": "보조 문장, 막대 라벨 '지금', 바뀌기 전 시각(취소선). surface·surface-raised 위 4.5:1 이상."},
+      {"name": "inverse", "value": {"dark": "#f4f3ef", "light": "#1e1e1e"}, "usage": "주 버튼, 선택된 선택지, 가게 화면의 새 주문 카드 채움."},
+      {"name": "on-inverse", "value": {"dark": "#1e1e1e", "light": "#ffffff"}, "usage": "inverse 위 글자와 아이콘."},
+      {"name": "hatch-a", "value": {"dark": "#6b6964", "light": "#c9c6bd"}, "usage": "빗금 띠의 진한 줄. 음식이 도착하거나 준비될 예상 범위. 135°, 5px 간격으로 hatch-b와 번갈아."},
+      {"name": "hatch-b", "value": {"dark": "#3e3d3a", "light": "#e6e3dc"}, "usage": "빗금 띠의 옅은 줄. hatch-a와 번갈아."}
+    ]
+  },
+  "type": {
+    "fonts": [],
+    "families": {
+      "sans": "\"Noto Sans KR\", system-ui, sans-serif",
+      "mono": "\"JetBrains Mono\", ui-monospace, monospace"
+    },
+    "groups": [
+      {
+        "name": "차 화면",
+        "family": "sans",
+        "styles": [
+          {"name": "car-display", "fontSize": "72px", "lineHeight": "84px", "fontWeight": 700, "letterSpacing": "-0.01em", "sample": "주문까지 18분", "usage": "주행 중 화면의 큰 숫자 한 줄. 화면당 하나."},
+          {"name": "car-title", "fontSize": "34px", "lineHeight": "44px", "fontWeight": 700, "sample": "오늘 저녁, 도착할 때 맞춰 시킬까요?", "usage": "정차 중 질문과 제목."},
+          {"name": "car-heading", "fontSize": "22px", "lineHeight": "32px", "fontWeight": 700, "sample": "지난 저녁들", "usage": "섹션 제목, 카드 제목."},
+          {"name": "car-body", "fontSize": "20px", "lineHeight": "30px", "fontWeight": 400, "sample": "길이 막혀서 6분 늦출게요", "usage": "상태 문장(StatusLine)과 설명."},
+          {"name": "car-label", "fontSize": "16px", "lineHeight": "22px", "fontWeight": 700, "sample": "주문 6:16", "usage": "타이밍 막대 라벨, 칩."},
+          {"name": "car-caption", "fontSize": "14px", "lineHeight": "20px", "fontWeight": 400, "sample": "저녁 도착 예상", "usage": "빗금 띠 설명처럼 가장 작은 글자. 차 화면에서는 이보다 작게 쓰지 않음."}
+        ]
+      },
+      {
+        "name": "가게 화면",
+        "family": "sans",
+        "styles": [
+          {"name": "store-title", "fontSize": "24px", "lineHeight": "32px", "fontWeight": 700, "sample": "손님 도착 6:24", "usage": "열 제목, 주문 카드의 도착 시각."},
+          {"name": "store-body", "fontSize": "16px", "lineHeight": "24px", "fontWeight": 400, "sample": "[메뉴] × 2", "usage": "메뉴와 설명."},
+          {"name": "store-label", "fontSize": "13px", "lineHeight": "18px", "fontWeight": 500, "sample": "손님 도착 예정", "usage": "작은 라벨. ink-muted로."}
+        ]
+      },
+      {
+        "name": "번호",
+        "family": "mono",
+        "styles": [
+          {"name": "order-number", "fontSize": "44px", "lineHeight": "54px", "fontWeight": 500, "sample": "A-27", "usage": "주문번호와 차량 번호. 드라이브스루 창구 화면에서는 120px까지 키움."}
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "tokens": [
+      {"name": "space-1", "value": "4px", "usage": "아이콘과 글자 사이 최소 간격."},
+      {"name": "space-2", "value": "8px", "usage": "칩·선택지 사이."},
+      {"name": "space-3", "value": "12px", "usage": "버튼 묶음 사이."},
+      {"name": "space-4", "value": "16px", "usage": "카드 안 행 사이, 가게 화면 카드 안쪽."},
+      {"name": "space-6", "value": "24px", "usage": "카드 안쪽 여백."},
+      {"name": "space-8", "value": "32px", "usage": "버튼 좌우 여백, 차 화면 묶음 사이."},
+      {"name": "space-10", "value": "40px", "usage": "차 화면 위아래 여백, 큰 묶음 사이."},
+      {"name": "space-16", "value": "64px", "usage": "차 화면 좌우 여백."}
+    ]
+  },
+  "radius": {
+    "tokens": [
+      {"name": "radius-sm", "value": "8px", "usage": "칩, 빗금 띠, 작은 표시."},
+      {"name": "radius-md", "value": "12px", "usage": "카드, 선택지, 가게 화면 버튼."},
+      {"name": "radius-lg", "value": "16px", "usage": "차 화면 틀, 차 화면 버튼."},
+      {"name": "radius-full", "value": "9999px", "usage": "막대 트랙, 시점 원."}
+    ]
+  },
+  "size": {
+    "tokens": [
+      {"name": "target-car", "value": "64px", "usage": "차 화면 버튼 최소 높이. 주문 직전 '취소'는 88px."},
+      {"name": "target-store", "value": "48px", "usage": "가게 화면 버튼 최소 높이."},
+      {"name": "track-height", "value": "8px", "usage": "타이밍 막대 트랙 두께."},
+      {"name": "marker", "value": "32px", "usage": "시점 원 지름 (실선·점선)."},
+      {"name": "goal-width", "value": "8px", "usage": "목표 막대 너비. 높이는 36px."}
+    ]
+  }
+}

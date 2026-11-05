@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>M-40 설정</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1e1e1e}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; box-sizing: border-box; background: #ffffff; color: #1e1e1e; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div style="height: 760px; box-sizing: border-box; padding: 52px 20px 0; display: flex; flex-direction: column; gap: 16px">
+    <h1 style="margin: 0; height: 44px; display: flex; align-items: center; font-size: 24px; font-weight: 700">설정</h1>
+    <div style="height: 72px; box-sizing: border-box; padding: 0 20px; border-radius: 16px; background: #f4f3ef; display: flex; align-items: center; gap: 12px"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M5 16V11l2-5h10l2 5v5"></path><path d="M4 16h16v3H4z"></path><circle cx="8" cy="13" r="1"></circle><circle cx="16" cy="13" r="1"></circle></svg><span style="flex-grow: 1; font-size: 17px; font-weight: 700">내 차</span><span style="font-size: 15px; color: #5f5d57">연결됨</span></div>
+    <div style="display: flex; flex-direction: column">
+      <sc-for list="{{toggles}}" as="t" hint-placeholder-count="3">
+        <div style="height: 64px; display: flex; align-items: center; gap: 12px">
+          <span style="flex-grow: 1; font-size: 17px; font-weight: 500">{{t.label}}</span>
+          <button type="button" role="switch" aria-checked="{{t.checked}}" aria-label="{{t.label}}" onClick="{{t.flip}}" style="width: 52px; height: 32px; flex-shrink: 0; padding: 3px; box-sizing: border-box; border-radius: 16px; border: 0; background: {{t.bg}}; display: flex; justify-content: {{t.justify}}; cursor: pointer"><span style="display: block; width: 26px; height: 26px; border-radius: 13px; background: #ffffff"></span></button>
+        </div>
+      </sc-for>
+      <a href="M-10.dc.html" style="height: 64px; display: flex; align-items: center; gap: 12px; text-decoration: none"><span style="flex-grow: 1; font-size: 17px; font-weight: 500">운전 경력</span><span style="font-size: 16px; color: #5f5d57">1년 미만</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a8780" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M9 5l7 7-7 7"></path></svg></a>
+    </div>
+  </div>
+  <nav aria-label="주요 메뉴" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 0 4px 20px; display: flex; background: #ffffff; border-top: 1px solid #d6d3cb"><a href="M-20.dc.html" style="flex: 1 1 0; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5f5d57; font-size: 13px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M4 11l8-7 8 7"></path><path d="M6 9.5V20h12V9.5"></path></svg>홈</a><a href="M-30.dc.html" style="flex: 1 1 0; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5f5d57; font-size: 13px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M12 21s-6-5.4-6-10.5a6 6 0 0 1 12 0C18 15.6 12 21 12 21z"></path><circle cx="12" cy="10.5" r="2.2"></circle></svg>주차장</a><a href="M-50.dc.html" style="flex: 1 1 0; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5f5d57; font-size: 13px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M4 18h16"></path><path d="M5 15.5L3.5 7l5 4L12 5l3.5 6 5-4-1.5 8.5z"></path></svg>주차왕</a><a href="M-32.dc.html" style="flex: 1 1 0; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5f5d57; font-size: 13px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M4 20h16"></path><path d="M7 16v-5M12 16V6M17 16v-3"></path></svg>기록</a><a href="M-40.dc.html" aria-current="page" style="flex: 1 1 0; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #1e1e1e; font-size: 13px; font-weight: 700; text-decoration: none"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"></path></svg>설정</a></nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { share: true, notify: true, night: false };
+  }
+  renderVals() {
+    const defs = [
+      { id: 'share', label: '익명 기록 보내기' },
+      { id: 'notify', label: '주차 끝나면 알림' },
+      { id: 'night', label: '어두운 화면' }
+    ];
+    return {
+      toggles: defs.map((d) => {
+        const on = !!this.state[d.id];
+        return {
+          label: d.label,
+          checked: on ? 'true' : 'false',
+          bg: on ? '#1e1e1e' : '#d6d3cb',
+          justify: on ? 'flex-end' : 'flex-start',
+          flip: () => this.setState({ [d.id]: !on })
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

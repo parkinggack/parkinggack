@@ -1,0 +1,63 @@
+# Builds the car app's debug APK and runs the JVM unit tests (domain logic + Paparazzi render) on every push to main.
+# Download the APK from the run's "Artifacts" section (Actions tab) and install it with
+#   adb install -r -g app-debug.apk
+name: vehicle-apk
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/vehicle/**"
+      - ".github/workflows/vehicle-apk.yml"
+  pull_request:
+    paths:
+      - "apps/vehicle/**"
+      - ".github/workflows/vehicle-apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vehicle-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/vehicle
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build debug APK and run unit tests
+        # Maven Central sometimes answers 429 to parallel downloads; retry once with a single worker.
+        run: ./gradlew assembleDebug testDebugUnitTest || ./gradlew --max-workers=1 assembleDebug testDebugUnitTest
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parkinggack-vehicle-debug-apk
+          path: apps/vehicle/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-reports
+          path: |
+            apps/vehicle/app/build/reports/tests/
+            apps/vehicle/app/build/test-results/
+          if-no-files-found: ignore

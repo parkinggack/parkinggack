@@ -1,0 +1,11 @@
+{
+  // npm run build → dist/apps/server/src/*.js  (rootDir 이 저장소 루트라 계약 파일과 같은 구조로 나옴)
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "../..",
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": ["src"]
+}

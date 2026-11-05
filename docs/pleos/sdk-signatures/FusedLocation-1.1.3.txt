@@ -1,0 +1,89 @@
+# FusedLocation-1.1.3 — javap 공개 시그니처 (자동 생성, 2026-11-03)
+
+public final class location.fused.FusedLocation {
+  public location.fused.FusedLocation(android.content.Context);
+  public final void initialize();
+  public final void release();
+  public final boolean isSupported();
+  public final void getLastKnownLocation(location.fused.listener.FusedLocationListener);
+  public final void registerFusedLocationCallback(location.fused.listener.FusedLocationListener);
+  public final void unregisterFusedLocationCallback(location.fused.listener.FusedLocationListener);
+  public final void addProximityAlert(location.fused.model.ProximityAlertRequest, location.fused.listener.ProximityAlertListener);
+  public final void removeProximityAlert(String);
+  public final void showLocationAccessBlockedPopup();
+}
+public final class location.fused.constant.Constants {
+  public static final location.fused.constant.Constants INSTANCE;
+  public static final String SERVICE_PACKAGE_NAME;
+  public static final String SERVICE_NAME;
+  public static final String ACTION;
+  static {};
+}
+public interface location.fused.listener.FusedLocationListener {
+  public abstract void onChanged(location.fused.model.LocationData);
+  public abstract void onError(Exception);
+}
+public interface location.fused.listener.ProximityAlertListener {
+  public abstract void onRegistered(String);
+  public abstract void onTransition(location.fused.model.ProximityAlertEvent);
+  public abstract void onError(Exception);
+}
+public final class location.fused.model.LocationData {
+  public location.fused.model.LocationData(double, double, double, float, float, long);
+  public static location.fused.model.LocationData copy$default(location.fused.model.LocationData, double, double, double, float, float, long, int, Object);
+  public final double getLatitude();
+  public final double getLongitude();
+  public final double getAltitude();
+  public final float getHeading();
+  public final float getConfidence();
+  public final long getTimestampMillis();
+  public final double component1();
+  public final double component2();
+  public final double component3();
+  public final float component4();
+  public final float component5();
+  public final long component6();
+  public final location.fused.model.LocationData copy(double, double, double, float, float, long);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class location.fused.model.ProximityAlertEvent {
+  public location.fused.model.ProximityAlertEvent(String, location.fused.model.ProximityTransition);
+  public static location.fused.model.ProximityAlertEvent copy$default(location.fused.model.ProximityAlertEvent, String, location.fused.model.ProximityTransition, int, Object);
+  public final String getAlertId();
+  public final location.fused.model.ProximityTransition getTransition();
+  public final String component1();
+  public final location.fused.model.ProximityTransition component2();
+  public final location.fused.model.ProximityAlertEvent copy(String, location.fused.model.ProximityTransition);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class location.fused.model.ProximityAlertRequest {
+  public location.fused.model.ProximityAlertRequest(double, double, float, Set<? extends location.fused.model.ProximityTransition>);
+  public static location.fused.model.ProximityAlertRequest copy$default(location.fused.model.ProximityAlertRequest, double, double, float, Set, int, Object);
+  public final double getLatitude();
+  public final double getLongitude();
+  public final float getRadiusMeters();
+  public final Set<location.fused.model.ProximityTransition> getTransitionTypes();
+  public final String validationErrorOrNull$FusedLocation_release();
+  public final double component1();
+  public final double component2();
+  public final float component3();
+  public final Set<location.fused.model.ProximityTransition> component4();
+  public final location.fused.model.ProximityAlertRequest copy(double, double, float, Set<? extends location.fused.model.ProximityTransition>);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class location.fused.model.ProximityAlertRequestKt {
+}
+public final class location.fused.model.ProximityTransition extends Enum<location.fused.model.ProximityTransition> {
+  public static final location.fused.model.ProximityTransition ENTER;
+  public static final location.fused.model.ProximityTransition EXIT;
+  public static location.fused.model.ProximityTransition[] values();
+  public static location.fused.model.ProximityTransition valueOf(String);
+  public static kotlin.enums.EnumEntries<location.fused.model.ProximityTransition> getEntries();
+  static {};
+}

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-10 설정</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+.hatch{background-color:#242423}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div aria-hidden="true" style="height: 44px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; border-bottom: 1px solid #3a3936; background: #161616; font-size: 14px; color: #b5b3ad">Pleos Connect 시스템 영역</div>
+
+  <div style="height: 676px; box-sizing: border-box; padding: 24px 48px 28px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; align-items: center; gap: 16px">
+      <a href="C-01.dc.html" aria-label="홈으로" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; text-decoration: none">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+      </a>
+      <h1 style="margin: 0; font-size: 30px; font-weight: 700">설정</h1>
+    </div>
+
+    <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-content: start">
+
+      <section style="box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; align-items: center; gap: 18px">
+        <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 22px; font-weight: 700">익명 주차 기록 보내기</span>
+          <span style="font-size: 16px; line-height: 1.45; color: #b5b3ad">누가 어디에 댔는지는 아무도 알 수 없어요. 난이도 점수에만 쓰여요</span>
+        </div>
+        <button type="button" aria-pressed="{{shareOn}}" aria-label="익명 주차 기록 보내기" onClick="{{toggleShare}}" style="width: 96px; height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 4px; border-radius: 28px; border: 2px solid #f4f3ef; background: {{shareTrack}}; display: flex; justify-content: {{shareJustify}}; cursor: pointer">
+          <span style="display: block; width: 44px; height: 44px; border-radius: 22px; background: {{shareKnob}}"></span>
+        </button>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; align-items: center; gap: 18px">
+        <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 22px; font-weight: 700">주차 완료 카드</span>
+          <span style="font-size: 16px; line-height: 1.45; color: #b5b3ad">P를 넣으면 층 확인과 오늘 주차 요약을 보여 줘요</span>
+        </div>
+        <button type="button" aria-pressed="{{finishOn}}" aria-label="주차 완료 카드" onClick="{{toggleFinish}}" style="width: 96px; height: 56px; flex-shrink: 0; box-sizing: border-box; padding: 4px; border-radius: 28px; border: 2px solid #f4f3ef; background: {{finishTrack}}; display: flex; justify-content: {{finishJustify}}; cursor: pointer">
+          <span style="display: block; width: 44px; height: 44px; border-radius: 22px; background: {{finishKnob}}"></span>
+        </button>
+      </section>
+
+      <section style="grid-column: span 2; box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; align-items: center; gap: 18px">
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 22px; font-weight: 700">운전 경력</span>
+          <span style="font-size: 16px; line-height: 1.45; color: #b5b3ad">추천 기준을 맞추는 데만 써요</span>
+        </div>
+        <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+          <sc-for list="{{expOptions}}" as="e" hint-placeholder-count="4">
+            <button type="button" aria-pressed="{{e.pressed}}" onClick="{{e.pick}}" style="height: 64px; border-radius: 16px; border: {{e.border}}; background: {{e.bg}}; color: {{e.fg}}; font-family: inherit; font-size: 19px; font-weight: 700; cursor: pointer">{{e.label}}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="grid-column: span 2; box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; align-items: center; gap: 18px">
+        <div style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 22px; font-weight: 700">도착지 난이도 카드</span>
+          <span style="font-size: 16px; line-height: 1.45; color: #b5b3ad">목적지를 정하면 언제 보여 줄까요</span>
+        </div>
+        <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+          <sc-for list="{{cardOptions}}" as="c" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}" style="height: 64px; border-radius: 16px; border: {{c.border}}; background: {{c.bg}}; color: {{c.fg}}; font-family: inherit; font-size: 19px; font-weight: 700; cursor: pointer">{{c.label}}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 22px; font-weight: 700">내 차</span>
+        <span style="font-size: 18px; font-weight: 500">그랜저 · 자동 인식</span>
+        <span style="font-size: 16px; line-height: 1.45; color: #b5b3ad">차 크기에 맞춰 난이도와 동선 그림을 보정해요</span>
+      </section>
+
+      <section style="box-sizing: border-box; padding: 18px 22px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 12px; display: flex; flex-direction: column; gap: 10px">
+        <sc-if value="{{notConfirming}}" hint-placeholder-val="{{ true }}">
+          <span style="font-size: 22px; font-weight: 700">내 주차 기록</span>
+          <button type="button" onClick="{{askDelete}}" style="align-self: flex-start; height: 56px; padding: 0 20px; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-family: inherit; font-size: 18px; font-weight: 500; cursor: pointer">기록 모두 지우기</button>
+        </sc-if>
+        <sc-if value="{{confirming}}" hint-placeholder-val="{{ false }}">
+          <span style="font-size: 20px; font-weight: 700">지운 기록은 되돌릴 수 없어요</span>
+          <div style="display: flex; gap: 8px">
+            <button type="button" onClick="{{doDelete}}" style="height: 56px; padding: 0 20px; border-radius: 16px; border: 0; background: #f4f3ef; color: #1e1e1e; font-family: inherit; font-size: 18px; font-weight: 700; cursor: pointer">지우기</button>
+            <button type="button" onClick="{{cancelDelete}}" style="height: 56px; padding: 0 20px; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-family: inherit; font-size: 18px; font-weight: 500; cursor: pointer">취소</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{deleted}}" hint-placeholder-val="{{ false }}">
+          <span style="font-size: 16px; color: #b5b3ad">기록을 지웠어요</span>
+        </sc-if>
+      </section>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { share: true, finish: true, exp: '1년 미만', card: '항상', confirm: false, deleted: false };
+  }
+  toggleVals(on) {
+    return {
+      track: on ? '#f4f3ef' : '#2a2a28',
+      knob: on ? '#1e1e1e' : '#f4f3ef',
+      justify: on ? 'flex-end' : 'flex-start'
+    };
+  }
+  renderVals() {
+    const st = this.state;
+    const sh = this.toggleVals(st.share);
+    const fi = this.toggleVals(st.finish);
+    const seg = (list, cur, key) => list.map((label) => {
+      const on = cur === label;
+      return {
+        label: label,
+        pressed: on ? 'true' : 'false',
+        border: on ? '2px solid #f4f3ef' : '1.5px solid #3a3936',
+        bg: on ? '#f4f3ef' : '#2a2a28',
+        fg: on ? '#1e1e1e' : '#f4f3ef',
+        pick: () => this.setState({ [key]: label })
+      };
+    });
+    return {
+      shareOn: st.share ? 'true' : 'false',
+      shareTrack: sh.track, shareKnob: sh.knob, shareJustify: sh.justify,
+      toggleShare: () => this.setState({ share: !st.share }),
+      finishOn: st.finish ? 'true' : 'false',
+      finishTrack: fi.track, finishKnob: fi.knob, finishJustify: fi.justify,
+      toggleFinish: () => this.setState({ finish: !st.finish }),
+      expOptions: seg(['1년 미만', '1~3년', '3~10년', '10년 이상'], st.exp, 'exp'),
+      cardOptions: seg(['항상', '★3 이상만', '끄기'], st.card, 'card'),
+      notConfirming: !st.confirm,
+      confirming: st.confirm,
+      deleted: st.deleted && !st.confirm,
+      askDelete: () => this.setState({ confirm: true, deleted: false }),
+      doDelete: () => this.setState({ confirm: false, deleted: true }),
+      cancelDelete: () => this.setState({ confirm: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

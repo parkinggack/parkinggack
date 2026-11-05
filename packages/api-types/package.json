@@ -1,0 +1,9 @@
+{
+  "name": "@parkinggack/api-types",
+  "version": "1.0.0",
+  "private": true,
+  "description": "주차각 서버 API 계약 (타입만). server·admin·mobile이 상대 경로로 import, 차량 앱(Kotlin)은 같은 형태의 DTO를 둔다.",
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts"
+}

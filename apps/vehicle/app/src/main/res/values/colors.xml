@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 로고 판 = 디자인 토큰 ink(다크) #f4f3ef -->
+    <color name="launcher_background">#F4F3EF</color>
+</resources>

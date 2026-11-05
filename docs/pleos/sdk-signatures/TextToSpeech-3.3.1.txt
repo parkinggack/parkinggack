@@ -1,0 +1,287 @@
+# TextToSpeech-3.3.1 — javap 공개 시그니처 (자동 생성, 2026-11-03)
+
+public final class tts.TextToSpeech {
+  public static final tts.TextToSpeech$Companion Companion;
+  public tts.TextToSpeech(android.content.Context, tts.constant.Mode);
+  public tts.TextToSpeech(android.content.Context, tts.constant.Mode, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static void speak$default(tts.TextToSpeech, String, boolean, int, Object);
+  static {};
+  public final void initialize();
+  public final void initialize(tts.listener.OnInitializeListener);
+  public final void release();
+  public final void addEventListener(tts.listener.EventListener);
+  public final void removeEventListener(tts.listener.EventListener);
+  public final void setAudioAttributes(android.media.AudioAttributes);
+  public final void registerApp(String, String, tts.listener.OnServerConnectionListener);
+  public final void registerApp(String, String, String, ()->Unit, (String)->Unit);
+  public final void registerApp(String, ()->Unit, (String)->Unit);
+  public final void speak(String, boolean);
+  public final void stop();
+  public final void setLocale(Locale);
+  public final void setSpeakerType(String);
+  public final void setAudioZoneId(int);
+  public final tts.api.AmbientAi getAmbientAi();
+}
+public interface tts.api.AmbientAi {
+  public abstract void setSpeaker(String);
+  public abstract void updateEicContextInfo(String);
+  public abstract void setIdentifier(String);
+  public abstract void speak(String, boolean, String);
+  public abstract void speak(String, boolean, boolean, String);
+}
+public final class tts.api.AmbientAiImpl implements tts.api.AmbientAi {
+  public tts.api.AmbientAiImpl(android.content.Context, tts.service.TtsServiceManager);
+  public void setSpeaker(String);
+  public void updateEicContextInfo(String);
+  public void setIdentifier(String);
+  public void speak(String, boolean, String);
+  public void speak(String, boolean, boolean, String);
+}
+public final class tts.api.ApiChecker {
+  public static final tts.api.ApiChecker a;
+  static {};
+  public final void b(android.content.Context);
+  public final void a(android.content.Context);
+}
+public interface tts.api.PrivilegedApi extends annotation.Annotation {
+}
+public final class tts.constant.ErrorType extends Enum<tts.constant.ErrorType> {
+  public static final tts.constant.ErrorType AUDIO_ERROR;
+  public static final tts.constant.ErrorType MIC_ERROR;
+  public static final tts.constant.ErrorType SERVER_INTERNAL_ERROR;
+  public static final tts.constant.ErrorType NETWORK_ERROR;
+  public static final tts.constant.ErrorType INVALID_REQUEST_ERROR;
+  public static final tts.constant.ErrorType TIMEOUT;
+  public static final tts.constant.ErrorType UNAUTHENTICATED;
+  public static final tts.constant.ErrorType PERMISSION_DENIED;
+  public static final tts.constant.ErrorType ON_DEVICE_ENGINE_ERROR;
+  public static final tts.constant.ErrorType UNKNOWN;
+  public static final tts.constant.ErrorType UNAVAILABLE_LANGUAGE;
+  public static final tts.constant.ErrorType NOT_SUPPORTED_API;
+  public static tts.constant.ErrorType[] values();
+  public static tts.constant.ErrorType valueOf(String);
+  static {};
+}
+public final class tts.constant.ErrorTypeKt {
+  public static final tts.constant.ErrorType toErrorType(String);
+}
+public final class tts.constant.EventCommand extends Enum<tts.constant.EventCommand> {
+  public static final tts.constant.EventCommand UpdateServerConnected;
+  public static final tts.constant.EventCommand UpdateTtsReady;
+  public static final tts.constant.EventCommand UpdateTtsStart;
+  public static final tts.constant.EventCommand UpdateTtsDone;
+  public static final tts.constant.EventCommand UpdateTtsStop;
+  public static final tts.constant.EventCommand UpdateTtsError;
+  public static final tts.constant.EventCommand UpdateServerConnectionFail;
+  public static final tts.constant.EventCommand UpdateRms;
+  public static final tts.constant.EventCommand UpdateCurrentVariant;
+  public static tts.constant.EventCommand[] values();
+  public static tts.constant.EventCommand valueOf(String);
+  static {};
+}
+public final class tts.constant.Mode extends Enum<tts.constant.Mode> {
+  public static final tts.constant.Mode SERVER;
+  public static final tts.constant.Mode ON_DEVICE;
+  public static final tts.constant.Mode HYBRID;
+  public static tts.constant.Mode[] values();
+  public static tts.constant.Mode valueOf(String);
+  static {};
+}
+public final class tts.constant.ServiceConstants extends Enum<tts.constant.ServiceConstants> {
+  public static final tts.constant.ServiceConstants PACKAGE_NAME;
+  public static final tts.constant.ServiceConstants TTS_COMPONENT_NAME;
+  public static final tts.constant.ServiceConstants TTS_HYBRID_ACTION;
+  public static final tts.constant.ServiceConstants TTS_SERVER_ACTION;
+  public static final tts.constant.ServiceConstants TTS_ON_DEVICE_ACTION;
+  public static final tts.constant.ServiceConstants TTS_STREAM_SERVER_ACTION;
+  public static final tts.constant.ServiceConstants TTS_STREAM_ON_DEVICE_ACTION;
+  public static final tts.constant.ServiceConstants TTS_STREAM_HYBRID_ACTION;
+  public static tts.constant.ServiceConstants[] values();
+  public static tts.constant.ServiceConstants valueOf(String);
+  static {};
+  public final String getConst();
+}
+public final class tts.constant.TtsJobMode extends Enum<tts.constant.TtsJobMode> {
+  public static final tts.constant.TtsJobMode Auto;
+  public static final tts.constant.TtsJobMode New;
+  public static final tts.constant.TtsJobMode Continue;
+  public static tts.constant.TtsJobMode[] values();
+  public static tts.constant.TtsJobMode valueOf(String);
+  static {};
+  public final int getFlags();
+}
+public final class tts.eventbus.EventBus {
+  public static final tts.eventbus.EventBus a;
+  static {};
+  public final kotlinx.coroutines.flow.SharedFlow<String> a();
+  public final void a(String);
+}
+public final class tts.factory.OnDeviceStreamTts extends tts.factory.Tts {
+  public tts.factory.OnDeviceStreamTts(android.content.Context);
+  static void a(tts.factory.OnDeviceStreamTts, tts.constant.ErrorType, int, Object);
+  static void a(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream, boolean, int, Object);
+  public static final Object a(tts.factory.OnDeviceStreamTts, kotlin.coroutines.Continuation);
+  public static final StringBuilder h(tts.factory.OnDeviceStreamTts);
+  public static final String g(tts.factory.OnDeviceStreamTts);
+  public static final android.content.Context e(tts.factory.OnDeviceStreamTts);
+  public static final android.media.AudioAttributes b(tts.factory.OnDeviceStreamTts);
+  public static final int c(tts.factory.OnDeviceStreamTts);
+  public static final int d(tts.factory.OnDeviceStreamTts);
+  public static final com.google.gson.Gson f(tts.factory.OnDeviceStreamTts);
+  public static final void a(tts.factory.OnDeviceStreamTts);
+  public static final boolean i(tts.factory.OnDeviceStreamTts);
+  public static final boolean a(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream, String);
+  public static final boolean a(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream);
+  public static final void j(tts.factory.OnDeviceStreamTts);
+  public static final boolean c(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream);
+  public static final void a(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream, boolean);
+  public static final void b(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream);
+  public static final void d(tts.factory.OnDeviceStreamTts, caas.service.speech.aidl.ITtsOnDeviceStream);
+  public static final kotlin.Pair a(tts.factory.OnDeviceStreamTts, boolean);
+  public void b();
+  public void a(tts.listener.OnInitializeListener);
+  public void c();
+  public void a(tts.listener.EventListener);
+  public void b(tts.listener.EventListener);
+  public void a(String, boolean, String);
+  public void a(String, boolean, boolean, String);
+  public void a(String, boolean, String, String);
+  public void a(String, boolean, boolean, String, String);
+  public void e();
+  public void b(String);
+  public void d(String);
+  public void a(String, String, tts.listener.OnServerConnectionListener);
+  public void a(String);
+  public void a();
+  public void a(Locale);
+  public void c(String);
+  public void a(android.media.AudioAttributes);
+  public void a(int);
+}
+public final class tts.factory.StreamTts extends tts.factory.Tts {
+  public static final int r;
+  public tts.factory.StreamTts(android.content.Context, tts.constant.Mode);
+  static void a(tts.factory.StreamTts, tts.constant.ErrorType, int, Object);
+  static void a(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream, boolean, int, Object);
+  public static final Object a(tts.factory.StreamTts, kotlin.coroutines.Continuation);
+  public static final StringBuilder h(tts.factory.StreamTts);
+  public static final String g(tts.factory.StreamTts);
+  public static final android.content.Context d(tts.factory.StreamTts);
+  public static final android.media.AudioAttributes b(tts.factory.StreamTts);
+  public static final Integer c(tts.factory.StreamTts);
+  public static final void a(tts.factory.StreamTts);
+  public static final tts.service.TtsCallback i(tts.factory.StreamTts);
+  public static final com.google.gson.Gson f(tts.factory.StreamTts);
+  public static final String e(tts.factory.StreamTts);
+  public static final void b(tts.factory.StreamTts, boolean);
+  public static final boolean j(tts.factory.StreamTts);
+  public static final boolean b(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream, String);
+  public static final boolean a(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream, String);
+  public static final boolean a(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream);
+  public static final void k(tts.factory.StreamTts);
+  public static final boolean c(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream);
+  public static final void a(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream, boolean);
+  public static final void b(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream);
+  public static final void d(tts.factory.StreamTts, caas.service.speech.aidl.ITtsStream);
+  public static final kotlin.Pair a(tts.factory.StreamTts, boolean);
+  static {};
+  public void b();
+  public void a(tts.listener.OnInitializeListener);
+  public void c();
+  public void a(tts.listener.EventListener);
+  public void b(tts.listener.EventListener);
+  public void a(String, boolean, String);
+  public void a(String, boolean, boolean, String);
+  public void a(String, boolean, String, String);
+  public void a(String, boolean, boolean, String, String);
+  public void e();
+  public void b(String);
+  public void d(String);
+  public void a(String, String, tts.listener.OnServerConnectionListener);
+  public void a(String);
+  public void a();
+  public void a(android.media.AudioAttributes);
+  public void a(Locale);
+  public void c(String);
+  public void a(int);
+}
+public abstract class tts.factory.Tts {
+  public tts.factory.Tts();
+  public static void a(tts.factory.Tts, String, boolean, String, int, Object);
+  public static void a(tts.factory.Tts, String, boolean, boolean, String, int, Object);
+  public static void a(tts.factory.Tts, String, boolean, String, String, int, Object);
+  public static void a(tts.factory.Tts, String, boolean, boolean, String, String, int, Object);
+  public abstract void b();
+  public abstract void a(tts.listener.OnInitializeListener);
+  public abstract void c();
+  public abstract void a(tts.listener.EventListener);
+  public abstract void b(tts.listener.EventListener);
+  public abstract void a(android.media.AudioAttributes);
+  public abstract void a(String, boolean, String);
+  public abstract void a(String, boolean, boolean, String);
+  public abstract void e();
+  public abstract void b(String);
+  public abstract void d(String);
+  public abstract void a(String, String, tts.listener.OnServerConnectionListener);
+  public abstract void a(String);
+  public abstract void a();
+  public abstract void a(Locale);
+  public abstract void c(String);
+  public abstract void a(int);
+  public abstract void a(String, boolean, String, String);
+  public abstract void a(String, boolean, boolean, String, String);
+  public final android.media.AudioAttributes d();
+}
+public final class tts.factory.TtsFactory {
+  public tts.factory.TtsFactory(android.content.Context);
+  public final tts.factory.Tts a(tts.constant.Mode);
+}
+public interface tts.listener.EventListener {
+  public abstract void onStart();
+  public abstract void onReady();
+  public abstract void onDone();
+  public abstract void onError(tts.constant.ErrorType);
+  public abstract void onStop();
+  public abstract void onUpdatedRms(double);
+}
+public interface tts.listener.OnInitializeListener {
+  public abstract void onSuccess();
+  public abstract void onFailure(tts.constant.ErrorType);
+}
+public interface tts.listener.OnServerConnectionListener {
+  public abstract void onConnected();
+  public abstract void onFailed(tts.constant.ErrorType);
+}
+public final class tts.ua.UARepository {
+  public tts.ua.UARepository(android.content.Context);
+  public static final String a(tts.ua.UARepository);
+  public final void a(String, String, String, (kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a(String, (kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a((kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a(security.ua.EnvironmentType);
+  public final void a((String)->Unit, (String)->Unit);
+}
+public final class tts.ua.UAWrapper {
+  public tts.ua.UAWrapper(android.content.Context);
+  public static final String b(tts.ua.UAWrapper);
+  public static final android.content.Context a(tts.ua.UAWrapper);
+  public final void a(String, String, String, ()->Unit, (String)->Unit);
+  public final void a(String, ()->Unit, (String)->Unit);
+  public final void a(()->Unit, (String)->Unit);
+  public final void a(security.ua.EnvironmentType);
+  public final void a((String)->Unit, (String)->Unit);
+}
+public final class tts.utils.Log {
+  public static final tts.utils.Log a;
+  static {};
+  public final void a(String, String);
+  public final void c(String, String);
+  public final void b(String, String);
+  public final void d(String, String);
+}
+public final class tts.utils.StringUtils {
+  public static final tts.utils.StringUtils a;
+  public static final String b;
+  static {};
+  public final String a(String);
+}

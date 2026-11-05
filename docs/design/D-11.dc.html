@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>D-11 주차장 상세 · 어떻게 대고 있나</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1e1e1e}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #f4f3ef; color: #1e1e1e; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+
+<header style="background: #ffffff; border-bottom: 1px solid #d6d3cb">
+  <div style="max-width: 1376px; margin: 0 auto; padding: 12px 32px; box-sizing: border-box; min-height: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+    <a href="D-10.dc.html" aria-label="주차각 데이터 처음 화면" style="display: flex; align-items: center; gap: 10px; color: #1e1e1e; text-decoration: none">
+      <svg aria-hidden="true" width="34" height="34" viewBox="0 0 48 48" style="flex-shrink: 0"><rect width="48" height="48" rx="13" fill="#1e1e1e"></rect><path d="M15 36V12h9a7 7 0 0 1 0 14h-9" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M27 38h8a3 3 0 0 0 3-3v-8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px">주차각</span>
+      <span style="font-size: 18px; font-weight: 500; color: #5f5d57">데이터</span>
+    </a>
+    <nav aria-label="대시보드 메뉴" style="display: flex; flex-wrap: wrap; gap: 4px">
+      <a href="D-10.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">난이도 한눈에</a>
+      <a href="D-11.dc.html" aria-current="page" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; background: #1e1e1e; color: #ffffff; font-size: 15px; font-weight: 700; text-decoration: none">주차장 상세</a>
+      <a href="D-12.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">데이터 내보내기</a>
+      <a href="D-03.dc.html" style="height: 40px; display: flex; align-items: center; padding: 0 16px; border-radius: 10px; color: #5f5d57; font-size: 15px; font-weight: 500; text-decoration: none">비교표</a>
+    </nav>
+    <div style="flex-grow: 1"></div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+      <span style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; border: 1.5px dashed #8a8780; box-sizing: border-box; font-size: 13px; color: #5f5d57">시연용 예시 데이터</span>
+      <button type="button" style="height: 40px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-radius: 10px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">최근 30일<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+      <span style="width: 40px; height: 40px; border-radius: 20px; background: #e6e3dc; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">기관</span>
+    </div>
+  </div>
+</header>
+
+<main style="max-width: 1376px; margin: 0 auto; padding: 32px 32px 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+  <nav aria-label="위치" style="display: flex; gap: 8px; font-size: 14px; color: #5f5d57"><a href="D-10.dc.html" style="color: #5f5d57">난이도 한눈에</a><span aria-hidden="true">›</span><span>현대백화점 판교점 지하</span></nav>
+
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h1 style="margin: 0; font-size: 36px; font-weight: 700; line-height: 1.25; letter-spacing: -1px">현대백화점 판교점 지하주차장</h1>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+        <span aria-hidden="true" style="display: flex; align-items: flex-end; gap: 3px; height: 28px">
+          <span style="display: block; width: 9px; height: 11px; border-radius: 2px; background: #1e1e1e"></span>
+          <span style="display: block; width: 9px; height: 15px; border-radius: 2px; background: #1e1e1e"></span>
+          <span style="display: block; width: 9px; height: 20px; border-radius: 2px; background: #1e1e1e"></span>
+          <span style="display: block; width: 9px; height: 24px; border-radius: 2px; background: #1e1e1e"></span>
+          <span style="display: block; width: 9px; height: 28px; box-sizing: border-box; border-radius: 2px; border: 1.5px solid #8a8780"></span>
+        </span>
+        <span style="font-size: 32px; font-weight: 700; line-height: 1">4.3</span>
+        <span style="font-size: 17px; font-weight: 700">어려움</span>
+        <span aria-hidden="true" style="width: 1px; height: 20px; background: #d6d3cb"></span>
+        <span style="font-size: 15px; color: #5f5d57">최근 30일 · 1,284대 · 지하 1~6층 · 판교 9곳 중 가장 어려움</span>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px">
+      <button type="button" style="height: 48px; padding: 0 18px; border-radius: 12px; border: 1.5px solid #d6d3cb; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer">리포트 PDF</button>
+      <a href="D-12.dc.html" style="height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 20px; border-radius: 12px; background: #1e1e1e; color: #ffffff; font-size: 15px; font-weight: 700; text-decoration: none"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>이 주차장 데이터 내보내기</a>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+    <span style="font-size: 14px; font-weight: 700; color: #5f5d57">층</span>
+    <div role="group" aria-label="층 고르기" style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{floors}}" as="f" hint-placeholder-count="6">
+        <button type="button" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}" style="min-width: 92px; height: 58px; padding: 0 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-sizing: border-box; border-radius: 12px; border: 1.5px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font-family: inherit; cursor: pointer">
+          <span style="font-size: 17px; font-weight: 700">{{f.id}}</span>
+          <span style="font-size: 13px; font-weight: 500; color: {{f.sub}}">난이도 {{f.score}}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+    <section style="flex: 999 1 640px; min-width: 0; box-sizing: border-box; padding: 24px; background: #1e1e1e; color: #f4f3ef; border-radius: 20px; display: flex; flex-direction: column; gap: 18px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 20px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.4px">{{floor.id}} 평면 위에 {{floor.countText}}대의 동선을 겹쳤어요</h2>
+          <p style="margin: 0; font-size: 14px; color: #b5b3ad">난이도 {{floor.score}} · 평균 후진 {{floor.rev}} · 한 번에 들어간 비율 {{floor.oneShotText}}</p>
+        </div>
+        <div role="group" aria-label="평면에 보일 것" style="display: flex; flex-wrap: wrap; gap: 8px">
+          <sc-for list="{{layers}}" as="y" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{y.pressed}}" onClick="{{y.pick}}" style="height: 36px; padding: 0 14px; box-sizing: border-box; border-radius: 18px; border: 1.5px solid {{y.bd}}; background: {{y.bg}}; color: {{y.fg}}; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{y.label}}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="position: relative; width: 100%; aspect-ratio: 900 / 520; border-radius: 12px; overflow: hidden; background: #1e1e1e">
+        <svg aria-hidden="true" viewBox="0 0 900 520" width="100%" height="100%" style="position: absolute; left: 0; top: 0; display: block">
+          <defs>
+            <pattern id="d11bayV" x="10" y="0" width="30" height="520" patternUnits="userSpaceOnUse"><path d="M0 0V520" stroke="#5a5954" stroke-width="2"></path></pattern>
+            <pattern id="d11bayH" x="0" y="0" width="900" height="30" patternUnits="userSpaceOnUse"><path d="M0 0H900" stroke="#5a5954" stroke-width="2"></path></pattern>
+          </defs>
+          <rect x="20" y="20" width="860" height="480" rx="10" fill="#262624" stroke="#4a4944" stroke-width="2"></rect>
+          <rect x="190" y="22" width="688" height="86" fill="url(#d11bayV)"></rect>
+          <path d="M190 108H878" stroke="#5a5954" stroke-width="2"></path>
+          <rect x="190" y="188" width="570" height="152" fill="url(#d11bayV)"></rect>
+          <path d="M190 188H760M190 264H760M190 340H760M760 188V340M190 188V340" stroke="#5a5954" stroke-width="2"></path>
+          <rect x="130" y="420" width="748" height="78" fill="url(#d11bayV)"></rect>
+          <path d="M130 420H878" stroke="#5a5954" stroke-width="2"></path>
+          <rect x="22" y="180" width="78" height="240" fill="url(#d11bayH)"></rect>
+          <path d="M100 180V420" stroke="#5a5954" stroke-width="2"></path>
+          <g fill="#8a8780">
+            <rect x="303" y="257" width="14" height="14" rx="2"></rect>
+            <rect x="423" y="257" width="14" height="14" rx="2"></rect>
+            <rect x="543" y="257" width="14" height="14" rx="2"></rect>
+            <rect x="663" y="257" width="14" height="14" rx="2"></rect>
+            <rect x="333" y="101" width="14" height="14" rx="2"></rect>
+            <rect x="453" y="101" width="14" height="14" rx="2"></rect>
+            <rect x="573" y="101" width="14" height="14" rx="2"></rect>
+            <rect x="693" y="101" width="14" height="14" rx="2"></rect>
+          </g>
+          <circle cx="98" cy="98" r="62" fill="#1e1e1e" stroke="#4a4944" stroke-width="2"></circle>
+          <circle cx="98" cy="98" r="26" fill="#262624" stroke="#4a4944" stroke-width="2"></circle>
+          <path d="M98 52 A46 46 0 1 1 54 110" fill="none" stroke="#8a8780" stroke-width="2" stroke-dasharray="5 6"></path>
+          <path d="M46 102 L54 112 L64 104" fill="none" stroke="#8a8780" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <g stroke="#6b6964" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M400 142l8 6-8 6"></path>
+            <path d="M620 142l8 6-8 6"></path>
+            <path d="M500 374l-8 6 8 6"></path>
+            <path d="M280 374l-8 6 8 6"></path>
+            <path d="M834 252l6 8 6-8"></path>
+          </g>
+          <g font-family="Noto Sans KR, sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+            <circle cx="205" cy="64" r="11" fill="#1e1e1e" stroke="#8a8780" stroke-width="1.5"></circle><text x="205" y="68" fill="#d6d3cb">B</text>
+            <circle cx="205" cy="226" r="11" fill="#1e1e1e" stroke="#8a8780" stroke-width="1.5"></circle><text x="205" y="230" fill="#d6d3cb">C</text>
+            <circle cx="145" cy="460" r="11" fill="#1e1e1e" stroke="#8a8780" stroke-width="1.5"></circle><text x="145" y="464" fill="#d6d3cb">D</text>
+            <circle cx="61" cy="195" r="11" fill="#1e1e1e" stroke="#8a8780" stroke-width="1.5"></circle><text x="61" y="199" fill="#d6d3cb">A</text>
+            <text x="98" y="103" fill="#8a8780" font-weight="500" font-size="13">램프</text>
+          </g>
+          <g stroke="#b5b3ad" stroke-width="1.5" fill="none">
+            <circle cx="162" cy="146" r="5"></circle>
+            <path d="M162 136V156M152 146H172"></path>
+          </g>
+          <text x="176" y="174" font-family="Noto Sans KR, sans-serif" font-size="11" fill="#b5b3ad">기준점 (0, 0)</text>
+        </svg>
+
+        <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: {{trailDisplay}}">
+          <svg aria-hidden="true" viewBox="0 0 900 520" width="100%" height="100%" style="display: block">
+            <g fill="none" stroke="#f4f3ef" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="34" opacity="0.05"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="16" opacity="0.08"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="1.2" opacity="0.35" transform="translate(-4 -11)"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="1.2" opacity="0.3" transform="translate(5 9)"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="1.2" opacity="0.4" transform="translate(-2 6)"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="1.2" opacity="0.3" transform="translate(3 -5)"></path>
+              <path d="M150 135 C 165 148, 180 148, 200 148 L 815 148 Q 840 148, 840 173 L 840 355 Q 840 380, 815 380 L 170 380 Q 145 380, 145 355 L 145 175" stroke-width="2.4" opacity="0.85"></path>
+            </g>
+            <g fill="none" stroke="#f4f3ef" stroke-width="1.6" stroke-linecap="round" opacity="0.55">
+              <path d="M245 148 Q 262 140, 265 70"></path>
+              <path d="M365 148 Q 382 140, 385 70"></path>
+              <path d="M515 148 Q 532 140, 535 70"></path>
+              <path d="M635 148 Q 652 140, 655 70"></path>
+              <path d="M755 148 Q 772 140, 775 70"></path>
+              <path d="M305 150 Q 322 160, 325 228"></path>
+              <path d="M455 150 Q 472 160, 475 228"></path>
+              <path d="M605 150 Q 622 160, 625 228"></path>
+              <path d="M315 380 Q 298 372, 295 300"></path>
+              <path d="M585 380 Q 568 372, 565 300"></path>
+              <path d="M735 380 Q 718 372, 715 300"></path>
+              <path d="M335 380 Q 352 390, 355 462"></path>
+              <path d="M625 380 Q 608 390, 605 462"></path>
+              <path d="M785 380 Q 802 390, 805 462"></path>
+              <path d="M145 210 Q 138 225, 60 225"></path>
+              <path d="M145 270 Q 138 285, 60 285"></path>
+            </g>
+          </svg>
+        </div>
+
+        <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: {{revDisplay}}">
+          <svg aria-hidden="true" viewBox="0 0 900 520" width="100%" height="100%" style="display: block">
+            <g fill="none" stroke="#f4f3ef" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" opacity="0.9">
+              <path d="M160 150 Q 185 178, 224 172"></path>
+              <path d="M224 172 Q 206 150, 188 160"></path>
+              <path d="M445 228 Q 446 180, 480 160"></path>
+              <path d="M415 232 Q 412 182, 382 162"></path>
+              <path d="M475 228 Q 478 178, 510 162"></path>
+              <path d="M840 220 Q 812 245, 818 290"></path>
+              <path d="M818 290 Q 846 300, 842 330"></path>
+              <path d="M605 462 Q 600 405, 640 386"></path>
+              <path d="M575 458 Q 570 404, 538 388"></path>
+            </g>
+          </svg>
+        </div>
+
+        <sc-if value="{{showSpots}}" hint-placeholder-val="{{ true }}">
+          <sc-for list="{{spots}}" as="p" hint-placeholder-count="4">
+            <button type="button" aria-label="{{p.label}}" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="position: absolute; left: {{p.left}}; top: {{p.top}}; width: {{p.msize}}; height: {{p.msize}}; padding: 0; transform: translate(-50%, -50%); box-sizing: border-box; border-radius: 50%; border: 2px solid #f4f3ef; outline: 8px solid rgba(244,243,239,0.16); background: {{p.mbg}}; color: {{p.mfg}}; font-family: inherit; font-size: 17px; font-weight: 700; cursor: pointer">{{p.n}}</button>
+          </sc-for>
+        </sc-if>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; font-size: 14px; color: #b5b3ad">
+        <span style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="28" height="8" viewBox="0 0 28 8"><path d="M2 4H26" stroke="#f4f3ef" stroke-width="2.5" stroke-linecap="round"></path></svg>앞으로</span>
+        <span style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="28" height="8" viewBox="0 0 28 8"><path d="M2 4H26" stroke="#f4f3ef" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"></path></svg>후진</span>
+        <span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="display: block; width: 14px; height: 14px; box-sizing: border-box; border-radius: 50%; border: 2px solid #f4f3ef"></span>후진이 몰리는 곳</span>
+        <span style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="display: block; width: 12px; height: 12px; border-radius: 2px; background: #8a8780"></span>기둥</span>
+        <span>평면은 운영사 도면 대신 동선으로 다시 그린 그림이에요</span>
+      </div>
+    </section>
+
+    <section style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; padding: 24px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 20px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 20px; font-weight: 700">{{floor.id}}에서 후진이 잦은 곳</h2>
+        <p style="margin: 0; font-size: 14px; color: #5f5d57">누르면 평면에 크게 표시돼요</p>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{spots}}" as="p" hint-placeholder-count="4">
+          <li>
+            <button type="button" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="width: 100%; box-sizing: border-box; padding: 16px; display: flex; align-items: flex-start; gap: 14px; border-radius: 14px; border: {{p.cbd}}; background: #ffffff; color: #1e1e1e; font-family: inherit; text-align: left; cursor: pointer">
+              <span style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 16px; background: {{p.nbg}}; color: {{p.nfg}}; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">{{p.n}}</span>
+              <span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+                <span style="font-size: 16px; font-weight: 700">{{p.title}}</span>
+                <span style="font-size: 13px; color: #5f5d57">{{p.where}}</span>
+                <span style="margin-top: 6px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px"><span style="font-size: 26px; font-weight: 700; line-height: 1">{{p.value}}</span><span style="font-size: 13px; color: #5f5d57">{{p.what}}</span></span>
+                <sc-if value="{{p.selected}}" hint-placeholder-val="{{ false }}">
+                  <span style="margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #f4f3ef; font-size: 14px; line-height: 1.55">{{p.idea}}</span>
+                </sc-if>
+              </span>
+            </button>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">어느 방향으로 대나요</h2>
+        <p style="margin: 0; font-size: 14px; color: #5f5d57">{{floor.id}} · 다 대고 난 차의 방향</p>
+      </div>
+      <div aria-hidden="true" style="display: flex; gap: 2px; height: 18px; border-radius: 6px; overflow: hidden">
+        <span style="display: block; width: {{floor.rearPct}}; background: #1e1e1e"></span>
+        <span style="display: block; width: {{floor.frontPct}}; background: #8a8780"></span>
+        <span style="display: block; flex-grow: 1; background-color: #e6e3dc; background-image: repeating-linear-gradient(135deg, #c9c6bd 0 3px, transparent 3px 6px)"></span>
+      </div>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+        <li style="display: flex; align-items: center; gap: 12px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" rx="8" fill="#1e1e1e"></rect><path d="M8 4V32M28 4V32" stroke="#8a8780" stroke-width="2"></path><rect x="11" y="7" width="14" height="22" rx="4" fill="#f4f3ef"></rect><rect x="13" y="21" width="10" height="4" rx="1" fill="#1e1e1e"></rect></svg>
+          <span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700">뒤로 넣기</span><span style="font-size: 13px; color: #5f5d57">앞이 통로 쪽</span></span>
+          <span style="font-size: 20px; font-weight: 700">{{floor.rearText}}</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 12px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" rx="8" fill="#1e1e1e"></rect><path d="M8 4V32M28 4V32" stroke="#8a8780" stroke-width="2"></path><rect x="11" y="7" width="14" height="22" rx="4" fill="#f4f3ef"></rect><rect x="13" y="11" width="10" height="4" rx="1" fill="#1e1e1e"></rect></svg>
+          <span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700">앞으로 넣기</span><span style="font-size: 13px; color: #5f5d57">뒤가 통로 쪽</span></span>
+          <span style="font-size: 20px; font-weight: 700">{{floor.frontText}}</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 12px">
+          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" rx="8" fill="#1e1e1e"></rect><path d="M4 8H32M4 28H32" stroke="#8a8780" stroke-width="2"></path><rect x="7" y="11" width="22" height="14" rx="4" fill="#f4f3ef"></rect><rect x="21" y="13" width="4" height="10" rx="1" fill="#1e1e1e"></rect></svg>
+          <span style="flex-grow: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700">평행 주차</span><span style="font-size: 13px; color: #5f5d57">벽 쪽 긴 칸</span></span>
+          <span style="font-size: 20px; font-weight: 700">{{floor.parText}}</span>
+        </li>
+      </ul>
+    </section>
+
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">한 번에 들어간 비율</h2>
+        <p style="margin: 0; font-size: 14px; color: #5f5d57">{{floor.id}} · 후진 1회 이하로 끝난 주차</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+        <div role="img" aria-label="100대 중 {{floor.oneShot}}대" style="display: grid; grid-template-columns: repeat(10, 12px); gap: 3px">
+          <sc-for list="{{waffle}}" as="w" hint-placeholder-count="100">
+            <span style="display: block; width: 12px; height: 12px; border-radius: 3px; background: {{w.bg}}"></span>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -1px">{{floor.oneShotText}}</span>
+          <span style="font-size: 14px; color: #5f5d57">판교 9곳 평균 61%</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">들어와서 대기까지</h2>
+        <p style="margin: 0; font-size: 14px; color: #5f5d57">주차장 전체 · 가운데 값 2분 10초</p>
+      </div>
+      <div role="img" aria-label="진입부터 주차까지 걸린 시간 분포. 2분에서 2분 30초 사이가 가장 많음" style="display: flex; align-items: flex-end; gap: 6px; height: 120px">
+        <sc-for list="{{hist}}" as="h" hint-placeholder-count="7">
+          <div style="flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end">
+            <span style="display: block; height: {{h.pct}}; border-radius: 4px 4px 0 0; background: {{h.bg}}"></span>
+          </div>
+        </sc-for>
+      </div>
+      <div aria-hidden="true" style="display: flex; gap: 6px; font-size: 11px; color: #5f5d57">
+        <sc-for list="{{hist}}" as="h" hint-placeholder-count="7">
+          <span style="flex: 1; text-align: center; white-space: nowrap">{{h.label}}</span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0; font-size: 18px; font-weight: 700">차 크기별 평균 후진</h2>
+        <p style="margin: 0; font-size: 14px; color: #5f5d57">주차장 전체 · 점수에는 차 크기 보정이 들어가요</p>
+      </div>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+        <sc-for list="{{classes}}" as="c" hint-placeholder-count="5">
+          <li style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 40px; font-size: 14px; font-weight: 700">{{c.name}}</span>
+            <span aria-hidden="true" style="flex-grow: 1; height: 12px; border-radius: 6px; background: #e6e3dc; overflow: hidden"><span style="display: block; width: {{c.pct}}; height: 12px; border-radius: 6px; background: #1e1e1e"></span></span>
+            <span style="width: 44px; text-align: right; font-size: 15px; font-weight: 700">{{c.value}}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr)); gap: 20px">
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <h2 style="margin: 0; font-size: 18px; font-weight: 700">언제 어려운가요</h2>
+          <p style="margin: 0; font-size: 14px; color: #5f5d57">요일 × 시간 · 진할수록 어려움</p>
+        </div>
+        <div aria-hidden="true" style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: #5f5d57">
+          <span style="margin-right: 4px">쉬움</span>
+          <span style="display: block; width: 18px; height: 12px; border-radius: 3px; background: #efede8; border: 1px solid #d6d3cb; box-sizing: border-box"></span>
+          <span style="display: block; width: 18px; height: 12px; border-radius: 3px; background: #d6d3cb"></span>
+          <span style="display: block; width: 18px; height: 12px; border-radius: 3px; background: #a9a69e"></span>
+          <span style="display: block; width: 18px; height: 12px; border-radius: 3px; background: #6b6964"></span>
+          <span style="display: block; width: 18px; height: 12px; border-radius: 3px; background: #1e1e1e"></span>
+          <span style="margin-left: 4px">어려움</span>
+        </div>
+      </div>
+      <div role="img" aria-label="요일·시간대별 난이도. 주말 오후 1~4시와 금요일 저녁이 가장 어려움" style="display: flex; flex-direction: column; gap: 4px">
+        <div aria-hidden="true" style="display: grid; grid-template-columns: 28px repeat(14, minmax(0, 1fr)); gap: 4px; font-size: 11px; color: #5f5d57">
+          <span></span>
+          <sc-for list="{{hourLabels}}" as="h" hint-placeholder-count="14"><span style="text-align: left">{{h}}</span></sc-for>
+        </div>
+        <sc-for list="{{heat}}" as="r" hint-placeholder-count="7">
+          <div aria-hidden="true" style="display: grid; grid-template-columns: 28px repeat(14, minmax(0, 1fr)); gap: 4px; align-items: center">
+            <span style="font-size: 13px; font-weight: 500; color: #5f5d57">{{r.day}}</span>
+            <sc-for list="{{r.cells}}" as="c" hint-placeholder-count="14"><span style="display: block; height: 22px; box-sizing: border-box; border-radius: 4px; background: {{c.bg}}; border: {{c.bd}}"></span></sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="box-sizing: border-box; padding: 22px; background: #ffffff; border: 1.5px solid #d6d3cb; border-radius: 16px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <h2 style="margin: 0; font-size: 18px; font-weight: 700">바꾸고 나서 좋아졌나요</h2>
+          <p style="margin: 0; font-size: 14px; color: #5f5d57">B3 램프 출구(1번 지점) · 주별 평균 후진</p>
+        </div>
+        <span style="height: 32px; display: flex; align-items: center; padding: 0 12px; border-radius: 16px; background: #1e1e1e; color: #ffffff; font-size: 14px; font-weight: 700">0.7회 줄었어요</span>
+      </div>
+      <svg role="img" aria-label="9월 22일 반사경 설치 전 6주 평균 후진 4.0회, 설치 후 6주 평균 3.3회" viewBox="0 0 560 230" width="100%" style="display: block">
+        <g stroke="#e6e3dc" stroke-width="1.5">
+          <line x1="40" y1="70" x2="540" y2="70"></line>
+          <line x1="40" y1="110" x2="540" y2="110"></line>
+          <line x1="40" y1="150" x2="540" y2="150"></line>
+          <line x1="40" y1="190" x2="540" y2="190" stroke="#d6d3cb"></line>
+        </g>
+        <g fill="#5f5d57" font-size="12" font-family="Noto Sans KR, sans-serif" text-anchor="end">
+          <text x="32" y="74">4.0</text>
+          <text x="32" y="114">3.5</text>
+          <text x="32" y="154">3.0</text>
+          <text x="32" y="194">2.5</text>
+        </g>
+        <path d="M282 34V190" stroke="#8a8780" stroke-width="1.5" stroke-dasharray="4 5"></path>
+        <text x="288" y="44" font-size="12" font-weight="700" fill="#1e1e1e" font-family="Noto Sans KR, sans-serif">9.22 반사경 설치</text>
+        <path d="M40 70H260" stroke="#8a8780" stroke-width="1.5" stroke-dasharray="2 4"></path>
+        <path d="M304 126H524" stroke="#8a8780" stroke-width="1.5" stroke-dasharray="2 4"></path>
+        <text x="40" y="60" font-size="12" fill="#5f5d57" font-family="Noto Sans KR, sans-serif">전 평균 4.0회</text>
+        <text x="524" y="146" font-size="12" fill="#5f5d57" font-family="Noto Sans KR, sans-serif" text-anchor="end">후 평균 3.3회</text>
+        <polyline points="40,78 84,70 128,86 172,62 216,78 260,70" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <polyline points="304,110 348,126 392,134 436,126 480,134 524,134" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <g fill="#ffffff" stroke="#1e1e1e" stroke-width="2">
+          <circle cx="40" cy="78" r="4"></circle><circle cx="84" cy="70" r="4"></circle><circle cx="128" cy="86" r="4"></circle><circle cx="172" cy="62" r="4"></circle><circle cx="216" cy="78" r="4"></circle><circle cx="260" cy="70" r="4"></circle>
+        </g>
+        <g fill="#1e1e1e">
+          <circle cx="304" cy="110" r="4.5"></circle><circle cx="348" cy="126" r="4.5"></circle><circle cx="392" cy="134" r="4.5"></circle><circle cx="436" cy="126" r="4.5"></circle><circle cx="480" cy="134" r="4.5"></circle><circle cx="524" cy="134" r="4.5"></circle>
+        </g>
+        <g fill="#5f5d57" font-size="12" font-family="Noto Sans KR, sans-serif" text-anchor="middle">
+          <text x="40" y="214">8.11</text>
+          <text x="128" y="214">8.25</text>
+          <text x="216" y="214">9.8</text>
+          <text x="304" y="214">9.22</text>
+          <text x="392" y="214">10.6</text>
+          <text x="480" y="214">10.20</text>
+        </g>
+      </svg>
+    </section>
+  </div>
+
+  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5f5d57">동선은 차속·핸들 각도·기어로 계산해 다시 그린 그림이에요. 5대보다 적게 댄 칸과 시간대는 보여 주지 않아요.</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1840}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const floorId = st.floor ?? 'B3';
+    const spotN = st.spot ?? 1;
+    const showTrails = st.trails ?? true;
+    const showRev = st.rev ?? true;
+    const showSpots = st.spots ?? true;
+    const comma = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const floorData = [
+      { id: 'B1', score: 3.1, count: 241, rev: '2.1회', oneShot: 58, rear: 52, front: 41 },
+      { id: 'B2', score: 3.8, count: 236, rev: '2.8회', oneShot: 46, rear: 57, front: 37 },
+      { id: 'B3', score: 4.6, count: 228, rev: '3.9회', oneShot: 31, rear: 63, front: 31 },
+      { id: 'B4', score: 4.4, count: 214, rev: '3.6회', oneShot: 35, rear: 61, front: 33 },
+      { id: 'B5', score: 4.0, count: 196, rev: '3.1회', oneShot: 40, rear: 58, front: 36 },
+      { id: 'B6', score: 3.5, count: 169, rev: '2.6회', oneShot: 49, rear: 55, front: 39 }
+    ];
+    const f = floorData.find((x) => x.id === floorId) || floorData[2];
+    const k = f.score / 4.6;
+    const base = [
+      { n: 1, title: '램프 나오자마자 왼쪽 꺾임', where: '램프 출구 · A구역 입구', metric: 38, unit: '%', what: '이곳을 지난 차 중 후진한 비율', idea: '9월 22일 볼록거울을 단 뒤 후진이 줄고 있어요. 바닥 유도선을 더하면 좋은 후보예요.', x: 19.4, y: 28.8 },
+      { n: 2, title: '기둥 바로 옆 칸', where: 'C14 ~ C17', metric: 2.6, unit: '번', what: '칸에 들어가기까지 평균 시도', idea: '기둥 쪽 칸 폭 표시선을 다시 칠하거나 경차 전용 칸으로 바꿔 볼 만해요.', x: 47.8, y: 48.5 },
+      { n: 3, title: '통로 끝 회차 구간', where: '동쪽 끝 · B와 C구역 사이', metric: 31, unit: '%', what: '돌아 나오며 후진한 비율', idea: '회차 공간 표시나 일방통행 안내가 있으면 후진이 줄 수 있어요.', x: 93.3, y: 50 },
+      { n: 4, title: 'D구역 좁은 칸', where: 'D01 ~ D09', metric: 2.1, unit: '회', what: '평균 후진', idea: '칸이 통로보다 좁게 나 있어요. 앞으로 대기 쉬운 방향 화살표를 그려 볼 만해요.', x: 66.7, y: 88.5 }
+    ];
+    const spots = base.map((b) => {
+      const sel = b.n === spotN;
+      const value = b.unit === '%' ? Math.round(b.metric * k) + '%' : (b.metric * k).toFixed(1) + b.unit;
+      return {
+        n: String(b.n),
+        title: b.title,
+        where: f.id + ' · ' + b.where,
+        value: value,
+        what: b.what,
+        idea: b.idea,
+        left: b.x + '%',
+        top: b.y + '%',
+        selected: sel,
+        pressed: sel ? 'true' : 'false',
+        label: b.n + '번 지점 · ' + b.title,
+        mbg: sel ? '#f4f3ef' : '#1e1e1e',
+        mfg: sel ? '#1e1e1e' : '#f4f3ef',
+        msize: sel ? '52px' : '40px',
+        cbd: sel ? '2px solid #1e1e1e' : '1.5px solid #d6d3cb',
+        nbg: sel ? '#1e1e1e' : '#e6e3dc',
+        nfg: sel ? '#ffffff' : '#1e1e1e',
+        pick: () => this.setState({ spot: b.n })
+      };
+    });
+    const floors = floorData.map((x) => {
+      const on = x.id === f.id;
+      return {
+        id: x.id,
+        score: x.score.toFixed(1),
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#1e1e1e' : '#ffffff',
+        fg: on ? '#ffffff' : '#1e1e1e',
+        bd: on ? '#1e1e1e' : '#d6d3cb',
+        sub: on ? '#d6d3cb' : '#5f5d57',
+        pick: () => this.setState({ floor: x.id })
+      };
+    });
+    const layer = (key, on, label) => ({
+      label: label,
+      pressed: on ? 'true' : 'false',
+      bg: on ? '#f4f3ef' : 'transparent',
+      fg: on ? '#1e1e1e' : '#f4f3ef',
+      bd: on ? '#f4f3ef' : '#8a8780',
+      pick: () => this.setState({ [key]: !on })
+    });
+    const par = 100 - f.rear - f.front;
+    const histVals = [4, 8, 15, 20, 25, 16, 12];
+    const histLabels = ['~30초', '~1분', '~1분반', '~2분', '~2분반', '~3분', '3분+'];
+    const shades = ['#efede8', '#d6d3cb', '#a9a69e', '#6b6964', '#1e1e1e'];
+    const days = ['월', '화', '수', '목', '금', '토', '일'];
+    const hours = [];
+    for (let h = 8; h <= 21; h++) hours.push(h);
+    const lv = (d, h) => {
+      if (d >= 5) {
+        if (h >= 13 && h <= 16) return 4;
+        if (h >= 11 && h <= 18) return 3;
+        if (h >= 9) return 2;
+        return 1;
+      }
+      if (d === 4 && h >= 18 && h <= 20) return 4;
+      if (h >= 18 && h <= 20) return 3;
+      if (h === 12 || h === 13) return 2;
+      if (h <= 9) return 0;
+      return 1;
+    };
+    const waffle = [];
+    for (let i = 0; i < 100; i++) waffle.push({ bg: i < f.oneShot ? '#1e1e1e' : '#e6e3dc' });
+    return {
+      floor: {
+        id: f.id,
+        score: f.score.toFixed(1),
+        countText: comma(f.count),
+        rev: f.rev,
+        oneShot: String(f.oneShot),
+        oneShotText: f.oneShot + '%',
+        rearPct: f.rear + '%',
+        frontPct: f.front + '%',
+        rearText: f.rear + '%',
+        frontText: f.front + '%',
+        parText: par + '%'
+      },
+      floors: floors,
+      spots: spots,
+      showSpots: showSpots,
+      trailDisplay: showTrails ? 'block' : 'none',
+      revDisplay: showRev ? 'block' : 'none',
+      layers: [layer('trails', showTrails, '동선'), layer('rev', showRev, '후진 구간'), layer('spots', showSpots, '몰리는 곳')],
+      waffle: waffle,
+      hist: histVals.map((v, i) => ({ pct: Math.round(v / 25 * 100) + '%', bg: i === 4 ? '#1e1e1e' : '#c9c6bd', label: histLabels[i] })),
+      classes: [['경차', 2.1], ['소형', 2.6], ['중형', 3.1], ['대형', 3.8], ['SUV', 3.6]].map((c) => ({ name: c[0], value: c[1].toFixed(1) + '회', pct: Math.round(c[1] / 4 * 100) + '%' })),
+      hourLabels: hours.map((h) => (h % 2 === 0 ? String(h) : '')),
+      heat: days.map((d, di) => ({
+        day: d,
+        cells: hours.map((h) => {
+          const l = lv(di, h);
+          return { bg: shades[l], bd: l === 0 ? '1px solid #d6d3cb' : '0' };
+        })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

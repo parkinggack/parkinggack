@@ -1,0 +1,25 @@
+{
+  "name": "주차각",
+  "short_name": "주차각",
+  "description": "주차 어려운 곳을 미리 알려 주고, 차가 기억한 주차 위치를 폰으로 보여 주는 짝꿍 앱",
+  "lang": "ko",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "categories": ["navigation", "travel", "utilities"],
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "내 주차 위치", "short_name": "주차 위치", "url": "./parking", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "주차장 난이도", "short_name": "주차장", "url": "./lots", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

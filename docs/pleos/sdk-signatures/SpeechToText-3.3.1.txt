@@ -1,0 +1,520 @@
+# SpeechToText-3.3.1 — javap 공개 시그니처 (자동 생성, 2026-11-03)
+
+public final class stt.SpeechToText {
+  public static final stt.SpeechToText$Companion Companion;
+  public stt.SpeechToText(android.content.Context, stt.constant.Mode);
+  public stt.SpeechToText(android.content.Context, stt.constant.Mode, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  static {};
+  public final void initialize();
+  public final void initialize(stt.listener.OnInitializeListener);
+  public final void release();
+  public final void addListener(stt.listener.ResultListener);
+  public final void removeListener(stt.listener.ResultListener);
+  public final void registerApp(String, String, stt.listener.OnServerConnectionListener);
+  public final void registerApp(String, String, String, ()->Unit, (String)->Unit);
+  public final void registerApp(String, ()->Unit, (String)->Unit);
+  public final void request();
+  public final void stop();
+  public final void sendAudio(byte[]);
+  public final void completeAudioSend();
+  public final void setLocale(Locale);
+  public final stt.api.CallApi getCallApi();
+  public final stt.api.AmbientAiApi getAmbientAi();
+}
+public interface stt.api.AmbientAiApi {
+  public abstract void setRecognitionResultListener(stt.listener.AmbientAiRecognitionResultListener);
+  public abstract void updateEicContextInfo(String);
+  public abstract void setEnableSpeechSourceSeparation(boolean);
+  public abstract void setSpeakerRecognitionMethod(int);
+  public abstract void setProfileId(String);
+  public abstract void setIsFirstForEnrollOpt(boolean);
+  public abstract void setScriptForEnrollOpt(String);
+  public abstract void requestWithoutRecording(String);
+  public abstract void sendRecognitionAudio(byte[], boolean);
+  public abstract void setWakeUpWordConfig(stt.data.WakeUpWordConfig);
+  public abstract void setLMBoostConfig(stt.data.LMBoostConfig);
+  public abstract void request(String);
+}
+public final class stt.api.ApiChecker {
+  public static final stt.api.ApiChecker a;
+  static {};
+  public final void b(android.content.Context);
+  public final void a(android.content.Context);
+}
+public interface stt.api.CallApi {
+  public abstract void sendTxAudio(byte[], stt.listener.RecognitionResultListener);
+  public abstract void sendRxAudio(byte[], stt.listener.RecognitionResultListener);
+  public abstract void completeTxAudioSend();
+  public abstract void completeRxAudioSend();
+}
+public interface stt.api.PrivilegedApi extends annotation.Annotation {
+}
+public final class stt.api.impl.AmbientAiApiImpl implements stt.api.AmbientAiApi {
+  public stt.api.impl.AmbientAiApiImpl(android.content.Context, stt.service.SttServiceManager);
+  public void setRecognitionResultListener(stt.listener.AmbientAiRecognitionResultListener);
+  public void updateEicContextInfo(String);
+  public void setEnableSpeechSourceSeparation(boolean);
+  public void setSpeakerRecognitionMethod(int);
+  public void setProfileId(String);
+  public void setIsFirstForEnrollOpt(boolean);
+  public void setScriptForEnrollOpt(String);
+  public void requestWithoutRecording(String);
+  public void request(String);
+  public void sendRecognitionAudio(byte[], boolean);
+  public void setWakeUpWordConfig(stt.data.WakeUpWordConfig);
+  public void setLMBoostConfig(stt.data.LMBoostConfig);
+}
+public final class stt.api.impl.CallApiImpl implements stt.api.CallApi {
+  public stt.api.impl.CallApiImpl(android.content.Context, stt.service.SttServiceManager);
+  public void sendTxAudio(byte[], stt.listener.RecognitionResultListener);
+  public void sendRxAudio(byte[], stt.listener.RecognitionResultListener);
+  public void completeTxAudioSend();
+  public void completeRxAudioSend();
+}
+public final class stt.constant.AudioBufferType extends Enum<stt.constant.AudioBufferType> {
+  public static final stt.constant.AudioBufferType DEFAULT;
+  public static final stt.constant.AudioBufferType RX;
+  public static final stt.constant.AudioBufferType TX;
+  public static stt.constant.AudioBufferType[] values();
+  public static stt.constant.AudioBufferType valueOf(String);
+  static {};
+}
+public final class stt.constant.ConversationInfo {
+  public stt.constant.ConversationInfo(String, String);
+  public static stt.constant.ConversationInfo copy$default(stt.constant.ConversationInfo, String, String, int, Object);
+  public final String getConversationId();
+  public final String getConversationSeq();
+  public final String component1();
+  public final String component2();
+  public final stt.constant.ConversationInfo copy(String, String);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.constant.EpdState extends Enum<stt.constant.EpdState> {
+  public static final stt.constant.EpdState EPD_ON;
+  public static final stt.constant.EpdState EPD_OFF;
+  public static stt.constant.EpdState[] values();
+  public static stt.constant.EpdState valueOf(String);
+  static {};
+}
+public final class stt.constant.ErrorType extends Enum<stt.constant.ErrorType> {
+  public static final stt.constant.ErrorType AUDIO_ERROR;
+  public static final stt.constant.ErrorType MIC_ERROR;
+  public static final stt.constant.ErrorType SERVER_INTERNAL_ERROR;
+  public static final stt.constant.ErrorType NETWORK_ERROR;
+  public static final stt.constant.ErrorType INVALID_REQUEST_ERROR;
+  public static final stt.constant.ErrorType TIMEOUT;
+  public static final stt.constant.ErrorType UNAUTHENTICATED;
+  public static final stt.constant.ErrorType PERMISSION_DENIED;
+  public static final stt.constant.ErrorType ON_DEVICE_ENGINE_ERROR;
+  public static final stt.constant.ErrorType UNKNOWN;
+  public static final stt.constant.ErrorType UNAVAILABLE_LANGUAGE;
+  public static final stt.constant.ErrorType NOT_SUPPORTED_API;
+  public static stt.constant.ErrorType[] values();
+  public static stt.constant.ErrorType valueOf(String);
+  static {};
+}
+public final class stt.constant.ErrorTypeKt {
+  public static final stt.constant.ErrorType toErrorType(String);
+}
+public final class stt.constant.EventCommand extends Enum<stt.constant.EventCommand> {
+  public static final stt.constant.EventCommand UpdateSttResult;
+  public static final stt.constant.EventCommand UpdateRxSttResult;
+  public static final stt.constant.EventCommand UpdateTxSttResult;
+  public static final stt.constant.EventCommand UpdateSttCompleted;
+  public static final stt.constant.EventCommand UpdateRxSttCompleted;
+  public static final stt.constant.EventCommand UpdateTxSttCompleted;
+  public static final stt.constant.EventCommand UpdateServerConnected;
+  public static final stt.constant.EventCommand UpdateEpdState;
+  public static final stt.constant.EventCommand UpdateConversationInfo;
+  public static final stt.constant.EventCommand ErrorRecognition;
+  public static final stt.constant.EventCommand ReadyToSendBufferToServer;
+  public static final stt.constant.EventCommand UpdateSttCompletedToAmbientAi;
+  public static final stt.constant.EventCommand ReadyToStartRecognition;
+  public static final stt.constant.EventCommand UpdateServerConnectionFail;
+  public static final stt.constant.EventCommand UpdateRms;
+  public static final stt.constant.EventCommand UpdateCurrentVariant;
+  public static stt.constant.EventCommand[] values();
+  public static stt.constant.EventCommand valueOf(String);
+  static {};
+}
+public final class stt.constant.Mode extends Enum<stt.constant.Mode> {
+  public static final stt.constant.Mode HYBRID;
+  public static final stt.constant.Mode SERVER;
+  public static final stt.constant.Mode ON_DEVICE;
+  public static stt.constant.Mode[] values();
+  public static stt.constant.Mode valueOf(String);
+  static {};
+}
+public final class stt.constant.ServiceConstants extends Enum<stt.constant.ServiceConstants> {
+  public static final stt.constant.ServiceConstants PACKAGE_NAME;
+  public static final stt.constant.ServiceConstants STT_COMPONENT_NAME;
+  public static final stt.constant.ServiceConstants STT_HYBRID_ACTION;
+  public static final stt.constant.ServiceConstants STT_SERVER_ACTION;
+  public static final stt.constant.ServiceConstants STT_ON_DEVICE_ACTION;
+  public static stt.constant.ServiceConstants[] values();
+  public static stt.constant.ServiceConstants valueOf(String);
+  static {};
+  public final String getConst();
+}
+public final class stt.constant.SttFinalResult {
+  public stt.constant.SttFinalResult(String, String, long, long);
+  public stt.constant.SttFinalResult(String, String, long, long, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.constant.SttFinalResult copy$default(stt.constant.SttFinalResult, String, String, long, long, int, Object);
+  public stt.constant.SttFinalResult();
+  public final String getAsrText();
+  public final String getSpeakerId();
+  public final long getEpdOn();
+  public final long getEpdOff();
+  public final String component1();
+  public final String component2();
+  public final long component3();
+  public final long component4();
+  public final stt.constant.SttFinalResult copy(String, String, long, long);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.Alternative {
+  public stt.data.Alternative(String, float, String);
+  public stt.data.Alternative(String, float, String, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.Alternative copy$default(stt.data.Alternative, String, float, String, int, Object);
+  public stt.data.Alternative();
+  public final String getTranscript();
+  public final float getConfidence();
+  public final String getTokenSequence();
+  public final String component1();
+  public final float component2();
+  public final String component3();
+  public final stt.data.Alternative copy(String, float, String);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.InferenceSource extends Enum<stt.data.InferenceSource> {
+  public static final stt.data.InferenceSource$Companion Companion;
+  public static final stt.data.InferenceSource ON_DEVICE;
+  public static final stt.data.InferenceSource SERVER;
+  public static stt.data.InferenceSource[] values();
+  public static stt.data.InferenceSource valueOf(String);
+  static {};
+}
+public final class stt.data.LMBoostConfig {
+  public stt.data.LMBoostConfig(String, String);
+  public stt.data.LMBoostConfig(String, String, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.LMBoostConfig copy$default(stt.data.LMBoostConfig, String, String, int, Object);
+  public stt.data.LMBoostConfig();
+  public final String getPhrases();
+  public final String getTriggers();
+  public final String component1();
+  public final String component2();
+  public final stt.data.LMBoostConfig copy(String, String);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.RecognitionFinalResult {
+  public stt.data.RecognitionFinalResult(long, long, List<stt.data.RecognitionResult>, stt.data.Speaker, stt.data.InferenceSource);
+  public stt.data.RecognitionFinalResult(long, long, List, stt.data.Speaker, stt.data.InferenceSource, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.RecognitionFinalResult copy$default(stt.data.RecognitionFinalResult, long, long, List, stt.data.Speaker, stt.data.InferenceSource, int, Object);
+  public stt.data.RecognitionFinalResult();
+  public final long getEpdOn();
+  public final long getEpdOff();
+  public final List<stt.data.RecognitionResult> getResults();
+  public final stt.data.Speaker getSpeaker();
+  public final stt.data.InferenceSource getInferenceSource();
+  public final long component1();
+  public final long component2();
+  public final List<stt.data.RecognitionResult> component3();
+  public final stt.data.Speaker component4();
+  public final stt.data.InferenceSource component5();
+  public final stt.data.RecognitionFinalResult copy(long, long, List<stt.data.RecognitionResult>, stt.data.Speaker, stt.data.InferenceSource);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.RecognitionResult {
+  public stt.data.RecognitionResult(List<stt.data.Alternative>, String, stt.data.Speaker, boolean);
+  public stt.data.RecognitionResult(List, String, stt.data.Speaker, boolean, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.RecognitionResult copy$default(stt.data.RecognitionResult, List, String, stt.data.Speaker, boolean, int, Object);
+  public stt.data.RecognitionResult();
+  public final List<stt.data.Alternative> getAlternatives();
+  public final String getLanguageCode();
+  public final stt.data.Speaker getSpeaker();
+  public final boolean isWakeUpWord();
+  public final List<stt.data.Alternative> component1();
+  public final String component2();
+  public final stt.data.Speaker component3();
+  public final boolean component4();
+  public final stt.data.RecognitionResult copy(List<stt.data.Alternative>, String, stt.data.Speaker, boolean);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.Speaker {
+  public stt.data.Speaker(String);
+  public stt.data.Speaker(String, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.Speaker copy$default(stt.data.Speaker, String, int, Object);
+  public stt.data.Speaker();
+  public final String getSpeakerId();
+  public final String component1();
+  public final stt.data.Speaker copy(String);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.data.WakeUpWordConfig {
+  public stt.data.WakeUpWordConfig(String, String, byte[], float, float, float, String);
+  public stt.data.WakeUpWordConfig(String, String, byte[], float, float, float, String, int, kotlin.jvm.internal.DefaultConstructorMarker);
+  public static stt.data.WakeUpWordConfig copy$default(stt.data.WakeUpWordConfig, String, String, byte[], float, float, float, String, int, Object);
+  public stt.data.WakeUpWordConfig();
+  public final String getName();
+  public final String getLocaleCode();
+  public final byte[] getAudio();
+  public final float getOnset();
+  public final float getOffset();
+  public final float getProbability();
+  public final String getVersion();
+  public final String component1();
+  public final String component2();
+  public final byte[] component3();
+  public final float component4();
+  public final float component5();
+  public final float component6();
+  public final String component7();
+  public final stt.data.WakeUpWordConfig copy(String, String, byte[], float, float, float, String);
+  public String toString();
+  public int hashCode();
+  public boolean equals(Object);
+}
+public final class stt.eventbus.EventBus {
+  public static final stt.eventbus.EventBus a;
+  static {};
+  public final kotlinx.coroutines.flow.SharedFlow<String> a();
+  public final void a(String);
+}
+public final class stt.factory.OnDeviceStt extends stt.factory.Stt {
+  public stt.factory.OnDeviceStt(android.content.Context, stt.viewmodel.SttViewModel);
+  static void a(stt.factory.OnDeviceStt, stt.constant.ErrorType, int, Object);
+  static void a(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt, boolean, int, Object);
+  public static final Object a(stt.factory.OnDeviceStt, kotlin.coroutines.Continuation);
+  public static final String c(stt.factory.OnDeviceStt);
+  public static final stt.service.SttCallback d(stt.factory.OnDeviceStt);
+  public static final void a(stt.factory.OnDeviceStt);
+  public static final android.content.Context b(stt.factory.OnDeviceStt);
+  public static final boolean e(stt.factory.OnDeviceStt);
+  public static final boolean a(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt, String);
+  public static final boolean a(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt);
+  public static final void f(stt.factory.OnDeviceStt);
+  public static final boolean c(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt);
+  public static final void a(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt, boolean);
+  public static final void b(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt);
+  public static final void d(stt.factory.OnDeviceStt, caas.service.speech.aidl.IOnDeviceStt);
+  public static final kotlin.Pair a(stt.factory.OnDeviceStt, boolean);
+  public void d(String);
+  public void e();
+  public void c();
+  public void a(stt.listener.OnInitializeListener);
+  public void d();
+  public void a(boolean, String);
+  public void a();
+  public void a(stt.listener.RecognitionResultListener);
+  public void b(stt.listener.RecognitionResultListener);
+  public void a(int, String, String);
+  public void a(byte[], String);
+  public void a(String);
+  public void c(byte[], String);
+  public void b(byte[], String);
+  public void c(String);
+  public void b(String);
+  public void g(String);
+  public void a(boolean);
+  public void a(int);
+  public void e(String);
+  public void b(boolean);
+  public void f(String);
+  public void a(stt.listener.AmbientAiRecognitionResultListener);
+  public void a(byte[], boolean);
+  public void a(stt.data.WakeUpWordConfig);
+  public void a(stt.data.LMBoostConfig);
+  public void a(Locale, String);
+  public void a(String, String, stt.listener.OnServerConnectionListener);
+  public void b();
+  public void a(boolean, String, String);
+}
+public final class stt.factory.ServerStt extends stt.factory.Stt {
+  public static final int q;
+  public stt.factory.ServerStt(android.content.Context, stt.viewmodel.SttViewModel, stt.constant.Mode);
+  static void a(stt.factory.ServerStt, stt.constant.ErrorType, int, Object);
+  static void a(stt.factory.ServerStt, caas.service.speech.aidl.IStt, boolean, int, Object);
+  public static final Object a(stt.factory.ServerStt, kotlin.coroutines.Continuation);
+  public static final String e(stt.factory.ServerStt);
+  public static final stt.service.SttCallback h(stt.factory.ServerStt);
+  public static final void a(stt.factory.ServerStt);
+  public static final android.content.Context b(stt.factory.ServerStt);
+  public static final boolean i(stt.factory.ServerStt);
+  public static final int f(stt.factory.ServerStt);
+  public static final void a(stt.factory.ServerStt, int);
+  public static final long d(stt.factory.ServerStt);
+  public static final long g(stt.factory.ServerStt);
+  public static final void a(stt.factory.ServerStt, long);
+  public static final com.google.gson.Gson c(stt.factory.ServerStt);
+  public static final void b(stt.factory.ServerStt, boolean);
+  public static final boolean j(stt.factory.ServerStt);
+  public static final boolean b(stt.factory.ServerStt, caas.service.speech.aidl.IStt, String);
+  public static final boolean a(stt.factory.ServerStt, caas.service.speech.aidl.IStt, String);
+  public static final boolean a(stt.factory.ServerStt, caas.service.speech.aidl.IStt);
+  public static final void k(stt.factory.ServerStt);
+  public static final boolean c(stt.factory.ServerStt, caas.service.speech.aidl.IStt);
+  public static final void a(stt.factory.ServerStt, caas.service.speech.aidl.IStt, boolean);
+  public static final void b(stt.factory.ServerStt, caas.service.speech.aidl.IStt);
+  public static final void d(stt.factory.ServerStt, caas.service.speech.aidl.IStt);
+  public static final kotlin.Pair a(stt.factory.ServerStt, boolean);
+  static {};
+  public void d(String);
+  public void e();
+  public void c();
+  public void a(stt.listener.OnInitializeListener);
+  public void d();
+  public void a(stt.listener.RecognitionResultListener);
+  public void b(stt.listener.RecognitionResultListener);
+  public void a(boolean, String);
+  public void a();
+  public void a(int, String, String);
+  public void a(byte[], String);
+  public void a(String);
+  public void c(byte[], String);
+  public void b(byte[], String);
+  public void c(String);
+  public void b(String);
+  public void g(String);
+  public void a(boolean);
+  public void a(int);
+  public void e(String);
+  public void b(boolean);
+  public void f(String);
+  public void a(stt.listener.AmbientAiRecognitionResultListener);
+  public void a(byte[], boolean);
+  public void a(stt.data.WakeUpWordConfig);
+  public void a(stt.data.LMBoostConfig);
+  public void a(Locale, String);
+  public void a(String, String, stt.listener.OnServerConnectionListener);
+  public void b();
+  public void a(boolean, String, String);
+}
+public abstract class stt.factory.Stt {
+  public stt.factory.Stt();
+  public static void a(stt.factory.Stt, boolean, String, int, Object);
+  public static void a(stt.factory.Stt, boolean, String, String, int, Object);
+  public abstract void d(String);
+  public abstract void e();
+  public abstract void c();
+  public abstract void a(stt.listener.OnInitializeListener);
+  public abstract void d();
+  public abstract void a(boolean, String);
+  public abstract void a();
+  public abstract void a(stt.listener.RecognitionResultListener);
+  public abstract void b(stt.listener.RecognitionResultListener);
+  public abstract void a(int, String, String);
+  public abstract void a(byte[], String);
+  public abstract void a(String);
+  public abstract void c(byte[], String);
+  public abstract void b(byte[], String);
+  public abstract void c(String);
+  public abstract void b(String);
+  public abstract void g(String);
+  public abstract void a(boolean);
+  public abstract void a(int);
+  public abstract void e(String);
+  public abstract void b(boolean);
+  public abstract void f(String);
+  public abstract void a(stt.listener.AmbientAiRecognitionResultListener);
+  public abstract void a(byte[], boolean);
+  public abstract void a(stt.data.WakeUpWordConfig);
+  public abstract void a(stt.data.LMBoostConfig);
+  public abstract void a(Locale, String);
+  public abstract void a(String, String, stt.listener.OnServerConnectionListener);
+  public abstract void b();
+  public abstract void a(boolean, String, String);
+}
+public final class stt.factory.SttFactory {
+  public stt.factory.SttFactory(android.content.Context, stt.viewmodel.SttViewModel);
+  public final stt.factory.Stt a(stt.constant.Mode);
+}
+public interface stt.listener.AmbientAiRecognitionResultListener {
+  public abstract void onUpdated(String, String, boolean);
+  public abstract void onUpdatedEpdState(int);
+  public abstract void onUpdatedConversationInfo(String, String);
+  public abstract void onError(stt.constant.ErrorType);
+  public abstract void onReadyToSendBuffer();
+  public abstract void onUpdateRecognitionFinalResult(stt.data.RecognitionFinalResult);
+}
+public interface stt.listener.OnInitializeListener {
+  public abstract void onSuccess();
+  public abstract void onFailure(stt.constant.ErrorType);
+}
+public interface stt.listener.OnServerConnectionListener {
+  public abstract void onConnected();
+  public abstract void onFailed(stt.constant.ErrorType);
+}
+public interface stt.listener.RecognitionResultListener {
+  public abstract void onUpdated(String, boolean);
+  public abstract void onUpdatedEpdData(long, long);
+}
+public interface stt.listener.ResultListener {
+  public abstract void onUpdated(String, boolean);
+  public abstract void onUpdatedEpdData(long, long);
+  public abstract void onStartedRecognition();
+  public abstract void onEndedRecognition();
+  public abstract void onError(stt.constant.ErrorType);
+  public abstract void onReady();
+  public abstract void onUpdatedRms(double);
+}
+public final class stt.ua.UARepository {
+  public stt.ua.UARepository(android.content.Context);
+  public static final String a(stt.ua.UARepository);
+  public final void a(String, String, String, (kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a(String, (kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a((kotlin.Result<kotlin.Unit>)->Unit);
+  public final void a(security.ua.EnvironmentType);
+  public final void a((String)->Unit, (String)->Unit);
+}
+public final class stt.ua.UAWrapper {
+  public stt.ua.UAWrapper(android.content.Context);
+  public static final String b(stt.ua.UAWrapper);
+  public static final android.content.Context a(stt.ua.UAWrapper);
+  public final void a(String, String, String, ()->Unit, (String)->Unit);
+  public final void a(String, ()->Unit, (String)->Unit);
+  public final void a(()->Unit, (String)->Unit);
+  public final void a(security.ua.EnvironmentType);
+  public final void a((String)->Unit, (String)->Unit);
+}
+public final class stt.utils.Log {
+  public static final stt.utils.Log a;
+  static {};
+  public final void a(String, String);
+  public final void c(String, String);
+  public final void b(String, String);
+  public final void d(String, String);
+}
+public final class stt.utils.StringUtils {
+  public static final stt.utils.StringUtils a;
+  public static final String b;
+  static {};
+  public final String a(String);
+}
+public final class stt.viewmodel.SttViewModel {
+  public stt.viewmodel.SttViewModel();
+  public static void a(stt.viewmodel.SttViewModel, String, boolean, int, Object);
+  public static final String a(stt.viewmodel.SttViewModel);
+  public final void a(stt.listener.ResultListener);
+  public final void b(stt.listener.ResultListener);
+  public final void a(String, boolean);
+  public final void a(long, long);
+  public final void c();
+  public final void b();
+  public final void a(String);
+  public final void a();
+  public final void b(String);
+}

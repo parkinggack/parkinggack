@@ -1,0 +1,14 @@
+{
+  "name": "parkinggack-mockups",
+  "private": true,
+  "type": "module",
+  "description": "주차각 화면 시안 PDF (HTML → PDF, 화면별 PNG)",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "playwright": "1.62.1",
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>공통 컴포넌트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+</style>
+</helmet>
+<div style="width: 1280px; height: 900px; box-sizing: border-box; padding: 40px 64px; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">색 · 제때 디자인 시스템 (차 화면 다크)</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{swatches}}" as="c" hint-placeholder-count="8">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="display: block; height: 56px; border-radius: 12px; border: 1px solid #3a3936; background: {{c.hex}}"></span>
+            <span style="font-size: 16px; line-height: 22px; font-weight: 700">{{c.name}}</span>
+            <span style="font-size: 14px; line-height: 20px; color: #b5b3ad; font-family: 'JetBrains Mono', ui-monospace, monospace">{{c.hex}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 20px; color: #b5b3ad">상태는 색이 아니라 채움과 단어로 구분해요. 빨강·초록 상태색, 그라데이션, 그림자는 쓰지 않아요.</p>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">글자 · 차 화면</h2>
+      <div style="box-sizing: border-box; padding: 20px 24px; background: #2a2a28; border-radius: 12px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-display 72</span><span style="font-size: 72px; line-height: 84px; font-weight: 700; letter-spacing: -0.01em">★4.3</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-title 34</span><span style="font-size: 34px; line-height: 44px; font-weight: 700">B2에 대셨나요?</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-heading 22</span><span style="font-size: 22px; line-height: 32px; font-weight: 700">층별 혼잡</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-body 20</span><span style="font-size: 20px; line-height: 30px">도착지 주차장은 조금 까다로워요</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-label 16</span><span style="font-size: 16px; line-height: 22px; font-weight: 700">평균 후진 3.2회</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 110px; flex-shrink: 0; font-size: 14px; color: #b5b3ad">car-caption 14</span><span style="font-size: 14px; line-height: 20px; color: #b5b3ad">최근 30일 · 차량 142대 기준</span></div>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">주행 중 배너</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+        <div style="height: 64px; box-sizing: border-box; padding: 0 24px 0 20px; display: flex; align-items: center; gap: 14px; background: #2a2a28; border: 2px solid #f4f3ef; border-radius: 16px">
+          <span aria-hidden="true" style="display: flex; align-items: flex-end; gap: 3px; height: 24px">
+            <span style="display: block; width: 8px; height: 8px; border-radius: 2px; background: #f4f3ef"></span>
+            <span style="display: block; width: 8px; height: 12px; border-radius: 2px; background: #f4f3ef"></span>
+            <span style="display: block; width: 8px; height: 16px; border-radius: 2px; background: #f4f3ef"></span>
+            <span style="display: block; width: 8px; height: 20px; border-radius: 2px; background: #f4f3ef"></span>
+            <span style="display: block; width: 8px; height: 24px; border-radius: 2px; border: 1.5px solid #8a8780; box-sizing: border-box"></span>
+          </span>
+          <span style="font-size: 22px; font-weight: 700">도착지 주차 ★4.3 어려움</span>
+        </div>
+        <div style="height: 64px; box-sizing: border-box; padding: 0 24px 0 22px; display: flex; align-items: center; gap: 14px; background: #2a2a28; border: 2px solid #f4f3ef; border-radius: 16px">
+          <span aria-hidden="true" style="width: 16px; height: 16px; border-radius: 8px; background: #f4f3ef; outline: 5px solid #4a4944"></span>
+          <span style="font-size: 22px; font-weight: 700">주차 기록 중</span>
+          <span aria-hidden="true" style="width: 2px; height: 28px; background: #3a3936"></span>
+          <span style="font-size: 20px; font-weight: 500; color: #b5b3ad">후진 1 · 1:12</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">난이도 배지 · 5단계</h2>
+      <div style="box-sizing: border-box; padding: 12px 20px; background: #2a2a28; border-radius: 12px; display: flex; flex-direction: column">
+        <sc-for list="{{levels}}" as="lv" hint-placeholder-count="5">
+          <div style="height: 48px; display: flex; align-items: center; gap: 16px">
+            <span aria-hidden="true" style="width: 66px; display: flex; align-items: flex-end; gap: 4px; height: 30px">
+              <sc-for list="{{lv.bars}}" as="b" hint-placeholder-count="5">
+                <span style="display: block; width: 10px; height: {{b.h}}; box-sizing: border-box; border-radius: 2px; background: {{b.bg}}; border: {{b.bd}}"></span>
+              </sc-for>
+            </span>
+            <span style="width: 48px; font-size: 22px; font-weight: 700">{{lv.star}}</span>
+            <span style="width: 110px; font-size: 20px; font-weight: 700">{{lv.label}}</span>
+            <span style="font-size: 14px; color: #b5b3ad">{{lv.desc}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">이유 태그 · 아이콘</h2>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px">
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a8 8 0 1 0 8 8"></path><path d="M12 8a4 4 0 1 0 4 4"></path><path d="M20 12l-2.4-2.6M20 12l2.4-2.6"></path></svg>회전 램프</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18"></path><path d="M9.5 12h5M11 10l-1.5 2 1.5 2M13 10l1.5 2-1.5 2"></path></svg>좁은 통로</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16M4 20h16M8 4v16M16 4v16"></path></svg>기둥 많음</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M12 7v10M9 10l3-3 3 3M9 14l3 3 3-3"></path></svg>기계식</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18L3 8z"></path></svg>경사 급함</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10a8 8 0 0 1 13.7-3.6L20 8"></path><path d="M20 4v4h-4"></path><path d="M19.5 14a8 8 0 0 1-13.7 3.6L4 16"></path><path d="M4 20v-4h4"></path></svg>후진 잦음</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M9 5v14M15 5v14"></path></svg>자리 넉넉</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"></path></svg>평면 주차장</li>
+        <li style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; background: #2a2a28; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5z"></path><path d="M3 12l9 4.5 9-4.5"></path><path d="M3 16.5l9 4.5 9-4.5"></path></svg>층 많음</li>
+      </ul>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 12px 16px; background: #2a2a28; border-radius: 12px; color: #b5b3ad; font-size: 14px">
+        <span style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.4-6-10.5a6 6 0 0 1 12 0C18 15.6 12 21 12 21z"></path><circle cx="12" cy="10.5" r="2.2"></circle></svg>위치·메모</span>
+        <span style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>구역</span>
+        <span style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"></rect><path d="M11 18h2"></path></svg>폰</span>
+        <span style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f4f3ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6L5 10l4 4"></path><path d="M5 10h10a4.5 4.5 0 0 1 0 9h-2"></path></svg>후진</span>
+        <span>24px 격자 · 2px 선 · 둥근 끝 · currentColor</span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-size: 22px; line-height: 32px; font-weight: 700">버튼 · 선택지</h2>
+      <div style="display: flex; gap: 12px">
+        <span style="flex-grow: 1; height: 76px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: #f4f3ef; color: #1e1e1e; font-size: 22px; font-weight: 700">주 버튼</span>
+        <span style="flex-grow: 1; height: 76px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; font-size: 22px; font-weight: 700">보조 버튼</span>
+        <span style="flex-grow: 1; height: 76px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #3a3936; background: #1e1e1e; color: #b5b3ad; font-size: 20px; font-weight: 500">약한 버튼</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 96px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 2px solid #3a3936; background: #2a2a28; font-size: 28px; font-weight: 700">B1</span>
+        <span style="width: 96px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 2px solid #f4f3ef; background: #f4f3ef; color: #1e1e1e; font-size: 28px; font-weight: 700">B2</span>
+        <span style="font-size: 14px; color: #b5b3ad">선택지 · 기본 / 선택됨 (inverse 뒤집기) · 최소 76dp</span>
+      </div>
+    </section>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const heights = ['10px', '15px', '20px', '25px', '30px'];
+    const defs = [
+      { n: 1, label: '아주 쉬움', desc: '넓고 평면, 후진 거의 없음' },
+      { n: 2, label: '쉬움', desc: '' },
+      { n: 3, label: '보통', desc: '' },
+      { n: 4, label: '어려움', desc: '좁은 램프 · 기둥 많음' },
+      { n: 5, label: '아주 어려움', desc: '기계식 · 나선 램프 · 후진 잦음' }
+    ];
+    return {
+      swatches: [
+        { name: 'surface', hex: '#1e1e1e' },
+        { name: 'surface-raised', hex: '#2a2a28' },
+        { name: 'line', hex: '#3a3936' },
+        { name: 'line-strong', hex: '#8a8780' },
+        { name: 'track', hex: '#4a4944' },
+        { name: 'ink-muted', hex: '#b5b3ad' },
+        { name: 'ink', hex: '#f4f3ef' },
+        { name: 'hatch-a', hex: '#6b6964' }
+      ],
+      levels: defs.map((d) => ({
+        star: '★' + d.n,
+        label: d.label,
+        desc: d.desc,
+        bars: heights.map((h, i) => ({
+          h: h,
+          bg: i < d.n ? '#f4f3ef' : 'transparent',
+          bd: i < d.n ? '0' : '1.5px solid #8a8780'
+        }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

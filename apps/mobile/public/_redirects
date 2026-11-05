@@ -1,0 +1,5 @@
+# Netlify · Cloudflare Pages: 히스토리 라우팅 앱 하나 — 파일이 없는 경로는 모두 index.html (200 = 주소는 그대로)
+# /p/{id}#… (C-07 링크), /s/{code} (짧은 링크), /pair/{code} (차 QR), /parking, /lots/… 등
+# 실제 파일(/assets/*, /icons/*, /sw.js, /dev/)은 먼저 그대로 나간다
+/dev    /dev/index.html  200
+/*      /index.html      200

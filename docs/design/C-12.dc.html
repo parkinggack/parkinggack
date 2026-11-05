@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-12 주차 궤적 리플레이</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+.hatch{background-color:#242423}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div aria-hidden="true" style="height: 44px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; border-bottom: 1px solid #3a3936; background: #161616; font-size: 14px; color: #b5b3ad">Pleos Connect 시스템 영역</div>
+
+  <div style="height: 676px; box-sizing: border-box; padding: 28px 40px; display: flex; gap: 32px">
+
+    <section aria-label="위에서 본 주차 동선" style="width: 780px; flex-shrink: 0; box-sizing: border-box; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
+      <svg role="img" aria-label="통로로 들어와 지나쳐 멈춘 뒤 두 번 후진해서 칸에 주차한 동선" width="780" height="500" viewBox="0 0 780 500" style="display: block">
+        <rect x="0" y="176" width="780" height="168" fill="#1e1e1e"></rect>
+        <path d="M0 260 H780" stroke="#4a4944" stroke-width="2" stroke-dasharray="14 14"></path>
+        <path d="M20 16 H760" stroke="#8a8780" stroke-width="2"></path>
+        <path d="M20 16 V176 M100 16 V176 M180 16 V176 M260 16 V176 M340 16 V176 M420 16 V176 M500 16 V176 M580 16 V176 M660 16 V176 M740 16 V176" stroke="#6b6964" stroke-width="2"></path>
+        <path d="M20 344 V500 M100 344 V500 M180 344 V500 M260 344 V500 M340 344 V500 M420 344 V500 M500 344 V500 M580 344 V500 M660 344 V500 M740 344 V500" stroke="#6b6964" stroke-width="2"></path>
+        <text x="28" y="42" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" fill="#b5b3ad">주차 칸 (그림)</text>
+        <text x="28" y="250" font-family="Noto Sans KR, system-ui, sans-serif" font-size="16" fill="#b5b3ad">통로</text>
+        <text x="16" y="322" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" fill="#b5b3ad">진입</text>
+
+        <path d="M0 292 H540" fill="none" stroke="#f4f3ef" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M70 280 L88 292 L70 304" fill="none" stroke="#f4f3ef" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M540 292 C 500 292, 448 282, 430 228" fill="none" stroke="#f4f3ef" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 12"></path>
+        <path d="M430 228 C 444 248, 462 262, 482 270" fill="none" stroke="#f4f3ef" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M482 270 C 432 254, 386 224, 380 150" fill="none" stroke="#f4f3ef" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 12"></path>
+
+        <rect x="352" y="24" width="56" height="146" rx="12" fill="#f4f3ef"></rect>
+        <rect x="360" y="124" width="40" height="24" rx="5" fill="#2a2a28" fill-opacity="0.85"></rect>
+        <rect x="362" y="34" width="36" height="14" rx="4" fill="#2a2a28" fill-opacity="0.5"></rect>
+        <text x="420" y="64" font-family="Noto Sans KR, system-ui, sans-serif" font-size="16" font-weight="700" fill="#f4f3ef">내 차</text>
+
+        <circle cx="540" cy="292" r="18" fill="#2a2a28" stroke="#f4f3ef" stroke-width="3"></circle>
+        <text x="540" y="298" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="18" font-weight="700" fill="#f4f3ef">1</text>
+        <circle cx="430" cy="228" r="18" fill="#2a2a28" stroke="#f4f3ef" stroke-width="3"></circle>
+        <text x="430" y="234" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="18" font-weight="700" fill="#f4f3ef">2</text>
+        <circle cx="482" cy="270" r="18" fill="#2a2a28" stroke="#f4f3ef" stroke-width="3"></circle>
+        <text x="482" y="276" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="18" font-weight="700" fill="#f4f3ef">3</text>
+      </svg>
+
+      <div style="flex-grow: 1; box-sizing: border-box; padding: 14px 24px 16px; border-top: 1.5px solid #3a3936; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <span style="font-size: 15px; color: #b5b3ad">0:00</span>
+          <div aria-hidden="true" style="flex-grow: 1; height: 8px; position: relative; border-radius: 4px; background: #4a4944">
+            <div style="position: absolute; left: 0; top: 0; width: 100%; height: 8px; border-radius: 4px; background: #f4f3ef"></div>
+            <span style="position: absolute; left: 32%; top: -6px; width: 20px; height: 20px; margin-left: -10px; border-radius: 10px; background: #2a2a28; border: 2.5px solid #f4f3ef; box-sizing: border-box"></span>
+            <span style="position: absolute; left: 65%; top: -6px; width: 20px; height: 20px; margin-left: -10px; border-radius: 10px; background: #2a2a28; border: 2.5px solid #f4f3ef; box-sizing: border-box"></span>
+            <span style="position: absolute; left: 80%; top: -6px; width: 20px; height: 20px; margin-left: -10px; border-radius: 10px; background: #2a2a28; border: 2.5px solid #f4f3ef; box-sizing: border-box"></span>
+          </div>
+          <span style="font-size: 15px; color: #b5b3ad">1:40</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px; color: #b5b3ad">
+          <span aria-hidden="true" style="width: 20px; height: 20px; flex-shrink: 0; border: 1.5px solid #8a8780; border-radius: 10px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">i</span>
+          동선을 그림으로 다시 그렸어요 · 실제 도면이나 옆 차 위치가 아니에요
+        </div>
+      </div>
+    </section>
+
+    <aside style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+        <h1 style="margin: 0; font-size: 22px; font-weight: 700">오늘 주차 동선</h1>
+        <span style="height: 34px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">직각주차</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <strong style="font-size: 56px; font-weight: 700; line-height: 1">후진 2회</strong>
+        <span style="font-size: 20px; color: #b5b3ad">핸들 3번 꺾음 · 1분 40초</span>
+      </div>
+
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+        <li style="height: 40px; display: flex; align-items: center; gap: 12px; font-size: 17px"><span aria-hidden="true" style="width: 28px; height: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 5px; background: #f4f3ef"></span></span><span style="width: 48px; color: #b5b3ad">0:00</span>통로로 들어옴</li>
+        <li style="height: 40px; display: flex; align-items: center; gap: 12px; font-size: 17px"><span style="width: 28px; height: 28px; flex-shrink: 0; border: 2px solid #f4f3ef; border-radius: 14px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">1</span><span style="width: 48px; color: #b5b3ad">0:32</span>지나쳐 멈춤 → 후진</li>
+        <li style="height: 40px; display: flex; align-items: center; gap: 12px; font-size: 17px"><span style="width: 28px; height: 28px; flex-shrink: 0; border: 2px solid #f4f3ef; border-radius: 14px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">2</span><span style="width: 48px; color: #b5b3ad">1:05</span>앞으로 조금</li>
+        <li style="height: 40px; display: flex; align-items: center; gap: 12px; font-size: 17px"><span style="width: 28px; height: 28px; flex-shrink: 0; border: 2px solid #f4f3ef; border-radius: 14px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">3</span><span style="width: 48px; color: #b5b3ad">1:20</span>다시 후진해서 칸으로</li>
+        <li style="height: 40px; display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 700"><span style="width: 28px; height: 28px; flex-shrink: 0; border-radius: 14px; background: #f4f3ef; color: #1e1e1e; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">P</span><span style="width: 48px; color: #b5b3ad; font-weight: 400">1:40</span>주차 완료</li>
+      </ol>
+
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: #2a2a28; border: 1.5px solid #3a3936">
+        <span style="display: flex; align-items: center; gap: 12px; font-size: 16px"><svg aria-hidden="true" width="44" height="8" viewBox="0 0 44 8"><path d="M2 4 H42" stroke="#f4f3ef" stroke-width="4" stroke-linecap="round"></path></svg>앞으로 간 길</span>
+        <span style="display: flex; align-items: center; gap: 12px; font-size: 16px"><svg aria-hidden="true" width="44" height="8" viewBox="0 0 44 8"><path d="M2 4 H42" stroke="#f4f3ef" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 7"></path></svg>후진한 길 · 번호는 방향을 바꾼 곳</span>
+      </div>
+
+      <div style="flex-grow: 1"></div>
+
+      <div style="display: flex; gap: 10px">
+        <button type="button" style="flex-grow: 1; height: 76px; border-radius: 16px; border: 0; background: #f4f3ef; color: #1e1e1e; font-family: inherit; font-size: 22px; font-weight: 700; cursor: pointer">다시 보기</button>
+        <a href="C-05.dc.html" style="width: 130px; height: 76px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 20px; font-weight: 500; text-decoration: none">닫기</a>
+      </div>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

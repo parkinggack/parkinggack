@@ -1,0 +1,76 @@
+/*
+ * 주차각 화면 시안 — 디자인 토큰
+ * 색·글꼴·간격은 앱의 Compose 테마를 그대로 따른다
+ *   apps/vehicle/app/src/main/java/com/parkinggack/app/ui/theme/Color.kt (야간 = Dark, 주간 = Light)
+ *   docs/design/tokens-jettae.json (간격·모서리·글자 크기)
+ * 앱 규칙: 빨강·초록 상태색, 그라데이션, 그림자 없음. 상태는 채움·굵기·단어로 구분한다.
+ * → 난이도 5단계는 색상 대신 '밝기 단계 + ★숫자 + 막대 개수 + 단어'로 표시한다.
+ */
+
+@font-face { font-family: "Noto Sans KR App"; src: url("fonts/noto_sans_kr_regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Noto Sans KR App"; src: url("fonts/noto_sans_kr_medium.ttf") format("truetype"); font-weight: 500; font-style: normal; }
+@font-face { font-family: "Noto Sans KR App"; src: url("fonts/noto_sans_kr_bold.ttf") format("truetype"); font-weight: 700; font-style: normal; }
+
+:root {
+  --font: "Noto Sans KR App", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+
+  /* 문서(종이) — 주간 팔레트와 같은 따뜻한 회색 */
+  --paper: #F4F3EF;
+  --paper-raised: #FFFFFF;
+  --paper-ink: #1E1E1E;
+  --paper-muted: #5F5D57;
+  --paper-line: #D6D3CB;
+  --paper-strong: #8A8780;
+  --bezel: #121212;
+
+  /* 간격 (tokens-jettae.json) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-16: 64px;
+
+  /* 모서리 */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px;
+}
+
+/* 야간 = 앱 DarkParkingColors (차 화면 기본) */
+.t-night {
+  --surface: #1E1E1E;
+  --raised: #2A2A28;
+  --line: #3A3936;
+  --line-strong: #8A8780;
+  --track: #4A4944;
+  --ink: #F4F3EF;
+  --muted: #B5B3AD;
+  --inverse: #F4F3EF;
+  --on-inverse: #1E1E1E;
+  --hatch-a: #6B6964;
+  --hatch-b: #3E3D3A;
+  --placeholder: #242423;
+  --chrome: #161616;
+  /* 난이도 밝기 단계: 어려울수록 진하게(=ink에 가깝게) */
+  --lv1: #6B6964; --lv2: #8A8780; --lv3: #B5B3AD; --lv4: #DAD8D2; --lv5: #F4F3EF;
+  /* 지도 도식 */
+  --map-bg: #242423; --map-block: #2B2B29; --map-road: #30302E; --map-road-edge: #3A3936;
+  --car-glass: #3E3D3A;
+  color-scheme: dark;
+}
+
+/* 주간 = 앱 LightParkingColors */
+.t-day {
+  --surface: #F4F3EF;
+  --raised: #FFFFFF;
+  --line: #D6D3CB;
+  --line-strong: #8A8780;
+  --track: #D6D3CB;
+  --ink: #1E1E1E;
+  --muted: #5F5D57;
+  --inverse: #1E1E1E;
+  --on-inverse: #FFFFFF;
+  --hatch-a: #C9C6BD;
+  --hatch-b: #E6E3DC;
+  --placeholder: #EBE9E3;
+  --chrome: #E6E3DC;
+  --lv1: #C9C6BD; --lv2: #A3A098; --lv3: #7A7770; --lv4: #4A4944; --lv5: #1E1E1E;
+  --map-bg: #E9E7E1; --map-block: #DFDCD4; --map-road: #FFFFFF; --map-road-edge: #D6D3CB;
+  --car-glass: #8A8780;
+  color-scheme: light;
+}

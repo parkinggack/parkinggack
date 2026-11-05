@@ -1,0 +1,32 @@
+{
+  "name": "parkinggack-mobile",
+  "private": true,
+  "version": "1.0.0",
+  "description": "주차각 짝꿍 앱 (폰, PWA) — 차와 연결, 지금 주차 중·돌아가는 길, 주차장 난이도, 기록·동선, 설정. C-07 링크(/p, /s)는 연결 없이도 열림",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite --host",
+    "dev:mock": "vite --host --mode mock",
+    "build": "tsc --noEmit && vite build",
+    "build:mock": "tsc --noEmit && vite build --mode mock",
+    "preview": "vite preview --host",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "screenshots": "node scripts/screenshots.mjs",
+    "icons": "node scripts/icons.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^27.0.0",
+    "typescript": "~5.9",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  },
+  "dependencies": {
+    "jsqr": "^1.4.0",
+    "preact": "^10.29.8",
+    "qrcode-generator": "^2.0.4"
+  }
+}

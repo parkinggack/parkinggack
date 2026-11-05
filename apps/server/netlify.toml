@@ -1,0 +1,27 @@
+# Netlify: API 서버를 따로 한 사이트로 (예 https://parkinggack-api.netlify.app) — docs/deploy.md "Netlify"
+# 저장소 연결(Import from Git) 때 Base directory = apps/server. CLI 는 scripts/deploy-netlify.sh 가 apps/server 에서 netlify deploy.
+# 디스크가 없어서 DB 는 Turso(libSQL): 사이트 환경변수 DATABASE_URL · DATABASE_AUTH_TOKEN · ADMIN_TOKEN (+ ADMIN_ORIGINS · PUBLIC_WEB_BASE · VAPID_*)
+[build]
+  base = "apps/server"
+  # 함수는 Netlify 가 esbuild 로 TypeScript 소스를 바로 묶는다. 빌드 명령은 타입 검사만 (틀리면 배포하지 않음)
+  command = "npm run typecheck"
+  # 정적 파일은 robots.txt 뿐
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  # web-push 는 CommonJS 라 묶지 않고 node_modules 째로 넣는다 (ESM 묶음 안의 require('crypto') 문제 피하기)
+  external_node_modules = ["web-push"]
+  # 실행 중에 파일을 읽지 않는다 (시드·도면은 DB 안). 계약 타입 packages/api-types 는 타입만이라 묶음에 안 들어감
+  included_files = []
+
+# 모든 경로 → API 함수 (status 200 = 주소는 그대로). 정적 파일(robots.txt)이 먼저
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+

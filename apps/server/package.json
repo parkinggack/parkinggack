@@ -1,0 +1,33 @@
+{
+  "name": "parkinggack-server",
+  "private": true,
+  "version": "1.2.0",
+  "description": "주차각 API 서버 — 차량 앱·폰 웹·어드민을 잇는 난이도 집계·짧은 링크 서버 (계약: packages/api-types)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "start": "node dist/apps/server/src/index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "seed": "tsx src/cli/seed.ts",
+    "migrate": "tsx src/cli/migrate.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.6",
+    "@libsql/client": "^0.18.0",
+    "hono": "^4.13.16",
+    "web-push": "^3.6.7",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/web-push": "^3.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "vitest": "^5.1.0"
+  }
+}

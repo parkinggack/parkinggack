@@ -1,0 +1,9 @@
+{
+  "name": "parkinggack-flow-video",
+  "private": true,
+  "description": "Phone-side (Playwright) recorder for flow_video.py. Install: npm i (Chromium comes from ~/Library/Caches/ms-playwright).",
+  "type": "module",
+  "dependencies": {
+    "playwright": "1.62.1"
+  }
+}

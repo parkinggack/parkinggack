@@ -1,0 +1,15 @@
+# Vercel CLI 배포 때 올리지 않을 것 (scripts/deploy-vercel.sh 는 저장소 루트에서 배포하고, 프로젝트마다 Root Directory 로 고른다)
+# 필요한 것: apps/server · apps/mobile · apps/admin · packages/*
+.git
+.claude
+apps/vehicle
+docs
+captures
+.github
+**/node_modules
+**/dist
+**/.vercel
+**/.netlify
+**/data/*.db*
+*.apk
+*.log

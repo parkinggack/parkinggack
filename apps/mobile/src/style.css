@@ -1,0 +1,1949 @@
+/*
+ * 주차각 짝꿍 앱 — 시안 docs/design/M-*.dc.html (390×844) 의 인라인 스타일을 옮긴 것.
+ * 제때 토큰(docs/design/tokens-jettae.json): 흰 바탕 + 회색 면 #f4f3ef, 글자 ink/ink-muted, 주 버튼 inverse.
+ * 테두리·그림자·그라데이션 없음, 상태는 색이 아니라 채움·굵기·단어로. 그림(먹색 바닥 + 흰 선)은 테마와 상관없이 어둡다.
+ */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f4f3ef;
+  --ink: #1e1e1e;
+  --muted: #5f5d57;
+  --line: #d6d3cb;
+  --line-strong: #8a8780;
+  --track-off: #d6d3cb;
+  --inverse: #1e1e1e;
+  --on-inverse: #ffffff;
+  --illus: #1e1e1e;
+  --card: #1e1e1e;
+  --track-bg: #ffffff;
+  --logo-bg: #1e1e1e;
+  --logo-fg: #ffffff;
+  --font: 'Noto Sans KR', system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --gutter: 20px;
+  /* 호스팅이 화면 아래에 겹쳐 놓는 것(Netlify 무료 배지 64px)만큼 하단을 비움 — hostInset.ts 가 채움, 없으면 0 */
+  --host-inset: 0px;
+  --app-w: 480px;
+  /*
+   * 스프링 이징 — ui/spring.ts springEasing() 이 만든 linear() 그대로 (spring.test.ts 가 같은지 검사).
+   * press: 눌렀다 뗄 때 (SPRING_PRESS 600/28), pop: 토스트·탭 내용 (SPRING_POP 380/24), sheet: 아래에서 올라옴 (SPRING_SHEET 260, ζ=1)
+   */
+  --spring-press: linear(0, 0.0389, 0.1374, 0.2712, 0.4203, 0.5694, 0.7074, 0.8273, 0.9256, 1.0012, 1.055, 1.0893, 1.1072, 1.1121, 1.1073, 1.096, 1.0809, 1.0641, 1.0474, 1.0321, 1.0187, 1.0078, 0.9995, 0.9936, 0.9898, 0.9879, 0.9874, 0.988, 0.9893, 0.991, 0.9929, 0.9948, 0.9965, 0.998, 0.9992, 1.0001, 1.0007, 1.0012, 1.0014, 1.0014, 1.0013, 1.0012, 1);
+  --spring-press-ms: 507ms;
+  --spring-pop: linear(0, 0.0248, 0.0896, 0.1812, 0.2886, 0.4029, 0.5168, 0.6251, 0.724, 0.8112, 0.8856, 0.9467, 0.9951, 1.0316, 1.0575, 1.0741, 1.0831, 1.0859, 1.084, 1.0785, 1.0707, 1.0615, 1.0517, 1.0419, 1.0326, 1.0241, 1.0165, 1.0101, 1.0048, 1.0006, 0.9974, 0.9951, 0.9937, 0.9929, 0.9926, 0.9928, 0.9932, 0.9939, 0.9947, 0.9955, 0.9964, 0.9972, 0.9979, 0.9986, 0.9991, 0.9996, 0.9999, 1);
+  --spring-pop-ms: 564ms;
+  --spring-sheet: linear(0, 0.0163, 0.0576, 0.1145, 0.1804, 0.2504, 0.321, 0.3899, 0.4554, 0.5167, 0.5733, 0.6248, 0.6714, 0.7132, 0.7504, 0.7834, 0.8125, 0.838, 0.8603, 0.8798, 0.8968, 0.9115, 0.9242, 0.9352, 0.9446, 0.9527, 0.9597, 0.9657, 0.9708, 0.9752, 0.979, 0.9822, 0.9849, 0.9872, 0.9892, 0.9908, 0.9922, 0.9934, 0.9945, 0.9953, 0.9961, 0.9967, 0.9972, 0.9976, 0.998, 0.9983, 0.9986, 0.9988, 1);
+  --spring-sheet-ms: 573ms;
+  /* /dev/ 페이지(dev.css)와 함께 쓰는 이름 */
+  --page: var(--bg);
+  --chip: var(--surface);
+  --ink-muted: var(--muted);
+}
+
+/* linear() 를 모르는 브라우저 (iOS 16 이하 등): 비슷한 cubic-bezier */
+@supports not (animation-timing-function: linear(0, 1)) {
+  :root {
+    --spring-press: cubic-bezier(0.3, 1.45, 0.45, 1);
+    --spring-pop: cubic-bezier(0.25, 1.25, 0.4, 1);
+    --spring-sheet: cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #1e1e1e;
+    --surface: #2a2a28;
+    --ink: #f4f3ef;
+    --muted: #b5b3ad;
+    --line: #3a3936;
+    --track-off: #4a4944;
+    --inverse: #f4f3ef;
+    --on-inverse: #1e1e1e;
+    --illus: #121211;
+    --card: #2a2a28;
+    --track-bg: #1e1e1e;
+    --logo-bg: #f4f3ef;
+    --logo-fg: #1e1e1e;
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1e1e1e;
+  --surface: #2a2a28;
+  --ink: #f4f3ef;
+  --muted: #b5b3ad;
+  --line: #3a3936;
+  --track-off: #4a4944;
+  --inverse: #f4f3ef;
+  --on-inverse: #1e1e1e;
+  --illus: #121211;
+  --card: #2a2a28;
+  --track-bg: #1e1e1e;
+  --logo-bg: #f4f3ef;
+  --logo-fg: #1e1e1e;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+#app {
+  max-width: var(--app-w);
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+/* 화면이 바뀐 뒤 제목으로 옮긴 초점 (스크린 리더용) — 테두리는 안 그림 */
+[tabindex='-1']:focus,
+[tabindex='-1']:focus-visible {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.shrink0 {
+  flex-shrink: 0;
+}
+
+.grow {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.svg-text {
+  font-family: var(--font);
+}
+
+/* ───────────── 화면 틀 ───────────── */
+
+.screen {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* 첫 실행 (M-11 ~ M-14): 위 56px, 제목 위 24px */
+.flow-body {
+  padding: max(56px, calc(env(safe-area-inset-top, 0px) + 16px)) var(--gutter) calc(160px + var(--host-inset));
+  display: flex;
+  flex-direction: column;
+}
+.flow-body > .title-block {
+  margin-top: 24px;
+}
+
+/* 뒤로 가기가 있는 상세 (M-01 · M-02 · M-31 · M-33 · 코드 입력) */
+.detail-body {
+  padding: max(48px, calc(env(safe-area-inset-top, 0px) + 8px)) var(--gutter) calc(160px + var(--host-inset));
+  display: flex;
+  flex-direction: column;
+}
+.detail-body > .topbar + .title-block {
+  margin-top: 8px;
+}
+
+/* 아래 탭이 있는 화면 (M-20 · M-30 · M-32 · M-40) */
+.tab-body {
+  padding: max(52px, calc(env(safe-area-inset-top, 0px) + 12px)) var(--gutter) calc(120px + var(--host-inset));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.home .tab-body {
+  gap: 12px;
+}
+
+.tab-title {
+  margin: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.topbar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-left: -10px;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.top-link {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ───────────── 버튼 (아래 하나) ───────────── */
+
+.cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  max-width: var(--app-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter) max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px), var(--host-inset));
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--bg);
+}
+
+.btn {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  border-radius: 16px;
+  border: 0;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 16px;
+}
+.btn:disabled {
+  cursor: default;
+}
+.btn-primary {
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+.btn-primary:disabled:not([aria-busy]) {
+  background: var(--track-off);
+  color: var(--bg);
+}
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+}
+.btn-white {
+  background: #ffffff;
+  color: #1e1e1e;
+}
+.btn-text {
+  height: 48px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+.btn[aria-busy='true'] {
+  opacity: 0.7;
+}
+
+.link-btn {
+  border: 0;
+  background: transparent;
+  padding: 8px 0;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* ───────────── 그림 ───────────── */
+
+.illus {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+}
+.illus-bg {
+  fill: var(--illus);
+}
+
+.dash-move {
+  animation: dash-move 0.9s linear infinite;
+}
+@keyframes dash-move {
+  to {
+    stroke-dashoffset: -11;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dash-move {
+    animation: none;
+  }
+}
+
+/* ───────────── M-10 시작 ───────────── */
+
+.screen-dark {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+.m10 {
+  overflow: hidden;
+}
+.m10-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.m10-hero {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(64px, 17.8vh, 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.m10-lead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #b5b3ad;
+  text-align: center;
+}
+.cta-dark {
+  background: transparent;
+}
+.cta-dark .btn-text {
+  color: #b5b3ad;
+}
+
+.privacy-line {
+  margin: 18px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ───────────── M-13 QR · 코드 ───────────── */
+
+.qr-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-top: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--illus);
+  cursor: pointer;
+}
+.qr-frame:disabled {
+  cursor: default;
+}
+.qr-illus,
+.qr-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.qr-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #1e1e1e;
+}
+
+.code-boxes {
+  position: relative;
+  margin-top: 32px;
+  display: flex;
+  gap: 8px;
+}
+.code-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: 0;
+  font-size: 16px; /* iOS 확대 방지 */
+  letter-spacing: 40px;
+  caret-color: transparent;
+  z-index: 1;
+}
+.code-box {
+  position: relative;
+  flex: 1 1 0;
+  height: 64px;
+  border-radius: 14px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+.code-box-now::after {
+  content: '';
+  width: 2px;
+  height: 28px;
+  background: var(--ink);
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.code-msg {
+  margin: 14px 0 0;
+  min-height: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ───────────── M-20 홈 ───────────── */
+
+.home-top {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-name {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.logo {
+  flex-shrink: 0;
+}
+
+.now-card {
+  position: relative;
+  height: 230px;
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--card);
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 230px;
+}
+.now-card > span {
+  position: relative;
+}
+.now-label {
+  font-size: 15px;
+  color: #b5b3ad;
+}
+.now-floor {
+  margin-top: 10px;
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+.now-zone {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.now-msg {
+  margin-top: 4px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.3px;
+}
+.now-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 15px;
+  color: #b5b3ad;
+}
+.now-foot-strong {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.section-label {
+  font-size: 15px;
+  color: var(--muted);
+}
+.favs {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.fav-row {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fav-name {
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fav-score {
+  width: 44px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.tip-row {
+  min-height: 64px;
+  padding: 0 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* 난이도 막대 5칸 — 채움(먹색) / 빈칸(테두리) */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.bar {
+  display: block;
+  width: 6px;
+  border-radius: 2px;
+  border: 1.5px solid var(--line-strong);
+}
+.bar.on {
+  border: 0;
+  background: var(--ink);
+}
+.bars-big {
+  height: 30px;
+}
+.bars-big .bar {
+  width: 9px;
+}
+
+/* ───────────── 아래 탭 ───────────── */
+
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  max-width: var(--app-w);
+  margin: 0 auto;
+  height: calc(64px + max(20px, env(safe-area-inset-bottom, 0px), var(--host-inset)));
+  padding: 0 4px max(20px, env(safe-area-inset-bottom, 0px), var(--host-inset));
+  display: flex;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.tab {
+  flex: 1 1 0;
+  height: 64px;
+  display: flex;
+}
+.tab-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+.tab-on .tab-inner {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ───────────── M-01 내 주차 위치 ───────────── */
+
+.spot-card {
+  position: relative;
+  margin-top: 12px;
+  height: 440px;
+  height: clamp(250px, calc(100vh - 404px), 440px);
+  height: clamp(250px, calc(100svh - 404px), 440px);
+  border-radius: 28px;
+  background: var(--card);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.spot-corners {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.spot-floor {
+  position: relative;
+  font-size: 150px;
+  font-size: clamp(88px, calc((100svh - 404px) * 0.3411), 150px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -6px;
+  white-space: nowrap;
+}
+.spot-zone {
+  position: relative;
+  margin-top: 14px;
+  font-size: 76px;
+  font-size: clamp(46px, calc((100svh - 404px) * 0.1728), 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+  white-space: nowrap;
+}
+.spot-none {
+  position: relative;
+  font-size: 40px;
+  font-weight: 700;
+}
+.spot-info {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.spot-lot {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+.spot-meta {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ───────────── M-02 돌아가는 길 ───────────── */
+
+.way-fig {
+  margin-top: 24px;
+}
+.steps {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.step {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.step-no {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.step-last {
+  font-weight: 700;
+}
+.step-last .step-no {
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+.disclaimer {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ───────────── M-30 주차장 ───────────── */
+
+.search {
+  margin: 0;
+}
+.search-box {
+  height: 52px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+}
+.search-box input {
+  flex-grow: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 17px;
+  color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-box input::placeholder {
+  color: var(--muted);
+}
+.search-box:focus-within {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+.chips {
+  display: flex;
+  gap: 8px;
+}
+.chip {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.chip-on {
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+.notice {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.notice-big {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.lot-list,
+.rec-list {
+  display: flex;
+  flex-direction: column;
+}
+.lot-row {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rec-row {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lot-text {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lot-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+.lot-sub {
+  font-size: 14px;
+  color: var(--muted);
+}
+.lot-score {
+  width: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ───────────── M-31 상세 ───────────── */
+
+.lot-head {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lot-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.lot-score-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.score-big {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.score-word {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.panel {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.m31 .panel {
+  margin-top: 12px;
+}
+.m31 .panel-rows {
+  margin-top: 24px;
+  padding: 8px 20px;
+  gap: 0;
+}
+.stat-row {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+}
+.stat-key {
+  color: var(--muted);
+}
+.stat-val {
+  font-weight: 700;
+}
+.panel-label {
+  font-size: 15px;
+  color: var(--muted);
+}
+.panel-line {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.floor-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+.floor-name {
+  width: 28px;
+  font-weight: 700;
+}
+.floor-track {
+  flex-grow: 1;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--track-bg);
+  position: relative;
+}
+.floor-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--line-strong);
+}
+.floor-fill.full {
+  background: var(--ink);
+}
+.floor-word {
+  width: 36px;
+  text-align: right;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ───────────── M-32 기록 ───────────── */
+
+.month {
+  gap: 4px;
+}
+.month-head {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.month-chart {
+  display: block;
+  margin-top: 8px;
+  width: calc(100% + 20px);
+  height: auto;
+  overflow: visible;
+}
+.mbar {
+  fill: var(--line);
+}
+.mbar-now {
+  fill: var(--ink);
+}
+.mlabel {
+  fill: var(--muted);
+}
+.mlabel-now {
+  fill: var(--ink);
+  font-weight: 700;
+}
+.panel-link {
+  gap: 16px;
+}
+.panel-big {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.panel-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* ───────────── M-33 동선 ───────────── */
+
+.replay-box {
+  margin-top: 28px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #1e1e1e;
+  padding: 24px 0;
+}
+.replay-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #1e1e1e;
+}
+.replay-empty {
+  margin: 0;
+  padding: 72px 20px;
+  text-align: center;
+  color: #b5b3ad;
+  font-size: 16px;
+}
+.legend {
+  margin-top: 16px;
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-line {
+  stroke: var(--ink);
+}
+.caption {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ───────────── M-40 설정 ───────────── */
+
+.car-card {
+  min-height: 72px;
+  padding: 0 20px;
+  border-radius: 16px;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.car-name {
+  flex-grow: 1;
+  font-size: 17px;
+  font-weight: 700;
+}
+.car-state {
+  font-size: 15px;
+  color: var(--muted);
+}
+.car-state-strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+.confirm {
+  margin-top: -4px;
+  padding: 20px 20px 8px;
+  border-radius: 16px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.confirm-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.setting-list {
+  display: flex;
+  flex-direction: column;
+}
+.toggle-row {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.toggle-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.toggle-label,
+.setting-label {
+  font-size: 17px;
+  font-weight: 500;
+}
+.toggle-note {
+  font-size: 14px;
+  color: var(--muted);
+}
+.switch {
+  width: 52px;
+  height: 32px;
+  flex-shrink: 0;
+  padding: 3px;
+  border-radius: 16px;
+  border: 0;
+  background: var(--track-off);
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.switch.on {
+  background: var(--inverse);
+  justify-content: flex-end;
+}
+.knob {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--bg);
+}
+:root:not([data-theme='dark']) .knob {
+  background: #ffffff;
+}
+.setting-link {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.setting-value {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.options {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.option {
+  min-height: 64px;
+  padding: 0 20px;
+  border-radius: 16px;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+.option-on {
+  background: var(--inverse);
+  color: var(--on-inverse);
+  font-weight: 700;
+}
+
+/* ───────────── 알림 한 줄 · 상태 ───────────── */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(108px + env(safe-area-inset-bottom, 0px) + var(--host-inset));
+  z-index: 10;
+  transform: translate(-50%, 8px);
+  width: max-content;
+  max-width: calc(min(100vw, var(--app-w)) - 40px);
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: var(--inverse);
+  color: var(--on-inverse);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 14px) scale(0.96);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.2s ease-in;
+}
+/* 뜰 때는 스프링으로 톡 (사라질 때는 짧게) */
+.toast-on {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+  transition:
+    opacity 0.16s ease-out,
+    transform var(--spring-pop-ms) var(--spring-pop);
+}
+.status {
+  margin: 0;
+  padding: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* ───────────── 화면 전환 무대 (ui/Stage.tsx) ─────────────
+ * 평소: 그냥 블록 (transform 없음 → 문서 스크롤·fixed 그대로).
+ * 움직이는 동안(.stage-run): 무대를 화면에 고정하고 두 겹을 겹쳐 놓는다. 겹에 transform 이 걸리면 그 안의 아래 버튼·탭바(fixed)가
+ * 겹을 따라 움직인다. transform·opacity 만 움직임 (Web Animations). overflow: clip — 스크롤 상자를 만들지 않아 초점이 겹을 밀지 않음.
+ * 안전 영역(env(safe-area-inset-*))·--host-inset 여백은 각 화면의 padding 그대로라 움직이는 동안에도 같다.
+ */
+.stage-run {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  overflow: clip;
+  background: var(--bg);
+}
+.stage-run > .layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--app-w);
+  margin: 0 auto;
+  overflow: hidden;
+  overflow: clip;
+  background: var(--bg);
+  backface-visibility: hidden;
+}
+.stage-run > .layer > .layer-inner {
+  position: relative;
+}
+.layer-exit {
+  pointer-events: none;
+}
+
+/* ───────────── 눌림 (0.97 → 스프링으로 돌아옴) ───────────── */
+
+.btn,
+.chip,
+.option,
+.car-card,
+.now-card,
+.king-card,
+.tip-row,
+.fav-row,
+.lot-row,
+.rec-row,
+.setting-link,
+.league-chip,
+.nick-redraw,
+.tab-inner,
+.icon-btn,
+.qr-frame {
+  transition: transform var(--spring-press-ms) var(--spring-press);
+}
+.btn:active:not(:disabled),
+.chip:active,
+.option:active,
+.car-card:active,
+.now-card:active,
+.king-card:active,
+.tip-row:active,
+.fav-row:active,
+.lot-row:active,
+.rec-row:active,
+.setting-link:active,
+.league-chip:active,
+.nick-redraw:active:not(:disabled),
+.tab:active .tab-inner,
+.icon-btn:active,
+.qr-frame:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform 0.08s ease-out;
+}
+
+/* 새로 나타난 내용 (참여 직후 M-50 등) */
+.enter-up {
+  animation: enter-up var(--spring-pop-ms) var(--spring-pop) both;
+}
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ───────────── 아래에서 올라오는 시트 ───────────── */
+
+.sheet-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+.sheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 30, 30, 0.4);
+  animation: fade-in 0.2s ease-out both;
+}
+.sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: var(--app-w);
+  margin: 0 auto;
+  padding: 28px var(--gutter) max(28px, calc(env(safe-area-inset-bottom, 0px) + 12px), var(--host-inset));
+  border-radius: 24px 24px 0 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  outline: none;
+  animation: sheet-up var(--spring-sheet-ms) var(--spring-sheet) both;
+}
+.sheet-closing .sheet {
+  animation: sheet-down 0.2s ease-in both;
+}
+.sheet-closing .sheet-scrim {
+  animation: fade-out 0.2s ease-in both;
+}
+@keyframes sheet-up {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes sheet-down {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+.sheet-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.sheet-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.sheet-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.sheet-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ───────────── 주차왕 M-50 ───────────── */
+
+.king .tab-body {
+  gap: 14px;
+}
+.king-head {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.league-chip {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-radius: 18px;
+  border: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.king-card {
+  position: relative;
+  height: 180px;
+  flex-shrink: 0;
+  padding: 20px 22px;
+  border-radius: 22px;
+  background: var(--card);
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.king-card > span {
+  position: relative;
+}
+.king-card-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 180px;
+}
+.king-card-label {
+  font-size: 14px;
+  color: #b5b3ad;
+}
+.king-card-rank {
+  margin-top: 6px;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.king-card-wait {
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.king-card-sub {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #b5b3ad;
+}
+.king-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.king-card-move {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.king-card-msg {
+  height: 230px;
+}
+.king-card-msg-text {
+  margin-top: 4px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.3px;
+}
+.king-card-foot-strong {
+  font-size: 17px;
+  font-weight: 700;
+}
+.king-order {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+}
+.board {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.board-row {
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.board-me {
+  background: var(--inverse);
+  color: var(--on-inverse);
+}
+.board-rank {
+  width: 22px;
+  flex-shrink: 0;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+}
+.board-name {
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.board-strong {
+  font-weight: 700;
+}
+.board-score {
+  font-size: 15px;
+  font-weight: 700;
+}
+.me-chip {
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--on-inverse);
+  color: var(--inverse);
+  font-size: 13px;
+  font-weight: 700;
+}
+.board-gap {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--line-strong);
+  font-size: 14px;
+  letter-spacing: 4px;
+}
+.king-demo {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ───────────── M-52 참여하기 ───────────── */
+
+.king-join .title {
+  letter-spacing: 0;
+}
+.king-preview {
+  margin-top: 28px;
+  border-radius: 24px;
+}
+.nick {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nick-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+.nick-field {
+  height: 56px;
+  padding: 0 8px 0 16px;
+  border-radius: 14px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nick-field input {
+  flex-grow: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 1px 2px;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.nick-redraw {
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+:root:not([data-theme='dark']) .nick-redraw {
+  background: #ffffff;
+}
+.nick-redraw:disabled {
+  cursor: default;
+}
+.king-league-row {
+  margin-top: 12px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.king-league-key {
+  color: var(--muted);
+}
+.king-league-val {
+  font-weight: 700;
+}
+
+/* ───────────── M-51 내 점수 자세히 ───────────── */
+
+.king-me-title {
+  margin: 8px 0 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.score-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.score-part {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.score-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+.score-label {
+  color: var(--muted);
+}
+.score-val {
+  font-weight: 700;
+}
+.score-max {
+  font-weight: 400;
+  color: var(--muted);
+}
+.score-track {
+  display: block;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--track-bg);
+  position: relative;
+}
+.score-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--ink);
+  transform-origin: left center;
+  animation: bar-grow var(--spring-pop-ms) var(--spring-pop) 0.12s both;
+}
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.king-hint {
+  margin: 14px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.king-places-title {
+  margin: 26px 0 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.king-places {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.place {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.place-text {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.place-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+.place-sub {
+  font-size: 13px;
+  color: var(--muted);
+}
+.place-grade {
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.place-out {
+  color: var(--muted);
+}
+.place-out .place-name {
+  font-weight: 500;
+}
+.place-out .place-grade {
+  font-size: 15px;
+}
+
+/* ───────────── M-53 주간 결과 (늘 어두운 판) ───────────── */
+
+.king-result {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+.result-week {
+  font-size: 15px;
+  color: #b5b3ad;
+}
+.result-title {
+  margin: 8px 0 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.result-card {
+  margin-top: 28px;
+  padding: 24px 20px 0;
+  border-radius: 24px;
+  background: #262625;
+  border: 1.5px solid #4a4944;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+}
+.result-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.result-rank {
+  margin-top: 10px;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -4px;
+}
+.result-sub {
+  font-size: 16px;
+  color: #b5b3ad;
+}
+.badges {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.badge {
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border-radius: 18px;
+  background: #2a2a28;
+  color: #f4f3ef;
+  font-size: 14px;
+  font-weight: 700;
+}
+.result-art-wrap {
+  margin-top: 14px;
+}
+.result-art {
+  display: block;
+}
+.result-delta {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: #b5b3ad;
+  text-align: center;
+}
+.cta-ink {
+  background: #1e1e1e;
+}
+.cta-ink .btn-text {
+  color: #b5b3ad;
+}
+.status-dark {
+  color: #b5b3ad;
+}
+
+.setting-button {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .toast-on {
+    transition: none;
+  }
+  .code-box-now::after {
+    animation: none;
+  }
+  .btn,
+  .chip,
+  .option,
+  .car-card,
+  .now-card,
+  .king-card,
+  .tip-row,
+  .fav-row,
+  .lot-row,
+  .rec-row,
+  .setting-link,
+  .league-chip,
+  .nick-redraw,
+  .tab-inner,
+  .icon-btn,
+  .qr-frame {
+    transition: none;
+  }
+  .btn:active:not(:disabled),
+  .chip:active,
+  .option:active,
+  .car-card:active,
+  .now-card:active,
+  .king-card:active,
+  .tip-row:active,
+  .fav-row:active,
+  .lot-row:active,
+  .rec-row:active,
+  .setting-link:active,
+  .league-chip:active,
+  .nick-redraw:active:not(:disabled),
+  .tab:active .tab-inner,
+  .icon-btn:active,
+  .qr-frame:active:not(:disabled) {
+    transform: none;
+  }
+  .enter-up,
+  .sheet,
+  .sheet-scrim,
+  .sheet-closing .sheet,
+  .sheet-closing .sheet-scrim,
+  .score-fill {
+    animation: none;
+  }
+}

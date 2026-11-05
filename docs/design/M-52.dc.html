@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>M-52 주차왕 참여하기</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1e1e1e}a:hover{color:#000000}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; box-sizing: border-box; background: #ffffff; color: #1e1e1e; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div style="height: 100%; box-sizing: border-box; padding: 56px 20px 0; display: flex; flex-direction: column">
+    <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px">
+      <h1 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4">주차왕에<br>참여할까요?</h1>
+      <p style="margin: 0; font-size: 16px; color: #5f5d57">같은 경력, 같은 동네 사람들끼리 겨뤄요</p>
+    </div>
+    <div style="margin-top: 28px"><svg role="img" aria-label="순위판에는 닉네임과 점수만 보이는 예시" width="350" height="220" viewBox="0 0 350 220" style="display: block; border-radius: 24px"><rect width="350" height="220" fill="#1e1e1e"></rect><text x="24" y="34" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">순위판에 보이는 것</text><g transform="translate(22 54)"><rect width="306" height="38" rx="10" fill="none"></rect><text x="14" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#f4f3ef">11</text><text x="44" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="500" fill="#f4f3ef">판교 차분한 두루미</text><text x="292" y="25" text-anchor="end" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#f4f3ef">84점</text></g><g transform="translate(22 100)"><rect width="306" height="38" rx="10" fill="#f4f3ef"></rect><text x="14" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1e1e1e">12</text><text x="44" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1e1e1e">판교 느긋한 수달</text><text x="292" y="25" text-anchor="end" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1e1e1e">82점</text></g><g transform="translate(22 146)"><rect width="306" height="38" rx="10" fill="none"></rect><text x="14" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#f4f3ef">13</text><text x="44" y="25" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="500" fill="#f4f3ef">운중 다정한 곰</text><text x="292" y="25" text-anchor="end" font-family="Noto Sans KR, system-ui, sans-serif" font-size="15" font-weight="700" fill="#f4f3ef">81점</text></g><text x="24" y="206" font-family="Noto Sans KR, system-ui, sans-serif" font-size="13" fill="#8a8780">장소 · 시간 · 차량 번호는 안 보여요</text></svg></div>
+    <label style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #5f5d57">닉네임
+      <span style="height: 56px; box-sizing: border-box; padding: 0 8px 0 16px; border-radius: 14px; background: #f4f3ef; display: flex; align-items: center; gap: 8px"><input type="text" value="판교 느긋한 수달" style="flex-grow: 1; min-width: 0; border: 0; outline: 0; background: transparent; font-family: inherit; font-size: 17px; font-weight: 700; color: #1e1e1e"><button type="button" style="height: 40px; flex-shrink: 0; padding: 0 14px; border-radius: 10px; border: 0; background: #ffffff; color: #1e1e1e; font-family: inherit; font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer">다시 뽑기</button></span>
+    </label>
+    <div style="margin-top: 12px; height: 52px; display: flex; align-items: center; justify-content: space-between; font-size: 16px"><span style="color: #5f5d57">내 리그</span><span style="font-weight: 700">판교 · 1년 미만</span></div>
+  </div><div style="position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 0 20px 28px; display: flex; flex-direction: column; gap: 4px; background: #ffffff"><a href="M-50.dc.html" style="height: 56px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; border: 0; background: #1e1e1e; color: #ffffff; font-family: inherit; font-size: 18px; font-weight: 700; text-decoration: none; cursor: pointer">참여할게요</a><a href="M-20.dc.html" style="height: 48px; display: flex; align-items: center; justify-content: center; border: 0; background: transparent; color: #5f5d57; font-family: inherit; font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer">다음에 할게요</a></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

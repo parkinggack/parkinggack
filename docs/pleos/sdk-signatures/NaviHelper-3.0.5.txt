@@ -1,0 +1,61 @@
+# NaviHelper-3.0.5 — javap 공개 시그니처 (자동 생성, 2026-11-03)
+
+public final class navi.helper.NaviHelper {
+  public navi.helper.NaviHelper(android.content.Context);
+  public final void initialize();
+  public final void initialize(()->Unit, (Throwable)->Unit);
+  public final void release();
+  public final void addListener(navi.helper.listener.NaviHelperEventListener);
+  public final void removeListener(navi.helper.listener.NaviHelperEventListener);
+  public final void requestRoute(navi.data.RouteInfo);
+  public final void requestRouteWithWaypoints(navi.data.RouteWithWaypointsRequest);
+  public final void cancelRoute();
+  public final void addWaypoint(navi.data.RequestWaypointInfo);
+  public final void removeWaypoint(navi.constants.WaypointIndex);
+  public final void changeRouteOption(navi.constants.RouteOption);
+  public final void requestReRoute();
+  public final void getBookmarkInfo();
+  public final void getRecentDestinationInfo();
+  public final void getRouteStateInfo();
+  public final void getCurrentLocationInfo();
+  public final void getDestinationInfo();
+  public final void getWaypointInfo();
+  public final void getTBTInfo();
+  public final void getChargerOperatorInfo();
+  public final void requestNavigationScreen(navi.data.NavigationScreenRequest);
+  public final void requestTrip(navi.data.TripRequest);
+  public final navi.helper.api.InternalApi getInternalApi();
+}
+public interface navi.helper.api.InternalApi {
+  public abstract void updateOccupiedRegion(android.graphics.Rect);
+}
+public interface navi.helper.api.PrivateApi extends annotation.Annotation {
+}
+public interface navi.helper.listener.NaviHelperEventListener {
+  public default void onRouteStarted(navi.data.RouteStartInfo);
+  public default void onRouteEnded();
+  public default void onRoutingCompleted();
+  public default void onReRouteEnded();
+  public default void onRouteOptionChanged(navi.constants.RouteOption);
+  public default void onRouteCancelled();
+  public default void onWaypointChanged(navi.data.WaypointChangedInfo);
+  public default void onDestinationArrived(navi.data.DestinationArrivedInfo);
+  public default void onWayPointArrived(navi.data.WaypointArrivedInfo);
+  public default void onBookMarkChanged();
+  public default void onDestinationChanged();
+  public default void onError(navi.constants.NaviErrorCode);
+  public default void onCurrentLocationInfo(navi.data.CurrentLocationInfo);
+  public default void onRouteStateInfo(navi.data.RouteStateInfo);
+  public default void onDestinationInfo(navi.data.DestinationInfo);
+  public default void onWayPointInfo(List<navi.data.WaypointInfo>);
+  public default void onRecentDestinationInfo(List<navi.data.RecentDestinationInfo>);
+  public default void onBookmarkInfo(List<navi.data.BookmarkInfo>);
+  public default void onCurrentRoadSpeedLimit(int);
+  public default void onCameraAlert(List<navi.data.CameraAlert>);
+  public default void onDrivingInfo(navi.data.DrivingInfo);
+  public default void onNavigationStatus(navi.constants.NavigationStatus);
+  public default void onTBTInfo(List<navi.data.TBTInfo>);
+  public default void onChargerOperatorInfo(List<navi.data.ChargerOperator>);
+  public default void onCautionPointInfo(List<navi.data.CautionPoint>);
+  public default void onTripInfo(navi.data.TripInfo);
+}

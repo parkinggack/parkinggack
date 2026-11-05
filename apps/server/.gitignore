@@ -1,0 +1,8 @@
+node_modules/
+dist/
+# SQLite (DB_PATH 기본값) — 커밋하지 않음
+data/
+*.db
+*.db-wal
+*.db-shm
+.env

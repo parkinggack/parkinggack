@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-02 상태별 카드</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; box-sizing: border-box; padding: 40px; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column; gap: 24px">
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <h1 style="margin: 0; font-size: 28px; font-weight: 700">C-02 상태별 카드</h1>
+    <p style="margin: 0; font-size: 18px; color: #b5b3ad">카드 자리와 크기는 같고, 등급에 따라 문구와 버튼 수만 달라짐</p>
+  </div>
+
+  <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">어려움 · ★4 이상</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 24px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 12px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: flex-end; gap: 16px">
+          <span style="font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -1px">★4.3</span>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 4px">
+            <div aria-hidden="true" style="display: flex; align-items: flex-end; gap: 4px; height: 30px">
+              <span style="display: block; width: 10px; height: 10px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 15px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 20px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 25px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 30px; border-radius: 2px; border: 2px solid #8a8780; box-sizing: border-box"></span>
+            </div>
+            <span style="font-size: 20px; font-weight: 700">어려움</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <h2 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.35">도착지 주차장은 조금 까다로워요</h2>
+          <p style="margin: 0; font-size: 17px; color: #b5b3ad">현대백화점 판교점 지하주차장</p>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px">
+          <li style="height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">회전 램프 좁음</li>
+          <li style="height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">평균 후진 3.2회</li>
+          <li style="height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">기둥 많음</li>
+        </ul>
+        <p style="margin: 0; font-size: 14px; color: #b5b3ad">최근 30일 · 차량 142대 기준</p>
+        <div style="flex-grow: 1"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span style="height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: #f4f3ef; color: #1e1e1e; font-size: 20px; font-weight: 700">더 쉬운 곳 보기</span>
+          <span style="height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 14px; border: 1.5px solid #3a3936; font-size: 17px; font-weight: 500">괜찮아요, 그냥 갈게요</span>
+        </div>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">쉬움 · ★1~2</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 24px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 12px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: flex-end; gap: 16px">
+          <span style="font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -1px">★1.8</span>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 4px">
+            <div aria-hidden="true" style="display: flex; align-items: flex-end; gap: 4px; height: 30px">
+              <span style="display: block; width: 10px; height: 10px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 15px; border-radius: 2px; background: #f4f3ef"></span>
+              <span style="display: block; width: 10px; height: 20px; border-radius: 2px; border: 2px solid #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 25px; border-radius: 2px; border: 2px solid #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 30px; border-radius: 2px; border: 2px solid #8a8780; box-sizing: border-box"></span>
+            </div>
+            <span style="font-size: 20px; font-weight: 700">쉬움</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <h2 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.35">주차하기 편한 곳이에요</h2>
+          <p style="margin: 0; font-size: 17px; color: #b5b3ad">아브뉴프랑 판교 주차장</p>
+        </div>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px">
+          <li style="height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">평면 주차장</li>
+          <li style="height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1.5px solid #3a3936; border-radius: 8px; font-size: 15px; font-weight: 500">자리 넉넉</li>
+        </ul>
+        <p style="margin: 0; font-size: 14px; color: #b5b3ad">최근 30일 · 차량 87대 기준</p>
+        <div style="flex-grow: 1"></div>
+        <span style="height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: #f4f3ef; color: #1e1e1e; font-size: 20px; font-weight: 700">좋아요</span>
+      </section>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <span style="font-size: 16px; font-weight: 700; color: #b5b3ad">데이터 부족</span>
+      <section style="flex-grow: 1; box-sizing: border-box; padding: 24px; background: #2a2a28; border: 1.5px dashed #8a8780; border-radius: 12px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: flex-end; gap: 16px">
+          <span style="font-size: 64px; font-weight: 700; line-height: 1; color: #b5b3ad">★–.–</span>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 4px">
+            <div aria-hidden="true" style="display: flex; align-items: flex-end; gap: 4px; height: 30px">
+              <span style="display: block; width: 10px; height: 10px; border-radius: 2px; border: 2px dashed #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 15px; border-radius: 2px; border: 2px dashed #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 20px; border-radius: 2px; border: 2px dashed #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 25px; border-radius: 2px; border: 2px dashed #8a8780; box-sizing: border-box"></span>
+              <span style="display: block; width: 10px; height: 30px; border-radius: 2px; border: 2px dashed #8a8780; box-sizing: border-box"></span>
+            </div>
+            <span style="font-size: 20px; font-weight: 700">기록 모으는 중</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <h2 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.35">아직 기록이 적어요 (3대)</h2>
+          <p style="margin: 0; font-size: 17px; color: #b5b3ad">첫 기록을 남겨 주세요</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 12px; background: #1e1e1e">
+          <span style="font-size: 14px; font-weight: 700; color: #b5b3ad">공공데이터 기본 정보</span>
+          <span style="font-size: 16px">기계식 아님 · 지하 4층까지</span>
+          <span style="font-size: 16px">주차면 [수] 면</span>
+        </div>
+        <div style="flex-grow: 1"></div>
+        <span style="height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: #f4f3ef; color: #1e1e1e; font-size: 20px; font-weight: 700">알겠어요</span>
+      </section>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

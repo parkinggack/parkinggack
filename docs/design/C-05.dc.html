@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-05 주차 완료 카드</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+.hatch{background-color:#242423}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div aria-hidden="true" style="height: 44px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; border-bottom: 1px solid #3a3936; background: #161616; font-size: 14px; color: #b5b3ad">Pleos Connect 시스템 영역</div>
+
+  <div style="height: 676px; box-sizing: border-box; padding: 36px 48px 28px; display: flex; flex-direction: column; gap: 24px">
+    <div style="flex-grow: 1; min-height: 0; display: flex; gap: 40px">
+
+      <section style="flex-grow: 1; display: flex; flex-direction: column; gap: 20px">
+        <span style="align-self: flex-start; height: 40px; display: flex; align-items: center; gap: 10px; padding: 0 16px 0 8px; border-radius: 8px; background: #2a2a28; border: 1.5px solid #3a3936; font-size: 18px; font-weight: 700">
+          <span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 14px; background: #f4f3ef; color: #1e1e1e; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700">P</span>
+          주차 완료
+        </span>
+
+        <sc-if value="{{showBig}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; align-items: flex-end; gap: 18px">
+            <span style="font-size: 220px; font-weight: 700; line-height: 0.85; letter-spacing: -6px">B2</span>
+            <sc-if value="{{isMid}}" hint-placeholder-val="{{ false }}">
+              <span style="margin-bottom: 10px; height: 44px; display: flex; align-items: center; padding: 0 16px; border: 2px dashed #8a8780; border-radius: 8px; font-size: 22px; font-weight: 700; color: #b5b3ad">추정</span>
+            </sc-if>
+          </div>
+          <h1 style="margin: 0; font-size: 38px; font-weight: 700">B2에 대셨나요?</h1>
+          <div style="display: flex; gap: 14px">
+            <a href="C-01.dc.html" style="width: 280px; height: 88px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: #f4f3ef; color: #1e1e1e; font-size: 28px; font-weight: 700; text-decoration: none">맞아요</a>
+            <a href="C-06.dc.html" style="width: 240px; height: 88px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 24px; font-weight: 500; text-decoration: none">다른 층이에요</a>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{isLow}}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin: 0; font-size: 44px; font-weight: 700">몇 층에 대셨나요?</h1>
+          <p style="margin: 0; font-size: 22px; color: #b5b3ad">이번엔 층을 확실히 모르겠어요. 한 번만 골라 주세요</p>
+          <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+            <a href="C-06.dc.html" style="height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 44px; font-weight: 700; text-decoration: none">B4</a>
+            <a href="C-06.dc.html" style="height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 44px; font-weight: 700; text-decoration: none">B3</a>
+            <a href="C-06.dc.html" style="height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 44px; font-weight: 700; text-decoration: none">B2</a>
+            <a href="C-06.dc.html" style="height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 44px; font-weight: 700; text-decoration: none">B1</a>
+            <a href="C-06.dc.html" style="height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1.5px solid #8a8780; background: #2a2a28; color: #f4f3ef; font-size: 44px; font-weight: 700; text-decoration: none">1F</a>
+          </div>
+        </sc-if>
+      </section>
+
+      <aside style="width: 560px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px">
+        <a href="C-12.dc.html" style="flex-grow: 1; box-sizing: border-box; padding: 20px 22px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; display: flex; flex-direction: column; gap: 6px; color: #f4f3ef; text-decoration: none">
+          <span style="display: flex; align-items: center; justify-content: space-between">
+            <span style="font-size: 18px; font-weight: 700; color: #b5b3ad">오늘 주차</span>
+            <span style="font-size: 18px; font-weight: 500; color: #b5b3ad">동선 크게 보기 ›</span>
+          </span>
+          <strong style="font-size: 34px; font-weight: 700">후진 2회 · 1분 40초</strong>
+          <span style="font-size: 20px; color: #b5b3ad">평소보다 수월했어요</span>
+          <span style="margin-top: 4px; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M4 18h16"></path><path d="M5 15.5L3.5 7l5 4L12 5l3.5 6 5-4-1.5 8.5z"></path></svg>주차왕 이번 주 12등 → 10등</span>
+          <svg aria-hidden="true" width="513" height="200" viewBox="0 0 500 224" preserveAspectRatio="xMidYMid meet" style="display: block; margin-top: 10px; border-radius: 12px">
+            <rect x="0" y="0" width="500" height="224" fill="#2a2a28"></rect>
+            <rect x="0" y="112" width="500" height="112" fill="#1e1e1e"></rect>
+            <path d="M0 168 H500" stroke="#4a4944" stroke-width="2" stroke-dasharray="10 10"></path>
+            <path d="M25 12 H475" stroke="#8a8780" stroke-width="2"></path>
+            <path d="M25 12 V112 M75 12 V112 M125 12 V112 M175 12 V112 M225 12 V112 M275 12 V112 M325 12 V112 M375 12 V112 M425 12 V112 M475 12 V112" stroke="#6b6964" stroke-width="2"></path>
+            <text x="10" y="152" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" fill="#b5b3ad">통로</text>
+            <path d="M0 186 H340" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M340 186 C 306 186, 272 176, 264 140" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 9"></path>
+            <path d="M264 140 C 272 152, 284 160, 298 164" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M298 164 C 266 152, 251 132, 250 96" fill="none" stroke="#f4f3ef" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 9"></path>
+            <rect x="232" y="18" width="36" height="88" rx="8" fill="#f4f3ef"></rect>
+            <rect x="238" y="82" width="24" height="16" rx="3" fill="#2a2a28" fill-opacity="0.85"></rect>
+            <rect x="239" y="25" width="22" height="9" rx="2" fill="#2a2a28" fill-opacity="0.5"></rect>
+            <circle cx="340" cy="186" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+            <text x="340" y="191" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">1</text>
+            <circle cx="264" cy="140" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+            <text x="264" y="145" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">2</text>
+            <circle cx="298" cy="164" r="13" fill="#2a2a28" stroke="#f4f3ef" stroke-width="2.5"></circle>
+            <text x="298" y="169" text-anchor="middle" font-family="Noto Sans KR, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f4f3ef">3</text>
+          </svg>
+        </a>
+        <div style="display: flex; gap: 14px">
+          <a href="C-06.dc.html" style="flex: 1 1 0; min-width: 0; height: 96px; box-sizing: border-box; padding: 0 20px; display: flex; align-items: center; gap: 14px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; color: #f4f3ef; text-decoration: none">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>
+            <span style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 22px; font-weight: 700">구역도 기억하기</span>
+              <span style="font-size: 15px; color: #b5b3ad">기둥 번호까지</span>
+            </span>
+          </a>
+          <a href="C-07.dc.html" style="flex: 1 1 0; min-width: 0; height: 96px; box-sizing: border-box; padding: 0 20px; display: flex; align-items: center; gap: 14px; background: #2a2a28; border: 1.5px solid #8a8780; border-radius: 16px; color: #f4f3ef; text-decoration: none">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><rect x="7" y="3" width="10" height="18" rx="2.5"></rect><path d="M11 18h2"></path></svg>
+            <span style="display: flex; flex-direction: column; gap: 2px">
+              <span style="font-size: 22px; font-weight: 700">폰으로 보내기</span>
+              <span style="font-size: 15px; color: #b5b3ad">QR 한 번이면 끝</span>
+            </span>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px">
+      <div aria-hidden="true" style="flex-grow: 1; height: 8px; border-radius: 4px; background: #4a4944; overflow: hidden">
+        <div style="width: 40%; height: 8px; background: #f4f3ef"></div>
+      </div>
+      <span style="font-size: 18px; color: #b5b3ad">그대로 두면 3초 뒤 B2로 저장돼요</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"confidence":{"editor":"enum","options":["높음","보통","낮음"],"default":"높음"},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const c = this.props.confidence ?? '높음';
+    return {
+      showBig: c !== '낮음',
+      isMid: c === '보통',
+      isLow: c === '낮음'
+    };
+  }
+}
+</script>
+</body>
+</html>

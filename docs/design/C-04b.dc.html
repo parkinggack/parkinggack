@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>C-04 주차 기록 중</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#f4f3ef}a:hover{color:#ffffff}
+.hatch{background-color:#242423}
+</style>
+</helmet>
+<div style="width: 1280px; height: 720px; position: relative; overflow: hidden; background: #1e1e1e; color: #f4f3ef; font-family: 'Noto Sans KR', system-ui, sans-serif; font-variant-numeric: tabular-nums">
+  <div aria-hidden="true" style="height: 44px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; border-bottom: 1px solid #3a3936; background: #161616; font-size: 14px; color: #b5b3ad">Pleos Connect 시스템 영역</div>
+
+  <div class="hatch" style="position: absolute; top: 45px; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 28px; background: rgba(42,42,40,0.92); border: 1.5px dashed #8a8780; border-radius: 16px">
+      <span style="font-size: 20px; font-weight: 500; color: #b5b3ad">내비 또는 후방 카메라 (시스템 화면)</span>
+      <span style="font-size: 15px; color: #b5b3ad">지하주차장 · 저속 주행 · 기어 D ↔ R</span>
+    </div>
+  </div>
+
+  <div role="status" style="position: absolute; top: 64px; right: 24px; height: 72px; box-sizing: border-box; padding: 0 28px 0 24px; display: flex; align-items: center; gap: 16px; background: #2a2a28; border: 2px solid #f4f3ef; border-radius: 16px">
+    <span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 9px; background: #f4f3ef; outline: 5px solid #4a4944"></span>
+    <span style="font-size: 26px; font-weight: 700">주차 기록 중</span>
+    <span aria-hidden="true" style="width: 2px; height: 32px; background: #8a8780"></span>
+    <span style="font-size: 24px; font-weight: 500; color: #b5b3ad">후진 1 · 1:12</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

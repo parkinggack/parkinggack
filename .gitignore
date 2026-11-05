@@ -1,0 +1,28 @@
+*.iml
+.gradle/
+**/local.properties
+/.idea/
+.DS_Store
+/build/
+**/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+.kotlin/
+*.keystore
+*.jks
+# release 서명 비밀번호 (apps/vehicle/keystore.properties)
+keystore.properties
+__pycache__/
+# Playground 비밀값 (Client Secret 등) — 절대 커밋 금지
+secrets.properties
+
+# 에이전트 작업용 git worktree
+/.claude/worktrees/
+
+# Paparazzi 골든 (스냅숏은 docs/screenshots/vehicle 로 내보내서 커밋)
+apps/vehicle/app/src/test/snapshots/
+
+# Vercel CLI 링크 폴더 (프로젝트 id — 커밋하지 않음, docs/deploy.md)
+.vercel/
+.netlify/

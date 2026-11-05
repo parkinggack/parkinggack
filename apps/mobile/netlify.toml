@@ -1,0 +1,32 @@
+# Netlify 사이트 설정 — 저장소 연결 시 Base directory = apps/mobile (README "배포" 참고). 기본 배포처는 Vercel(vercel.json)
+[build]
+  command = "npm ci && npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# 히스토리 라우팅: 파일이 없는 경로는 모두 index.html (200) — public/_redirects (Cloudflare Pages도 같은 파일을 읽음)
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    X-Robots-Tag = "noindex"
+    Permissions-Policy = "camera=(self), geolocation=(self), microphone=()"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

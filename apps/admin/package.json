@@ -1,0 +1,37 @@
+{
+  "name": "parkinggack-admin",
+  "private": true,
+  "version": "0.1.0",
+  "description": "주차각 어드민 웹 — W-01 난이도 지도 대시보드 · 주차장 메타데이터 관리 · 익명 주차 기록 조회",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite --host",
+    "dev:mock": "vite --host --mode mock",
+    "build": "tsc --noEmit && vite build",
+    "build:mock": "tsc --noEmit && vite build --mode mock",
+    "preview": "vite preview --host",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/leaflet": "^1.9.20",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.0.0",
+    "jsdom": "^27.0.0",
+    "typescript": "~5.9",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  // 타입 검사용 (src + test). 빌드는 tsconfig.build.json
+  // 계약 타입은 packages/api-types 를 상대 경로로 직접 읽는다 (import type 이라 빌드본에는 남지 않음)
+  // 시드는 packages/insights-demo(대시보드 시연 생성기)를 상대 경로로 부른다 → 빌드본 dist/packages/insights-demo
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": true,
+    // packages/insights-demo 는 ./layout.ts 처럼 .ts 로 서로 부른다 (빌드본에서는 .js 로 바뀜)
+    "rewriteRelativeImportExtensions": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@parkinggack/api-types": ["../../packages/api-types/index.ts"]
+    },
+    "noEmit": true
+  },
+  "include": ["src", "test", "api", "netlify", "vitest.config.ts"]
+}
